@@ -1,0 +1,202 @@
+﻿tradition_dragonlords = {
+	category = realm
+	
+	layers = {
+		0 = martial
+		1 = western
+		4 = dragon.dds
+	}
+	
+	is_shown = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	can_pick = {
+		custom_tooltip = {
+			text = tradition_dragonlords_requirement_tt
+			has_cultural_pillar = heritage_arick
+		}
+	}
+	
+	parameters = {
+		unlock_maa_dragonrider_cavalry = yes
+		can_claim_dragons = yes
+		dragon_taming_enabled = yes
+	}
+	
+	character_modifier = {
+		prowess = 2
+		dread_baseline_add = 10
+		monthly_prestige = 0.5
+		knight_effectiveness_mult = 0.1
+	}
+	
+	cost = {
+		prestige = 2000
+	}
+	
+	ai_will_do = {
+		value = 100
+		if = {
+			limit = {
+				has_cultural_pillar = heritage_arick
+			}
+			add = 500
+		}
+	}
+}
+
+tradition_dragon_breeders = {
+	category = realm
+	
+	layers = {
+		0 = steward
+		1 = western
+		4 = egg.dds
+	}
+	
+	is_shown = {
+		has_cultural_tradition = tradition_dragonlords
+	}
+	
+	can_pick = {
+		has_cultural_tradition = tradition_dragonlords
+		NOT = { has_cultural_tradition = tradition_dragonslayers }
+	}
+	
+	parameters = {
+		dragon_egg_bonus = yes
+		dragon_hatchery_enabled = yes
+		dragon_health_bonus = yes
+	}
+	
+	character_modifier = {
+		stewardship = 1
+		domain_tax_mult = 0.05
+	}
+	
+	county_modifier = {
+		build_speed = -0.1
+	}
+	
+	cost = {
+		prestige = 2000
+	}
+	
+	ai_will_do = {
+		value = 75
+		if = {
+			limit = {
+				has_cultural_pillar = heritage_arick
+			}
+			add = 100
+		}
+	}
+}
+
+tradition_dragon_hunters = {
+	category = realm
+	
+	layers = {
+		0 = intrigue
+		1 = western
+		4 = hunt.dds
+	}
+	
+	is_shown = {
+		NOT = { has_cultural_pillar = heritage_arick }
+	}
+	
+	can_pick = {
+		NOT = { has_cultural_tradition = tradition_dragonlords }
+		NOT = { has_cultural_tradition = tradition_dragon_tamers }
+		NOT = { has_cultural_pillar = heritage_arick }
+	}
+	
+	parameters = {
+		dragon_hunter_court_position = yes
+		dragon_tracking_bonus = yes
+		dragon_trap_construction = yes
+		scorpion_siege_bonus = yes
+	}
+	
+	character_modifier = {
+		intrigue = 1
+		prowess = 1
+		owned_hostile_scheme_success_chance_add = 5
+	}
+	
+	county_modifier = {
+		defender_holding_advantage = 2
+	}
+	
+	cost = {
+		prestige = 1500
+	}
+	
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = {
+				any_culture_global = {
+					has_cultural_tradition = tradition_dragonlords
+				}
+			}
+			add = 150
+		}
+	}
+}
+
+tradition_dragon_tributaries = {
+	category = realm
+	
+	layers = {
+		0 = steward
+		1 = western
+		4 = tribute.dds
+	}
+	
+	is_shown = {
+		NOT = { has_cultural_pillar = heritage_arick }
+	}
+	
+	can_pick = {
+		NOT = { has_cultural_tradition = tradition_dragonlords }
+		NOT = { has_cultural_tradition = tradition_dragonslayers }
+		NOT = { has_cultural_tradition = tradition_dragon_hunters }
+	}
+	
+	parameters = {
+		dragon_tribute_enabled = yes
+		dragon_lord_diplomacy_bonus = yes
+		reduced_dragon_raids = yes
+	}
+	
+	character_modifier = {
+		diplomacy = 2
+		different_culture_opinion = 10
+		monthly_prestige = -0.25
+	}
+	
+	cost = {
+		prestige = 500
+	}
+	
+	ai_will_do = {
+		value = 5
+		if = {
+			limit = {
+				any_culture_global = {
+					has_cultural_tradition = tradition_dragonlords
+				}
+			}
+			add = 25
+		}
+		if = {
+			limit = {
+				culture_pillar:ethos_bureaucratic = { is_in_list = traits }
+			}
+			add = 50
+		}
+	}
+}

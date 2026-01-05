@@ -1,0 +1,95 @@
+﻿l_english:
+ ##############################
+ # DRAGON RIDER TRAITS
+ ##############################
+ 
+ # Dragon Rider
+ trait_dragon_rider:0 "Dragon Rider"
+ trait_dragon_rider_desc:0 "This character has bonded with a dragon and can ride the great beast into battle, commanding respect and fear in equal measure."
+ trait_dragon_rider_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has bonded with a dragon and can ride the great beast into battle. Few dare stand against the fury of dragonfire."
+ 
+ # Dragon Squire
+ trait_dragon_squire:0 "Dragon Squire"
+ trait_dragon_squire_desc:0 "This young person is being trained in the ways of dragon riding, learning to approach, feed, and eventually ride the great beasts."
+ trait_dragon_squire_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is being trained as a dragon squire, spending [ROOT.GetCharacter.GetHerHis] days learning the ways of the great beasts."
+ 
+ # Dragon Bond
+ trait_dragon_bond:0 "Dragon Bond"
+ trait_dragon_bond_desc:0 "This character shares an unusually deep connection with their dragon, transcending mere mount and rider into something far more profound."
+ trait_dragon_bond_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] shares an extraordinarily deep bond with [ROOT.GetCharacter.GetHerHis] dragon. They move as one, each anticipating the other's thoughts."
+ 
+ ##############################
+ # DRAGON BLOOD TRAITS
+ ##############################
+ 
+ # Dragon Blood Level 1
+ trait_dragon_blood_1:0 "Faint Dragon Blood"
+ trait_dragon_blood_1_desc:0 "A trace of ancient dragonlord heritage runs through this bloodline, granting subtle advantages in dealing with the great beasts."
+ trait_dragon_blood_1_character_desc:0 "A faint trace of dragon blood runs through [ROOT.GetCharacter.GetFirstNamePossessiveNoTooltip] veins, marking [ROOT.GetCharacter.GetHerHim] as one with potential."
+ 
+ # Dragon Blood Level 2
+ trait_dragon_blood_2:0 "Strong Dragon Blood"
+ trait_dragon_blood_2_desc:0 "The blood of ancient dragonlords runs strong in this lineage, granting significant advantages when dealing with dragons."
+ trait_dragon_blood_2_character_desc:0 "Strong dragon blood flows through [ROOT.GetCharacter.GetFirstNamePossessiveNoTooltip] veins. [ROOT.GetCharacter.GetSheHe|U] is marked by destiny to command the great beasts."
+ 
+ # Dragon Blood Level 3
+ trait_dragon_blood_3:0 "Pure Dragon Blood"
+ trait_dragon_blood_3_desc:0 "This bloodline has been kept pure for generations, concentrating the power of the ancient dragonlords. Such individuals are born to ride dragons."
+ trait_dragon_blood_3_character_desc:0 "[ROOT.GetCharacter.GetFirstNamePossessiveNoTooltip] blood runs pure with the essence of ancient dragonlords. [ROOT.GetCharacter.GetSheHe|U] was born to command dragons as surely as others are born to walk."
+ 
+ ##############################
+ # NEGATIVE DRAGON TRAITS
+ ##############################
+ 
+ # Dragon Grief
+ trait_dragon_grief:0 "Dragon Grief"
+ trait_dragon_grief_desc:0 "The loss of a bonded dragon leaves a wound that may never fully heal. The grief weighs heavily on the spirit."
+ trait_dragon_grief_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has lost a bonded dragon. The grief weighs heavily upon [ROOT.GetCharacter.GetHerHim], a wound that may never fully heal."
+ 
+ # Dragon Madness
+ trait_dragon_madness:0 "Dragon Madness"
+ trait_dragon_madness_desc:0 "The bond with dragons has twisted this mind beyond repair. Judgment becomes unpredictable, seeing the world through fire and blood."
+ trait_dragon_madness_character_desc:0 "[ROOT.GetCharacter.GetFirstNamePossessiveNoTooltip] mind has been twisted by [ROOT.GetCharacter.GetHerHis] bond with dragons. [ROOT.GetCharacter.GetSheHe|U] sees the world through fire and blood, [ROOT.GetCharacter.GetHerHis] judgment as unpredictable as dragonfire itself."
+ 
+ ##############################
+ # ANTI-DRAGON TRAITS
+ ##############################
+ 
+ # Dragon Slayer
+ trait_dragon_slayer:0 "Dragon Slayer"
+ trait_dragon_slayer_desc:0 "This character has accomplished one of the most dangerous feats imaginable—killing a dragon. Their name is spoken with awe and fear."
+ trait_dragon_slayer_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has slain a dragon—one of the most dangerous feats imaginable. [ROOT.GetCharacter.GetHerHis|U] name is spoken with awe and fear."
+ 
+ # Dragon Hunter
+ trait_dragon_hunter:0 "Dragon Hunter"
+ trait_dragon_hunter_desc:0 "This character has dedicated their life to tracking and hunting dragons, knowing the beasts' habits and weaknesses intimately."
+ trait_dragon_hunter_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has dedicated [ROOT.GetCharacter.GetHerHis] life to hunting dragons. [ROOT.GetCharacter.GetSheHe|U] knows the beasts' habits, weaknesses, and lairs better than most know their own homes."
+ 
+ # Dragon Fear
+ trait_dragon_fear:0 "Dragon Fear"
+ trait_dragon_fear_desc:0 "An overwhelming terror of dragons grips this character, whether from witnessing dragonfire firsthand or from too many tales of devastation."
+ trait_dragon_fear_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is terrified of dragons. The mere mention of the beasts sends [ROOT.GetCharacter.GetHerHim] into a panic."
+ 
+ ##############################
+ # DRAGON OWNERSHIP TRAITS
+ ##############################
+ 
+ # Dragon Egg Owner
+ trait_dragon_egg_owner:0 "Dragon Egg Owner"
+ trait_dragon_egg_owner_desc:0 "Possessing a dragon egg is a treasure beyond measure and a symbol of potential power, even if hatching remains uncertain."
+ trait_dragon_egg_owner_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] possesses a dragon egg. Whether it will hatch remains to be seen, but even unhatched, it is a treasure beyond measure."
+ 
+ # Young Dragon Owner
+ trait_young_dragon_owner:0 "Young Dragon Owner"
+ trait_young_dragon_owner_desc:0 "This character owns a young dragon that grows stronger each day, a fearsome mount in the making."
+ trait_young_dragon_owner_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] owns a young dragon. While not yet large enough to ride, the hatchling grows stronger each day."
+ 
+ # Adult Dragon Owner
+ trait_adult_dragon_owner:0 "Adult Dragon Owner"
+ trait_adult_dragon_owner_desc:0 "This character owns a fully grown dragon capable of carrying a rider into battle, with fire and fury to spare."
+ trait_adult_dragon_owner_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] owns a fully grown dragon, capable of carrying [ROOT.GetCharacter.GetHerHim] into battle. [ROOT.GetCharacter.GetSheHe|U] commands its fire and fury."
+ 
+ # Ancient Dragon Owner
+ trait_ancient_dragon_owner:0 "Ancient Dragon Owner"
+ trait_ancient_dragon_owner_desc:0 "To command an ancient dragon is to wield the stuff of legend—a creature of immense size and power feared above all others."
+ trait_ancient_dragon_owner_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] commands an ancient dragon, a creature of immense size and power. Such beasts are the stuff of legend, and their riders are feared above all others."

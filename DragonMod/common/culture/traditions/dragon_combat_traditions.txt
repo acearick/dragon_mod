@@ -1,0 +1,99 @@
+﻿tradition_dragon_warriors = {
+	category = combat
+	
+	layers = {
+		0 = martial
+		1 = western
+		4 = war.dds
+	}
+	
+	is_shown = {
+		has_cultural_tradition = tradition_dragonlords
+	}
+	
+	can_pick = {
+		has_cultural_tradition = tradition_dragonlords
+		NOT = { has_cultural_tradition = tradition_dragon_tamers }
+	}
+	
+	parameters = {
+		dragon_combat_bonus = yes
+		aerial_assault_enabled = yes
+		siege_dragon_bonus = yes
+	}
+	
+	character_modifier = {
+		prowess = 3
+		martial = 1
+		knight_effectiveness_mult = 0.15
+		dread_gain_mult = 0.25
+	}
+	
+	cost = {
+		prestige = 2500
+	}
+	
+	ai_will_do = {
+		value = 100
+		if = {
+			limit = {
+				culture_head = {
+					has_trait = brave
+				}
+			}
+			add = 100
+		}
+	}
+}
+
+tradition_dragonslayers = {
+	category = combat
+	
+	layers = {
+		0 = martial
+		1 = western
+		4 = hunt.dds
+	}
+	
+	is_shown = {
+		always = yes
+	}
+	
+	can_pick = {
+		NOT = { has_cultural_tradition = tradition_dragonlords }
+		NOT = { has_cultural_tradition = tradition_fire_worship }
+		NOT = { has_cultural_tradition = tradition_dragon_tamers }
+		NOT = { has_cultural_tradition = tradition_dragon_breeders }
+		NOT = { has_cultural_tradition = tradition_dragon_warriors }
+	}
+	
+	parameters = {
+		can_hunt_dragons = yes
+		dragonslayer_maa_enabled = yes
+		dragon_resistance_bonus = yes
+		anti_dragon_weapons = yes
+	}
+	
+	character_modifier = {
+		prowess = 2
+		martial = 1
+		dread_baseline_add = 5
+		same_culture_opinion = 5
+	}
+	
+	cost = {
+		prestige = 1500
+	}
+	
+	ai_will_do = {
+		value = 5
+		if = {
+			limit = {
+				any_culture_global = {
+					has_cultural_tradition = tradition_dragonlords
+				}
+			}
+			add = 50
+		}
+	}
+}

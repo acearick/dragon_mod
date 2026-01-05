@@ -1,0 +1,264 @@
+﻿############################################
+# Dragon Mod - Buildings
+# File: common/buildings/99_dragon_buildings.txt
+############################################
+
+# Building cost standards
+@dragon_pit_construction_gold_cost_01 = 300
+@dragon_pit_construction_gold_cost_02 = 500
+@dragon_pit_construction_gold_cost_03 = 800
+
+@dragon_shelter_construction_gold_cost = 250
+@dragon_tower_construction_gold_cost = 600
+
+##############################
+# PRO-DRAGON BUILDINGS
+##############################
+
+# Dragon Pit - Housing for dragons (3 levels)
+dragon_pit_01 = {
+	construction_time = 1825 # 5 years
+	
+	can_construct_potential = {
+		building_requirement_castle_city_church = { LEVEL = 01 }
+	}
+	show_disabled = yes
+	can_construct = {
+		scope:holder.culture = {
+			OR = {
+				has_innovation = innovation_dragon_pits
+				has_cultural_pillar = heritage_arick
+			}
+		}
+	}
+	
+	cost_gold = @dragon_pit_construction_gold_cost_01
+	
+	levy = 50
+	max_garrison = 100
+	garrison_reinforcement_factor = 0.01
+	
+	province_modifier = {
+		monthly_income = 0.2
+	}
+	
+	character_modifier = {
+		knight_effectiveness_mult = 0.05
+		dread_baseline_add = 5
+	}
+	
+	next_building = dragon_pit_02
+	
+	type_icon = "icon_building_dragon_pit.dds"
+	
+	ai_value = {
+		base = 10
+		modifier = {
+			add = 50
+			scope:holder = {
+				has_trait = dragon_rider
+			}
+		}
+	}
+}
+
+dragon_pit_02 = {
+	construction_time = 2190 # 6 years
+	
+	can_construct_potential = {
+		building_requirement_castle_city_church = { LEVEL = 01 }
+	}
+	
+	can_construct = {
+		scope:holder.culture = {
+			OR = {
+				has_innovation = innovation_dragon_breeding
+				has_cultural_pillar = heritage_arick
+			}
+		}
+	}
+	
+	cost_gold = @dragon_pit_construction_gold_cost_02
+	
+	levy = 100
+	max_garrison = 200
+	
+	province_modifier = {
+		monthly_income = 0.4
+	}
+	
+	character_modifier = {
+		knight_effectiveness_mult = 0.1
+		dread_baseline_add = 10
+		prowess = 1
+	}
+	
+	county_modifier = {
+		development_growth_factor = 0.05
+	}
+	
+	next_building = dragon_pit_03
+	
+	type_icon = "icon_building_dragon_pit.dds"
+	
+	ai_value = {
+		base = 15
+		modifier = {
+			add = 75
+			scope:holder = {
+				has_trait = dragon_rider
+			}
+		}
+	}
+}
+
+dragon_pit_03 = {
+	construction_time = 2555 # 7 years
+	
+	can_construct_potential = {
+		building_requirement_castle_city_church = { LEVEL = 01 }
+	}
+	
+	can_construct = {
+		scope:holder.culture = {
+			OR = {
+				has_innovation = innovation_dragon_mastery
+				has_cultural_pillar = heritage_arick
+			}
+		}
+	}
+	
+	cost_gold = @dragon_pit_construction_gold_cost_03
+	
+	levy = 150
+	max_garrison = 300
+	
+	province_modifier = {
+		monthly_income = 0.6
+	}
+	
+	character_modifier = {
+		knight_effectiveness_mult = 0.15
+		dread_baseline_add = 15
+		prowess = 2
+		martial = 1
+	}
+	
+	county_modifier = {
+		development_growth_factor = 0.1
+		levy_size = 0.05
+	}
+	
+	type_icon = "icon_building_dragon_pit.dds"
+	
+	ai_value = {
+		base = 20
+		modifier = {
+			add = 100
+			scope:holder = {
+				has_trait = dragon_rider
+			}
+		}
+	}
+}
+
+##############################
+# ANTI-DRAGON BUILDINGS
+##############################
+
+# Dragon Shelter - Protection from dragon attacks
+dragon_shelter_01 = {
+	construction_time = 1460 # 4 years
+	
+	can_construct_potential = {
+		building_requirement_castle_city_church = { LEVEL = 01 }
+	}
+	
+	can_construct = {
+		scope:holder.culture = {
+			OR = {
+				has_innovation = innovation_fire_suppression
+				has_cultural_tradition = tradition_dragonslayers
+				has_cultural_tradition = tradition_dragon_hunters
+				has_cultural_tradition = tradition_dragon_fearers
+			}
+		}
+	}
+	
+	cost_gold = @dragon_shelter_construction_gold_cost
+	
+	max_garrison = 150
+	
+	province_modifier = {
+		fort_level = 1
+	}
+	
+	county_modifier = {
+		garrison_size = 0.1
+		defender_holding_advantage = 2
+	}
+	
+	type_icon = "icon_building_dragon_shelter.dds"
+	
+	ai_value = {
+		base = 10
+		modifier = {
+			add = 50
+			scope:holder.culture = {
+				has_cultural_tradition = tradition_dragon_fearers
+			}
+		}
+	}
+}
+
+# Dragon Killer Tower - Advanced anti-dragon fortification
+dragon_killer_tower = {
+	construction_time = 2190 # 6 years
+	
+	can_construct_potential = {
+		building_requirement_castle_city_church = { LEVEL = 01 }
+	}
+	
+	can_construct = {
+		scope:holder.culture = {
+			OR = {
+				has_innovation = innovation_dragon_eradication
+				AND = {
+					has_cultural_tradition = tradition_dragonslayers
+					has_cultural_tradition = tradition_dragon_hunters
+				}
+			}
+		}
+	}
+	
+	cost_gold = @dragon_tower_construction_gold_cost
+	
+	max_garrison = 250
+	
+	province_modifier = {
+		fort_level = 2
+		defender_holding_advantage = 5
+	}
+	
+	county_modifier = {
+		garrison_size = 0.15
+		defender_holding_advantage = 5
+	}
+	
+	character_modifier = {
+		prowess = 1
+		dread_baseline_add = 5
+	}
+	
+	type_icon = "icon_building_dragon_tower.dds"
+	
+	ai_value = {
+		base = 15
+		modifier = {
+			add = 75
+			scope:holder.culture = {
+				has_cultural_tradition = tradition_dragonslayers
+			}
+		}
+	}
+}

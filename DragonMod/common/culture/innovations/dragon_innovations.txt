@@ -1,0 +1,428 @@
+﻿############################################
+# Dragon Mod - Cultural Innovations
+# Spread across Tribal, Early, High, and Late Medieval eras
+############################################
+
+# Icon path definitions
+@innovation_dragon_taming = "gfx/interface/icons/culture_innovations/innovation_dragon_taming.dds"
+@innovation_dragon_saddle = "gfx/interface/icons/culture_innovations/innovation_dragon_saddle.dds"
+@innovation_dragon_pit = "gfx/interface/icons/culture_innovations/innovation_dragon_pit.dds"
+@innovation_dragon_breeding = "gfx/interface/icons/culture_innovations/innovation_dragon_breeding.dds"
+@innovation_dragon_armor = "gfx/interface/icons/culture_innovations/innovation_dragon_armor.dds"
+@innovation_dragon_warfare = "gfx/interface/icons/culture_innovations/innovation_dragon_warfare.dds"
+@innovation_dragon_mastery = "gfx/interface/icons/culture_innovations/innovation_dragon_mastery.dds"
+@innovation_scorpion = "gfx/interface/icons/culture_innovations/innovation_scorpion.dds"
+
+##############################
+# TRIBAL ERA INNOVATIONS
+##############################
+
+# Dragon Taming - Basic dragon handling
+innovation_dragon_taming = {
+	group = culture_group_military
+	culture_era = culture_era_tribal
+	icon = @innovation_dragon_taming
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	character_modifier = {
+		prowess = 1
+		dread_baseline_add = 5
+	}
+	
+	flag = global_innovation
+}
+
+# Dragon Saddles - Basic riding equipment
+innovation_dragon_saddles = {
+	group = culture_group_military
+	culture_era = culture_era_tribal
+	icon = @innovation_dragon_saddle
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	character_modifier = {
+		knight_effectiveness_mult = 0.05
+	}
+	
+	flag = global_innovation
+}
+
+# Dragon Lore - Cultural knowledge of dragons
+innovation_dragon_lore = {
+	group = culture_group_civic
+	culture_era = culture_era_tribal
+	icon = @innovation_dragon_taming
+	
+	potential = {
+		OR = {
+			has_cultural_pillar = heritage_arick
+			has_cultural_tradition = tradition_dragonslayers
+			has_cultural_tradition = tradition_dragon_hunters
+		}
+	}
+	
+	character_modifier = {
+		learning = 1
+	}
+	
+	flag = global_innovation
+}
+
+# Scorpion Ballistae - Anti-dragon siege weapons (available to all)
+innovation_scorpion_ballista = {
+	group = culture_group_military
+	culture_era = culture_era_tribal
+	icon = @innovation_scorpion
+	
+	potential = {
+		OR = {
+			has_cultural_tradition = tradition_dragonslayers
+			has_cultural_tradition = tradition_dragon_hunters
+			has_cultural_tradition = tradition_dragon_fearers
+		}
+	}
+	
+	unlock_maa = scorpion_crew
+	
+	character_modifier = {
+		defender_advantage = 2
+	}
+	
+	flag = global_innovation
+}
+
+##############################
+# EARLY MEDIEVAL INNOVATIONS
+##############################
+
+# Dragon Pits - Structures for housing dragons
+innovation_dragon_pits = {
+	group = culture_group_civic
+	culture_era = culture_era_early_medieval
+	icon = @innovation_dragon_pit
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	unlock_building = dragon_pit_01
+	
+	county_modifier = {
+		build_speed = -0.05
+	}
+	
+	flag = global_innovation
+}
+
+# Dragon Riding - Formal aerial cavalry training
+innovation_dragon_riding = {
+	group = culture_group_military
+	culture_era = culture_era_early_medieval
+	icon = @innovation_dragon_saddle
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	unlock_maa = dragonrider_cavalry
+	
+	character_modifier = {
+		knight_effectiveness_mult = 0.1
+		prowess = 1
+	}
+	
+	flag = global_innovation
+}
+
+# Dragon Bonds - Deepening the rider-dragon connection
+innovation_dragon_bonds = {
+	group = culture_group_civic
+	culture_era = culture_era_early_medieval
+	icon = @innovation_dragon_taming
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	character_modifier = {
+		stress_loss_mult = 0.1
+		health = 0.25
+	}
+	
+	flag = global_innovation
+}
+
+# Dragon Hunting Techniques - For anti-dragon cultures
+innovation_dragon_hunting = {
+	group = culture_group_military
+	culture_era = culture_era_early_medieval
+	icon = @innovation_scorpion
+	
+	potential = {
+		OR = {
+			has_cultural_tradition = tradition_dragonslayers
+			has_cultural_tradition = tradition_dragon_hunters
+		}
+	}
+	
+	unlock_maa = dragon_hunters
+	
+	character_modifier = {
+		prowess = 2
+		martial = 1
+	}
+	
+	flag = global_innovation
+}
+
+##############################
+# HIGH MEDIEVAL INNOVATIONS
+##############################
+
+# Dragon Breeding - Controlled dragon reproduction
+innovation_dragon_breeding = {
+	group = culture_group_civic
+	culture_era = culture_era_high_medieval
+	icon = @innovation_dragon_breeding
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	unlock_building = dragon_pit_02
+	
+	character_modifier = {
+		fertility = 0.05
+	}
+	
+	county_modifier = {
+		development_growth_factor = 0.05
+	}
+	
+	flag = global_innovation
+}
+
+# Dragon Armor - Protective gear for dragons and riders
+innovation_dragon_armor = {
+	group = culture_group_military
+	culture_era = culture_era_high_medieval
+	icon = @innovation_dragon_armor
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	character_modifier = {
+		knight_effectiveness_mult = 0.15
+		prowess = 2
+	}
+	
+	maa_upgrade = {
+		type = dragonrider_cavalry
+		damage = 10
+		toughness = 15
+	}
+	
+	flag = global_innovation
+}
+
+# Dragon Warfare - Organized dragon military tactics
+innovation_dragon_warfare = {
+	group = culture_group_military
+	culture_era = culture_era_high_medieval
+	icon = @innovation_dragon_warfare
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	character_modifier = {
+		martial = 2
+		army_damage_mult = 0.05
+	}
+	
+	county_modifier = {
+		levy_size = 0.05
+	}
+	
+	flag = global_innovation
+}
+
+# Fire Suppression - For anti-dragon cultures
+innovation_fire_suppression = {
+	group = culture_group_civic
+	culture_era = culture_era_high_medieval
+	icon = @innovation_scorpion
+	
+	potential = {
+		OR = {
+			has_cultural_tradition = tradition_dragonslayers
+			has_cultural_tradition = tradition_dragon_hunters
+			has_cultural_tradition = tradition_dragon_fearers
+		}
+	}
+	
+	unlock_building = dragon_shelter_01
+	
+	county_modifier = {
+		garrison_size = 0.1
+		fort_level = 1
+	}
+	
+	flag = global_innovation
+}
+
+# Dragonbane Weapons - Specialized anti-dragon armaments
+innovation_dragonbane_weapons = {
+	group = culture_group_military
+	culture_era = culture_era_high_medieval
+	icon = @innovation_scorpion
+	
+	potential = {
+		OR = {
+			has_cultural_tradition = tradition_dragonslayers
+			has_cultural_tradition = tradition_dragon_hunters
+		}
+	}
+	
+	maa_upgrade = {
+		type = dragon_hunters
+		damage = 15
+		toughness = 10
+	}
+	
+	character_modifier = {
+		prowess = 2
+	}
+	
+	flag = global_innovation
+}
+
+##############################
+# LATE MEDIEVAL INNOVATIONS
+##############################
+
+# Dragon Mastery - Ultimate dragon control
+innovation_dragon_mastery = {
+	group = culture_group_military
+	culture_era = culture_era_late_medieval
+	icon = @innovation_dragon_mastery
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	unlock_building = dragon_pit_03
+	
+	character_modifier = {
+		prowess = 3
+		martial = 2
+		knight_effectiveness_mult = 0.2
+		dread_baseline_add = 15
+	}
+	
+	flag = global_innovation
+}
+
+# Advanced Dragon Breeding - Selective breeding programs
+innovation_advanced_breeding = {
+	group = culture_group_civic
+	culture_era = culture_era_late_medieval
+	icon = @innovation_dragon_breeding
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	character_modifier = {
+		learning = 2
+		fertility = 0.1
+	}
+	
+	county_modifier = {
+		development_growth_factor = 0.1
+	}
+	
+	flag = global_innovation
+}
+
+# Dragon Fortifications - Military architecture for dragons
+innovation_dragon_fortifications = {
+	group = culture_group_civic
+	culture_era = culture_era_late_medieval
+	icon = @innovation_dragon_pit
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	county_modifier = {
+		fort_level = 2
+		garrison_size = 0.15
+		build_speed = -0.1
+	}
+	
+	flag = global_innovation
+}
+
+# Dragon Network - Communication and logistics via dragons
+innovation_dragon_network = {
+	group = culture_group_civic
+	culture_era = culture_era_late_medieval
+	icon = @innovation_dragon_warfare
+	
+	potential = {
+		has_cultural_pillar = heritage_arick
+	}
+	
+	character_modifier = {
+		diplomacy = 2
+		monthly_prestige = 0.5
+	}
+	
+	county_modifier = {
+		development_growth_factor = 0.05
+		monthly_county_control_growth_add = 0.1
+	}
+	
+	flag = global_innovation
+}
+
+# Dragon Eradication - Ultimate anti-dragon techniques
+innovation_dragon_eradication = {
+	group = culture_group_military
+	culture_era = culture_era_late_medieval
+	icon = @innovation_scorpion
+	
+	potential = {
+		OR = {
+			has_cultural_tradition = tradition_dragonslayers
+			has_cultural_tradition = tradition_dragon_hunters
+		}
+	}
+	
+	unlock_building = dragon_killer_tower
+	
+	maa_upgrade = {
+		type = dragon_hunters
+		damage = 25
+		toughness = 20
+	}
+	
+	character_modifier = {
+		martial = 2
+		prowess = 3
+	}
+	
+	county_modifier = {
+		defender_holding_advantage = 5
+	}
+	
+	flag = global_innovation
+}
+# End of Dragon Mod Cultural Innovations
