@@ -1,0 +1,12 @@
+﻿############################################
+# Dragon Blood Legacy Track Definition
+# File: common/dynasty_legacies/dragon_legacies.txt
+#
+# This defines the TRACK itself (the category/tree)
+# The individual perks are in common/dynasty_perks/
+############################################
+
+dragon_blood_legacy = {
+	# This track contains dragon-related dynasty perks
+	# Individual perks reference this via: legacy = dragon_blood_legacy
+}

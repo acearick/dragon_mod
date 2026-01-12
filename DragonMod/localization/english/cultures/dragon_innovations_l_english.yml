@@ -1,0 +1,70 @@
+﻿l_english:
+ ##############################
+ # TRIBAL ERA INNOVATIONS
+ ##############################
+ 
+ innovation_dragon_taming:0 "Dragon Taming"
+ innovation_dragon_taming_desc:0 "The ancient art of approaching and calming wild dragons. Those who master these techniques can begin to form bonds with the great beasts, though the process remains dangerous."
+ 
+ innovation_dragon_saddles:0 "Dragon Saddles"
+ innovation_dragon_saddles_desc:0 "Specialized riding equipment designed to keep a rider secure atop a dragon during flight and combat. These saddles must be custom-fitted to each dragon and rider."
+ 
+ innovation_dragon_lore:0 "Dragon Lore"
+ innovation_dragon_lore_desc:0 "Accumulated knowledge about dragon behavior, physiology, and weaknesses. This lore is valuable both to those who wish to tame dragons and those who wish to kill them."
+ 
+ innovation_scorpion_ballista:0 "Scorpion Ballista"
+ innovation_scorpion_ballista_desc:0 "Massive crossbow siege weapons capable of launching bolts large enough to wound or kill dragons. These scorpions are mounted on towers and walls for defense against aerial assault."
+ 
+ ##############################
+ # EARLY MEDIEVAL INNOVATIONS
+ ##############################
+ 
+ innovation_dragon_pits:0 "Dragon Pits"
+ innovation_dragon_pits_desc:0 "Purpose-built structures for housing and caring for dragons. These massive domed buildings provide shelter, feeding areas, and nesting grounds for the great beasts."
+ 
+ innovation_dragon_riding:0 "Dragon Riding"
+ innovation_dragon_riding_desc:0 "Formal training programs for aerial cavalry. Riders learn formation flying, combat maneuvers, and coordination with ground forces. This transforms dragons from individual weapons into an organized military force."
+ 
+ innovation_dragon_bonds:0 "Dragon Bonds"
+ innovation_dragon_bonds_desc:0 "Techniques for deepening the connection between rider and dragon. A truly bonded pair moves as one, each anticipating the other's thoughts and reactions."
+ 
+ innovation_dragon_hunting:0 "Dragon Hunting"
+ innovation_dragon_hunting_desc:0 "Specialized methods for tracking, trapping, and killing dragons. These techniques have been developed over generations of bitter experience and countless lives lost."
+ 
+ ##############################
+ # HIGH MEDIEVAL INNOVATIONS
+ ##############################
+ 
+ innovation_dragon_breeding:0 "Dragon Breeding"
+ innovation_dragon_breeding_desc:0 "Controlled reproduction of dragons, allowing breeders to select for desired traits such as size, coloration, and temperament. Eggs produced through these programs are more likely to hatch successfully."
+ 
+ innovation_dragon_armor:0 "Dragon Armor"
+ innovation_dragon_armor_desc:0 "Protective barding designed for dragons, along with enhanced armor for riders. While dragons' scales provide natural protection, these innovations cover vulnerable areas and provide additional defense."
+ 
+ innovation_dragon_warfare:0 "Dragon Warfare"
+ innovation_dragon_warfare_desc:0 "Comprehensive military doctrine incorporating dragons into all aspects of warfare. This includes coordinated strikes, siege tactics, and strategies for both offensive and defensive operations."
+ 
+ innovation_fire_suppression:0 "Fire Suppression"
+ innovation_fire_suppression_desc:0 "Architectural and engineering techniques for protecting buildings and settlements from dragonfire. Includes fire-resistant materials, underground chambers, and water systems for extinguishing flames."
+ 
+ innovation_dragonbane_weapons:0 "Dragonbane Weapons"
+ innovation_dragonbane_weapons_desc:0 "Specialized weapons designed to penetrate dragon scales. These include barbed bolts, serrated blades, and alchemically treated projectiles that cause additional damage to the great beasts."
+ 
+ ##############################
+ # LATE MEDIEVAL INNOVATIONS
+ ##############################
+ 
+ innovation_dragon_mastery:0 "Dragon Mastery"
+ innovation_dragon_mastery_desc:0 "The ultimate refinement of dragon-related arts. Masters of this innovation can bond with even the most temperamental dragons, breed for specific traits, and execute complex aerial maneuvers that seem impossible."
+ 
+ innovation_advanced_breeding:0 "Advanced Dragon Breeding"
+ innovation_advanced_breeding_desc:0 "Sophisticated breeding programs that can produce dragons with enhanced abilities. Through careful selection over generations, breeders can emphasize size, speed, fire intensity, or docility."
+ 
+ innovation_dragon_fortifications:0 "Dragon Fortifications"
+ innovation_dragon_fortifications_desc:0 "Military architecture designed around dragon power. These fortifications include landing platforms, roosts, and defenses that take advantage of aerial capabilities while protecting against enemy dragons."
+ 
+ innovation_dragon_network:0 "Dragon Network"
+ innovation_dragon_network_desc:0 "A system of communication and logistics using dragons as messengers and transport. This allows for rapid coordination across vast distances and gives dragon-using realms a significant administrative advantage."
+ 
+ innovation_dragon_eradication:0 "Dragon Eradication"
+ innovation_dragon_eradication_desc:0 "The culmination of anti-dragon knowledge. Those who master these techniques can systematically hunt and destroy dragons, clearing regions of the beasts and their riders."

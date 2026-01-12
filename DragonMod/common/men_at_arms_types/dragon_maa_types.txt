@@ -1,0 +1,321 @@
+﻿############################################
+# Dragon Mod - Men-at-Arms Types
+# File: common/men_at_arms_types/99_dragon_maa_types.txt
+############################################
+
+# Standard costs
+@maa_buy_cost = 150
+@maa_low_maintenance_cost = 1.0
+@maa_high_maintenance_cost = 5.0
+@cultural_maa_extra_ai_score = 80
+
+# Dragon-specific costs (more expensive due to rarity)
+@dragon_maa_buy_cost = 250
+@dragon_maa_low_maintenance_cost = 2.0
+@dragon_maa_high_maintenance_cost = 8.0
+
+# Provisions Costs
+@provisions_cost_infantry_cheap = 3
+@provisions_cost_infantry_moderate = 7
+@provisions_cost_infantry_expensive = 12
+@provisions_cost_infantry_bankrupting = 15
+
+@provisions_cost_cavalry_cheap = 7
+@provisions_cost_cavalry_moderate = 15
+@provisions_cost_cavalry_expensive = 21
+@provisions_cost_cavalry_bankrupting = 30
+
+@provisions_cost_special_cheap = 6
+@provisions_cost_special_moderate = 12
+@provisions_cost_special_expensive = 18
+@provisions_cost_special_bankrupting = 24
+
+##############################
+# PRO-DRAGON MEN-AT-ARMS
+##############################
+
+# Dragonrider Cavalry - Elite aerial cavalry
+dragonrider_cavalry = {
+	type = heavy_cavalry
+	
+	damage = 150
+	toughness = 50
+	pursuit = 30
+	screen = 20
+	siege_value = 0.2
+	
+	terrain_bonus = {
+		plains = { damage = 30 }
+		farmlands = { damage = 25 }
+		drylands = { damage = 20 }
+		hills = { damage = 10 }
+		mountains = { damage = -20 }
+		jungle = { damage = -30 }
+		wetlands = { damage = -40 toughness = -10 }
+	}
+
+	counters = {
+		archers = 2
+		skirmishers = 2
+		light_cavalry = 1.5
+		heavy_infantry = 1
+		pikemen = 0.5
+	}
+
+	winter_bonus = {
+		normal_winter = { damage = -10 toughness = -5 }
+		harsh_winter = { damage = -25 toughness = -15 }
+	}
+	
+	can_recruit = {
+		culture = {
+			OR = {
+				has_cultural_parameter = unlock_maa_dragonrider_cavalry
+				has_innovation = innovation_dragon_riding
+			}
+			AND = {
+				has_cultural_pillar = heritage_arick
+			}
+		}
+	}
+
+	buy_cost = { gold = @dragon_maa_buy_cost }
+	low_maintenance_cost = { gold = @dragon_maa_low_maintenance_cost }
+	high_maintenance_cost = { gold = @dragon_maa_high_maintenance_cost }
+	provision_cost = @provisions_cost_cavalry_bankrupting
+	
+	stack = 25
+	ai_quality = { value = @[cultural_maa_extra_ai_score + 50] }
+	icon = heavy_cavalry
+}
+
+# Firebreathers - Infantry trained alongside dragons
+firebreathers = {
+	type = heavy_infantry
+	
+	damage = 45
+	toughness = 28
+	pursuit = 0
+	screen = 15
+	
+	terrain_bonus = {
+		plains = { damage = 10 }
+		farmlands = { damage = 8 }
+		hills = { damage = 5 }
+		forest = { damage = -5 }
+		jungle = { damage = -10 }
+		wetlands = { damage = -15 }
+	}
+
+	counters = {
+		pikemen = 1.5
+		peasant_militia = 2
+		archers = 1
+	}
+
+	winter_bonus = {
+		normal_winter = { toughness = 5 }
+		harsh_winter = { toughness = -5 }
+	}
+	
+	can_recruit = {
+		culture = culture:fireborn
+	}
+
+	buy_cost = { gold = @maa_buy_cost }
+	low_maintenance_cost = { gold = @maa_low_maintenance_cost }
+	high_maintenance_cost = { gold = @maa_high_maintenance_cost }
+	provision_cost = @provisions_cost_infantry_expensive
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = heavy_infantry
+}
+
+# Scaled Guard - Elite bodyguards of dragonlord houses
+scaled_guard = {
+	type = heavy_infantry
+	
+	damage = 55
+	toughness = 35
+	pursuit = 0
+	screen = 25
+	
+	terrain_bonus = {
+		hills = { damage = 8 toughness = 5 }
+		mountains = { damage = 5 toughness = 8 }
+		desert_mountains = { damage = 5 toughness = 8 }
+	}
+
+	counters = {
+		pikemen = 1.5
+		peasant_militia = 3
+		light_cavalry = 1
+	}
+
+	winter_bonus = {
+		normal_winter = { toughness = 8 screen = 5 }
+		harsh_winter = { toughness = 5 screen = 5 }
+	}
+	
+	can_recruit = {
+		OR = {
+		culture = culture:scaled
+		culture = culture:arick
+		}
+	}
+
+	buy_cost = { gold = 200 }
+	low_maintenance_cost = { gold = 1.5 }
+	high_maintenance_cost = { gold = 6.0 }
+	provision_cost = @provisions_cost_infantry_bankrupting
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = heavy_infantry
+}
+
+##############################
+# ANTI-DRAGON MEN-AT-ARMS
+##############################
+
+# Dragon Hunters - Specialists trained to kill dragons
+dragon_hunters = {
+	type = skirmishers
+	
+	damage = 25
+	toughness = 20
+	pursuit = 15
+	screen = 30
+	
+	terrain_bonus = {
+		mountains = { damage = 15 toughness = 10 }
+		desert_mountains = { damage = 15 toughness = 10 }
+		hills = { damage = 10 toughness = 8 }
+		forest = { damage = 8 toughness = 5 }
+		plains = { damage = -5 }
+	}
+
+	counters = {
+		heavy_cavalry = 1.5
+		light_cavalry = 1
+		heavy_infantry = 0.5
+	}
+
+	winter_bonus = {
+		normal_winter = { damage = 5 }
+		harsh_winter = { damage = 5 toughness = 5 }
+	}
+	
+	can_recruit = {
+		culture = {
+			OR = {
+				has_cultural_parameter = dragonslayer_maa_enabled
+				has_innovation = innovation_dragon_hunting
+			}
+		}
+	}
+
+	buy_cost = { gold = 180 }
+	low_maintenance_cost = { gold = 1.2 }
+	high_maintenance_cost = { gold = 5.5 }
+	provision_cost = @provisions_cost_infantry_expensive
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = skirmishers
+}
+
+# Scorpion Crew - Operators of anti-dragon siege weapons
+scorpion_crew = {
+	type = archers
+	
+	damage = 35
+	toughness = 15
+	pursuit = 0
+	screen = 0
+	siege_value = 0.15
+	
+	terrain_bonus = {
+		hills = { damage = 15 toughness = 5 }
+		mountains = { damage = 10 }
+		desert_mountains = { damage = 10 }
+		plains = { damage = 5 }
+		wetlands = { damage = -10 toughness = -5 }
+	}
+
+	counters = {
+		heavy_cavalry = 2
+		light_cavalry = 1.5
+		heavy_infantry = 0.5
+	}
+
+	winter_bonus = {
+		normal_winter = { damage = -5 }
+		harsh_winter = { damage = -10 toughness = -5 }
+	}
+	
+	can_recruit = {
+		culture = {
+			OR = {
+				has_cultural_parameter = scorpion_siege_bonus
+				has_innovation = innovation_scorpion_ballista
+			}
+		}
+	}
+
+	buy_cost = { gold = 200 }
+	low_maintenance_cost = { gold = 1.5 }
+	high_maintenance_cost = { gold = 6.0 }
+	provision_cost = @provisions_cost_special_expensive
+	
+	stack = 50
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = bowmen
+}
+
+# Ashguard - Defensive specialists who survived dragon attacks
+ashguard = {
+	type = heavy_infantry
+	
+	damage = 30
+	toughness = 35
+	pursuit = 0
+	screen = 30
+	
+	terrain_bonus = {
+		hills = { toughness = 10 screen = 10 }
+		mountains = { toughness = 15 screen = 8 }
+		desert_mountains = { toughness = 12 screen = 8 }
+		forest = { toughness = 8 screen = 5 }
+	}
+
+	counters = {
+		archers = 1
+		skirmishers = 1
+		light_cavalry = 1
+	}
+
+	winter_bonus = {
+		normal_winter = { toughness = 10 }
+		harsh_winter = { toughness = 15 screen = 5 }
+	}
+	
+	can_recruit = {
+		culture = {
+			OR = {
+				has_cultural_tradition = tradition_dragonslayers
+				has_cultural_tradition = tradition_dragon_fearers
+			}
+		}
+	}
+
+	buy_cost = { gold = @maa_buy_cost }
+	low_maintenance_cost = { gold = @maa_low_maintenance_cost }
+	high_maintenance_cost = { gold = @maa_high_maintenance_cost }
+	provision_cost = @provisions_cost_infantry_moderate
+	
+	stack = 100
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = heavy_infantry
+}

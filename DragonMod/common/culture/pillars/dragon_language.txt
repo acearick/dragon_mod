@@ -1,0 +1,22 @@
+﻿############################################
+# Dragon Mod - Language Pillars
+# File: common/culture/pillars/99_dragon_languages.txt
+############################################
+
+language_arick = {
+	type = language
+	is_shown = {
+		language_is_shown_trigger = {
+			LANGUAGE = language_arick
+		}
+	}
+	ai_will_do = {
+		value = 10
+		if = {
+			limit = { has_cultural_pillar = language_arick }
+			multiply = 10
+		}
+	}
+	
+	color = { 0.6 0.1 0.1 }
+}

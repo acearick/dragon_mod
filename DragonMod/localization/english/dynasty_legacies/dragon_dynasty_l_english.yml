@@ -1,0 +1,33 @@
+﻿l_english:
+ # Dynasty Legacy Track
+ dragon_blood_legacy_name:0 "Dragon Blood"
+ dragon_blood_legacy_desc:0 "The blood of the dragon flows through this dynasty's veins, granting them an affinity for these legendary beasts."
+ 
+ # Legacy Perk 1 - Awakened Blood
+ dragon_blood_legacy_1_name:0 "Awakened Blood"
+ dragon_blood_legacy_1_desc:0 "The dormant dragon blood within the dynasty begins to stir, granting its members greater physical prowess and a commanding presence that inspires fear in lesser men."
+ dragon_blood_legacy_1_effect_tt:0 "Dynasty members gain increased prowess and natural dread"
+ 
+ # Legacy Perk 2 - Fire in the Veins
+ dragon_blood_legacy_2_name:0 "Fire in the Veins"
+ dragon_blood_legacy_2_desc:0 "The dragon blood burns ever brighter, its heat fueling ambition and commanding respect. Dynasty members carry themselves with the pride of their ancient lineage."
+ dragon_blood_legacy_2_effect_tt:0 "Dynasty members gain additional prowess, prestige, and dread"
+ must_have_dragon_blood_legacy_1:0 "Must have unlocked Awakened Blood"
+ 
+ # Legacy Perk 3 - Dragonlord Vitality
+ dragon_blood_legacy_3_name:0 "Dragonlord Vitality"
+ dragon_blood_legacy_3_desc:0 "The pure blood of the Arick dragonlords grants exceptional health and longevity. Dynasty members are remarkably resistant to illness and stress."
+ dragon_blood_legacy_3_effect_tt:0 "Dynasty members gain improved health, stress resistance, and fertility"
+ must_have_dragon_blood_legacy_2:0 "Must have unlocked Fire in the Veins"
+ 
+ # Legacy Perk 4 - Wings of Terror
+ dragon_blood_legacy_4_name:0 "Wings of Terror"
+ dragon_blood_legacy_4_desc:0 "The dynasty's reputation as dragonlords precedes them. Their warriors fight with the ferocity of dragons, and their enemies tremble at their approach."
+ dragon_blood_legacy_4_effect_tt:0 "Dynasty members are fearsome warriors with enhanced combat abilities"
+ must_have_dragon_blood_legacy_3:0 "Must have unlocked Dragonlord Vitality"
+ 
+ # Legacy Perk 5 - Blood of the Conqueror
+ dragon_blood_legacy_5_name:0 "Blood of the Conqueror"
+ dragon_blood_legacy_5_desc:0 "The dynasty has fully awakened to their Arick heritage. Their blood breeds true, passing on the traits of the dragonlords to future generations with greater consistency."
+ dragon_blood_legacy_5_effect_tt:0 "Dynasty members are powerful dragonlords whose bloodline breeds true"
+ must_have_dragon_blood_legacy_4:0 "Must have unlocked Wings of Terror"
