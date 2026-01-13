@@ -1,0 +1,108 @@
+﻿dragon_adventure_entourage_base_set_weighting_value = {
+	if = {
+		limit = {
+			is_available_healthy_adult = yes
+			bannable_serving_diarch_trigger = no
+			OR = {
+				has_court_position = chosen_dragon_knight_court_position
+				has_court_position = master_of_hunt_court_position
+				has_court_position = bodyguard_court_position
+				has_court_position = court_physician_court_position
+				has_any_good_relationship_with_character_trigger = { CHARACTER = scope:host }
+				has_trait = lifestyle_dragonmaster
+			}
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+		}
+		# Base
+		add = 50
+		add = ai_energy
+		add = ai_boldness
+		# We want to have Chosen Dragon Knight most of all.
+		if = {
+			limit = { has_court_position = chosen_dragon_knight_court_position }
+			add = 100000
+		}
+		# We want MoH too.
+		if = {
+			limit = { has_court_position = master_of_hunt_court_position }
+			add = 50000
+		}
+		# We want bodyguards too.
+		if = {
+			limit = { has_court_position = bodyguard_court_position }
+			add = 50000
+		}
+		# We want doctors too.
+		if = {
+			limit = { has_court_position = court_physician_court_position }
+			add = 50000
+		}
+		# We want friends too.
+		if = {
+			limit = {
+				has_any_good_relationship_with_character_trigger = { CHARACTER = scope:host }
+			}
+			add = 500
+		}
+		# Sex
+		if = {
+			limit = {
+				NOT = {
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+				}
+			}
+			divide = 2
+		}
+	}
+	if = {
+		limit = {
+			bannable_serving_diarch_trigger = yes
+		}
+		add = -1000
+	}
+}
+
+dragon_adventure_entourage_extras_set_weighting_value = {
+	value = 0
+	if = {
+		limit = {
+			is_available_healthy_adult = yes
+			is_designated_diarch = no
+			OR = {
+				is_knight_of = scope:host
+				has_trait = education_martial
+				has_trait = education_martial_prowess
+				has_trait = lifestyle_dragonmaster
+				prowess >= decent_skill_rating
+			}
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+		}
+		# Base
+		add = 250
+	}
+}
+
+dragon_adventure_entourage_sodding_everyone_set_weighting_value = {
+	value = 0
+	if = {
+		limit = {
+			is_available_healthy_adult = yes
+			is_designated_diarch = no
+		}
+		# Base
+		add = 50
+		# Alright, now we're just grabbing everyone.
+		## Anyone who can fight.
+		if = {
+			limit = {
+				can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+			}
+			multiply = 2.5
+		}
+	}
+}
+
+# Fighting Dragon value
+dragons_melee_kill_prowess_value = {
+	value = 20
+}

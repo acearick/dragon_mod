@@ -1,0 +1,4 @@
+﻿l_english:
+	# Custom Notification Toasts
+	dragon_spawn.0006.t.tamed_dragon:0 "Tamed Dragon"
+	dragon_spawn.0007.t.found_dragon_egg:0 "Found Dragon Egg"

@@ -1,0 +1,9 @@
+﻿dragon_to_court = {
+	#KEEP UNTIL CUSTOM SLOT
+	in_type = helmet
+	#KEEP UNTIL CUSTOM SLOT
+	in_visuals = wearing_iron_crown
+	out_type = pedestal
+	#KEEP UNTIL CUSTOM/MORE-RELEVANT VISUAL
+	out_visuals = pedestal_crown_iron
+}

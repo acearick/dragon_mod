@@ -1,0 +1,320 @@
+﻿l_english:
+ ##############################
+ # STAGE TRANSITION EVENTS
+ ##############################
+ 
+ # Hatchling -> Young (Age 11)
+ dragon_aging_expanded.0010.t:0 "A Dragon Comes of Age"
+ dragon_aging_expanded.0010.desc:0 "After years of growth, my dragon has finally reached maturity. No longer a hatchling dependent on my care, it has become a young dragon capable of bearing a rider into battle. Its wings have grown strong enough to carry us both, and its fire burns hot enough to melt steel. A new chapter begins."
+ dragon_aging_expanded.0010.a:0 "The skies await us!"
+ 
+ # Young -> Adult (Age 71)
+ dragon_aging_expanded.0020.t:0 "A Dragon in Its Prime"
+ dragon_aging_expanded.0020.desc:0 "Decades have passed since I first rode my dragon into battle, and now it has reached the peak of its power. Its scales have hardened to impenetrable armor, its fire burns with devastating intensity, and its very shadow strikes terror into the hearts of my enemies. This is a dragon in its prime—a weapon without equal."
+ dragon_aging_expanded.0020.a:0 "Let our enemies tremble!"
+ 
+ # Adult -> Elder (Age 151)
+ dragon_aging_expanded.0030.t:0 "The Twilight Years Begin"
+ dragon_aging_expanded.0030.desc:0 "Time catches up with all things, even dragons. My faithful companion has begun to show signs of age—a slight stiffness in its movements, a dimming of its once-brilliant scales. Yet what it has lost in raw power, it has gained in wisdom. This elder dragon knows every trick of aerial combat, every weakness of castle walls, every sign of approaching danger. Its experience is worth more than any young dragon's fire."
+ dragon_aging_expanded.0030.a:0 "Age brings wisdom."
+ dragon_aging_expanded.0030.warning_tt:0 "[warning_tooltip]Elder dragons have a small chance of dying each year from old age."
+ 
+ # Elder -> Ancient (Age 251)
+ dragon_aging_expanded.0040.t:0 "A Living Legend"
+ dragon_aging_expanded.0040.desc:0 "My dragon has lived for over two and a half centuries—longer than most dynasties endure. It has become a living legend, spoken of in hushed tones across the known world. Though its body grows frail, its presence alone is worth more than a thousand knights. To possess such a creature is to hold a piece of history itself."
+ dragon_aging_expanded.0040.a:0 "We have become legend together."
+ dragon_aging_expanded.0040.warning_tt:0 "[warning_tooltip]Ancient dragons have a significant chance of dying each year from old age."
+ 
+ # Ancient -> Primordial (Age 301)
+ dragon_aging_expanded.0050.t:0 "Beyond Time Itself"
+ dragon_aging_expanded.0050.desc:0 "Three hundred years. My dragon has lived for three hundred years—longer than any dragon in living memory, longer than the oldest histories record. It has become something more than a mere beast, something approaching the divine. Scholars will write of this creature for centuries to come. To be its rider in these final years is an honor beyond measure."
+ dragon_aging_expanded.0050.a:0 "We have transcended mortality."
+ dragon_aging_expanded.0050.legend_tt:0 "Your dragon has achieved legendary status. Your dynasty will be remembered for generations."
+ dragon_aging_expanded.0050.warning_tt:0 "[warning_tooltip]Primordial dragons have a very high chance of dying each year. Cherish what time remains."
+
+ 	# Dragon Aging Event
+	dragon_aging_events.0003.t: "Dragon Aging"
+	dragon_aging_events.0003.desc: "My dragon has aged, it has grown even mightier!"
+	dragon_aging_events.0003.a: "My dear [newly_created_artifact.GetName] how time has flown!"
+ 
+ ##############################
+ # DRAGON DEATH EVENT
+ ##############################
+ 
+ dragon_aging_expanded.1000.t:0 "The Final Flight"
+ dragon_aging_expanded.1000.desc_elder:0 "The signs had been there for months—the labored breathing, the difficulty rising, the distant look in those ancient eyes. This morning, my dragon did not wake. After over a century of faithful service, my companion has taken its final flight into whatever lies beyond. The grief is overwhelming, but I must decide what to do with the remains of this magnificent creature."
+ dragon_aging_expanded.1000.desc_ancient:0 "For over two centuries, we flew together. We conquered kingdoms, burned armies, and made history. Now my ancient dragon lies still, its fires finally extinguished by time itself. The world feels smaller without it. But even in death, a dragon of such age is a treasure beyond measure. I must decide how to honor my companion's memory."
+ dragon_aging_expanded.1000.desc_primordial:0 "It has finally happened. After over three centuries of life—longer than any dragon should live—my primordial companion has passed beyond this world. I was there at the end, watching as those ancient eyes closed for the last time, feeling the final beat of that mighty heart. The age of this dragon is over. But its legacy can live on, if I choose wisely how to preserve what remains."
+ 
+ # Option A: Skull
+ dragon_aging_expanded.1000.a:0 "Mount the skull in my great hall."
+ dragon_aging_expanded.1000.a_tt:0 "Create a Dragon Skull artifact: +25 Dread, +15% Monthly Prestige, +15 Court Grandeur"
+ 
+ # Option B: Heart
+ dragon_aging_expanded.1000.b:0 "Preserve the heart for its mystical properties."
+ dragon_aging_expanded.1000.b_tt:0 "Create a Dragon Heart artifact: +3 Learning, +0.5 Health, +10% Fertility, +15% Monthly Piety"
+ 
+ # Option C: Cloak
+ dragon_aging_expanded.1000.c:0 "Have the scales fashioned into armor."
+ dragon_aging_expanded.1000.c_tt:0 "Create a Dragonscale Cloak artifact: +8 Prowess, +15% Knight Effectiveness, +15 Travel Safety, +10 Dread"
+ 
+ # Option D: Weapon
+ dragon_aging_expanded.1000.d:0 "Craft a weapon from the fangs."
+ dragon_aging_expanded.1000.d_tt:0 "Create a Dragon Fang Weapon artifact: +12 Prowess, +3 Martial, +15 Dread, +10 Advantage"
+ 
+ # Option E: Bones
+ dragon_aging_expanded.1000.e:0 "Keep the bones for future crafting."
+ dragon_aging_expanded.1000.e_tt:0 "Create a Dragon Bones artifact (can be reforged): +10% Monthly Prestige, +10 Court Grandeur, -5% Building Cost"
+ 
+ # Option F: Burial
+ dragon_aging_expanded.1000.f:0 "Give my faithful companion a proper burial."
+ dragon_aging_expanded.1000.f_tt:0 "No relic created. Gain +1000 Piety, +500 Prestige, reduced grief duration."
+ 
+ ##############################
+ # DECISION EVENTS
+ ##############################
+ 
+ # Wild Dragon Search Events
+ dragon_expanded_decisions.0001.t:0 "The Dragon Hunt"
+ dragon_expanded_decisions.0001.desc:0 "Your expedition ventures into the wild mountains, searching for signs of dragons. The air grows colder as you climb, and the ancient caves loom ahead..."
+ dragon_expanded_decisions.0001.a:0 "We've found something!"
+ dragon_expanded_decisions.0001.b:0 "At least we learned from this."
+ dragon_expanded_decisions.0001.c:0 "The search was... costly."
+ 
+ dragon_expanded_decisions.0002.t:0 "A Dragon Egg!"
+ dragon_expanded_decisions.0002.desc:0 "In the depths of an ancient cave, your expedition discovers what you sought—a dragon egg, still warm to the touch. The shell gleams with an otherworldly light."
+ dragon_expanded_decisions.0002.a:0 "A treasure beyond measure!"
+ 
+ # Dragon Tournament Events
+ dragon_expanded_decisions.0010.t:0 "The Dragon Tournament"
+ dragon_expanded_decisions.0010.desc:0 "Dragon riders gather from across the realm, their magnificent beasts circling in the skies above. The tournament grounds buzz with excitement and barely contained violence."
+ dragon_expanded_decisions.0010.a:0 "Let the grand tournament begin!"
+ dragon_expanded_decisions.0010.b:0 "A more intimate gathering will suffice."
+ 
+ dragon_expanded_decisions.0011.t:0 "Tournament's End"
+ dragon_expanded_decisions.0011.desc:0 "The tournament reaches its climax. Dragons wheel and dive in the sky, their riders locked in aerial combat. The crowd roars with each clash."
+ dragon_expanded_decisions.0011.a:0 "Victory is mine!"
+ dragon_expanded_decisions.0011.b:0 "A close contest!"
+ dragon_expanded_decisions.0011.c:0 "There is no shame in this defeat."
+ 
+ dragon_expanded_decisions.0012.t:0 "A Gathering of Riders"
+ dragon_expanded_decisions.0012.desc:0 "The intimate tournament concludes with bonds strengthened among the dragon riders of your realm."
+ dragon_expanded_decisions.0012.a:0 "May these bonds endure."
+ 
+ # Breeding Program Events
+ dragon_expanded_decisions.0020.t:0 "The Breeding Program"
+ dragon_expanded_decisions.0020.desc:0 "Your dragon breeding program is now established. The finest specimens have been selected, and the keepers stand ready to tend to the precious eggs."
+ dragon_expanded_decisions.0020.a:0 "The future of dragonkind is in our hands."
+ 
+ # Scorpion Tower Events
+ dragon_expanded_decisions.0030.t:0 "Scorpion Towers Complete"
+ dragon_expanded_decisions.0030.desc:0 "The scorpion towers rise above your capital, their massive ballistae pointed toward the sky. Let the dragonlords see that you will not cower."
+ dragon_expanded_decisions.0030.a:0 "We are ready for them."
+ 
+ # Tribute Events
+ dragon_expanded_decisions.0040.t:0 "Tribute to the Dragonlord"
+ dragon_expanded_decisions.0040.desc:0 "Your emissaries approach a neighboring dragonlord with offers of gold and goods, hoping to purchase peace."
+ dragon_expanded_decisions.0040.a:0 "Accept our tribute, great lord."
+ dragon_expanded_decisions.0040.b:0 "There is no one to receive our tribute."
+ 
+ # Egg Claim Events
+ dragon_expanded_decisions.0050.t:0 "The Hatchery's Yield"
+ dragon_expanded_decisions.0050.desc:0 "You visit your dragon hatchery to examine the latest clutch of eggs, hoping to find one suitable for bonding."
+ dragon_expanded_decisions.0050.a:0 "A perfect specimen!"
+ dragon_expanded_decisions.0050.b:0 "Stone... but still beautiful."
+ dragon_expanded_decisions.0050.c:0 "Perhaps next time."
+ 
+ # Dragon Hunt Events
+ dragon_expanded_decisions.0060.t:0 "The Hunt Begins"
+ dragon_expanded_decisions.0060.desc:0 "Your declaration echoes across the realm. Dragon hunters gather their weapons, scorpion crews man their engines, and the common folk pray for deliverance from the scaled tyrants."
+ dragon_expanded_decisions.0060.a:0 "Death to the dragons!"
+
+##############################
+ # INTERACTION EVENTS
+ ##############################
+ 
+ # Dragon Duel Events
+ dragon_interactions.0001.t:0 "The Dragon Duel"
+ dragon_interactions.0001.desc:0 "The skies darken as two dragons circle each other, their riders preparing for combat. There is no turning back now—only victory or defeat remains."
+ dragon_interactions.0001.a:0 "Fire and blood!"
+ 
+ dragon_duel_decisive_victory:0 "Decisive Victory"
+ dragon_duel_close_victory:0 "Close Victory"
+ dragon_duel_close_defeat:0 "Close Defeat"
+ dragon_duel_decisive_defeat:0 "Decisive Defeat"
+ 
+ dragon_interactions.0002.t:0 "Crushing Victory!"
+ dragon_interactions.0002.desc:0 "Your dragon dominates the sky, flames roaring as your opponent's beast falters and falls. The duel is won decisively—your reputation soars as high as your dragon."
+ dragon_interactions.0002.a:0 "Let all see the price of challenging me!"
+ opponent_dragon_killed_tt:0 "Your opponent's dragon has been slain in the duel!"
+ 
+ dragon_interactions.0003.t:0 "A Hard-Won Victory"
+ dragon_interactions.0003.desc:0 "The duel was fierce, but in the end, your skill proved superior. Both dragons bear wounds, but you emerged the victor."
+ dragon_interactions.0003.a:0 "Victory, even a narrow one, is still victory."
+ 
+ dragon_interactions.0004.t:0 "A Bitter Defeat"
+ dragon_interactions.0004.desc:0 "Despite your best efforts, your opponent's dragon proved the better. You retreat from the sky, wounded but alive."
+ dragon_interactions.0004.a:0 "This defeat will not be forgotten."
+ 
+ dragon_interactions.0005.t:0 "Crushing Defeat"
+ dragon_interactions.0005.desc:0 "Your dragon spirals from the sky, overwhelmed by your opponent's assault. The defeat is total and humiliating."
+ dragon_interactions.0005.a:0 "How did it come to this?"
+ 
+ dragon_interactions.0006.t:0 "Dragon Slain"
+ dragon_interactions.0006.desc:0 "Your beloved dragon lies broken, slain in the duel. The bond you shared is severed forever. The grief is overwhelming."
+ dragon_interactions.0006.a:0 "No... not my dragon..."
+ 
+ # Gift Egg Events
+ dragon_interactions.0010.t:0 "A Precious Gift"
+ dragon_interactions.0010.desc:0 "You have given away a dragon egg—a gift beyond measure. May the recipient prove worthy of such treasure."
+ dragon_interactions.0010.a:0 "May it bring them fortune."
+ 
+ # Tribute Events
+ dragon_interactions.0020.t:0 "Tribute Received"
+ dragon_interactions.0020.desc:0 "The tribute has arrived. Gold, goods, and the acknowledgment of your superiority. This is as it should be."
+ dragon_interactions.0020.a:0 "They know their place."
+ 
+ dragon_interactions.0021.t:0 "Tribute Refused!"
+ dragon_interactions.0021.desc:0 "The insolent fool has refused to pay tribute! They dare defy a dragonlord?"
+ dragon_interactions.0021.a:0 "Burn their lands!"
+ dragon_interactions.0021.b:0 "I will remember this insult."
+ 
+ # Training Events
+ dragon_interactions.0030.t:0 "Training Begins"
+ dragon_interactions.0030.desc:0 "The dragon master has agreed to your request. The long journey to becoming a dragon rider begins now."
+ dragon_interactions.0030.a:0 "I am ready to learn."
+	
+	#from dragon world
+	# Dragon taming events
+	dragon_world_new_game.0006.t:0 "The Beast Approaches"
+	dragon_world_new_game.0006.desc:0 "As the dragon approaches, you feel a sense of dread overwhelmed by doubt. Its eyes are fierce and skin sharp... The dragon shakes its head in your direction and breaths a small fireblast, now it is your move..."
+	dragon_world_new_game.0006.a:0 "Throw yourself wildly at the Dragon!"
+	dragon_world_new_game.0006.food:0 "Looks like Dragon is back on the menu boys!"
+	dragon_world_new_game.0006.trust:0 "Reach out your hand to the mighty Dragon"
+	dragon_world_new_game.0006.confident:0 "Quickly charge and climb the Dragon's back"
+	dragon_world_new_game.0006.run:0 "I've got to get out of here!"
+
+	dragon_world_new_game.0009.t:0 "The Dragon's Trust"
+	dragon_world_new_game.0009.desc:0 "[ROOT.Char.GetFirstName|U] reaches out their hand out to the Dragon and to their surpise the Dragon responds by gently rests its head in the open palm of your hand."
+	dragon_world_new_game.0009.a:0 "Together we are unstoppable"
+
+	dragon_world_new_game.0011.t:0 "The Great Escape"
+	dragon_world_new_game.0011.desc:0 "[ROOT.Char.GetFirstName|U] is out of breath and wheezing, but has managed to successfully evade the Dragon"
+	dragon_world_new_game.0011.a:0 "Finally I am safe..."
+
+	dragon_world_new_game.0007.t:0 "Dragons Dinner"
+	dragon_world_new_game.0007.desc:0 "After a struggle with the Dragon, [ROOT.Char.GetFirstName|U] was eaten"
+	dragon_world_new_game.0007.a:0 "Oof"
+
+	dragon_world_new_game.0008.t:0 "[ROOT.Char.GetFirstName|U]'s Dinner"
+	dragon_world_new_game.0008.desc:0 "After a brief scuffle with the Dragon it was subdued and promptly killed then boiled, now I will finally know what Dragon flesh tastes like"
+	dragon_world_new_game.0008.a:0 "*munches*"
+
+	dragon_world_new_game.0013.t:0 "Unmounted"
+	dragon_world_new_game.0013.desc:0 "After a struggle with the Dragon, [ROOT.Char.GetFirstName|U] was shaken off and unmounted causing injury, the fight is practically over..."
+	dragon_world_new_game.0013.a:0 "Retreat"
+	dragon_world_new_game.0013.b:0 ""Never!""
+
+	dragon_world_new_game.0012.t:0 "Dragon Subdued"
+	dragon_world_new_game.0012.desc:0 "After a struggle with the Dragon, [ROOT.Char.GetFirstName|U] has managed to subdue it - they are now in total control"
+	dragon_world_new_game.0012.a:0 "Huzzah!"
+
+	dragon_world_new_game.0010.t:0 "Untrustworthy"
+	dragon_world_new_game.0010.desc:0 "[ROOT.Char.GetFirstName|U] reaches out their hand out to the Dragon but it does not respond, instead it manages to show outright disinterest..."
+	dragon_world_new_game.0010.a:0 "Have it your way then!"
+
+	dragon_spawn.0005.t:0 "No Dragon Tamed"
+	dragon_spawn.0005.desc:0 "We failed to tame the dragon this time..."
+	dragon_spawn.0005.a:0 "Shame."
+
+	dragon_spawn.0006.t:0 "Dragon Tamed"
+	dragon_spawn.0006.desc:0 "I have managed to tame a mighty Dragon!"
+	dragon_spawn.0006.a:0 "Huzzah!"
+
+	# Get Dragon Master decision
+	attempt_to_learn_dragon_rider_decision:0 "Learn to ride Dragons"
+	attempt_to_learn_dragon_rider_decision_desc:0 "We know somewhere nearby that will help us learn how to ride dragons, let's pay them a visit..."
+	attempt_to_learn_dragon_rider_decision_confirm:0 "Prepare for the journey"
+	attempt_to_learn_dragon_rider_decision_tooltip:0 "Learn to ride Dragons"
+
+	dragon_world_new_game.0004.t:0 "Learn the methods of riding Dragons"
+	dragon_world_new_game.0004.desc:0 "I wish to learn how to ride dragon, no matter the cost or risk!"
+	dragon_world_new_game.0004.a:0 "Lets give it a go!"
+	dragon_world_new_game.0004.b:0 "Perhaps I could ask for help..."
+	dragon_world_new_game.0004.c:0 "I have more important matters..."
+
+	generate_dragon_tooltip:0 "There is a 60% chance of success"
+	attempt_tame_dragon_tooltip:0 "This will kick off an event chain, your success depends on your personalty and skills"
+
+	# Taming Event Tooltips
+	trusted_by_dragon.tt:0 "The Dragon trusts you"
+	not_trusted_by_dragon.tt:0 "The Dragon doesn't trust you"
+	dragon_ate_character.tt:0 "The Dragon eats you"
+	ate_dragon.tt:0 "You eat the Dragon"
+	escaped_from_dragon.tt:0 "You escape the Dragon"
+	successfully_charged_dragon.tt:0 "You successfully mount the Dragon"
+	thrown_off_dragon.tt:0 "The Dragon shakes you off"
+
+  # Dragon Rider related events & decisions
+  dragon_rider_events.0001b.t:0 "Train with your Dragon"
+  dragon_rider_events.0001b.desc:0 "Bond and train with your Dragon to gain buffs and possibly to upgrade your Dragon Rider tier"
+  dragon_rider_events.0001b.a:0 "Ride your Dragon"
+  dragon_rider_events.0001b.b:0 "Practice Dragon commands"
+  dragon_rider_events.0001b.c:0 "Bond with your Dragon"
+
+	# Recruit Dragon Rider decision
+	recruit_dragon_rider_decision:0 "Recruit Renowned Dragon Rider"
+	recruit_dragon_rider_decision_decision_desc:0 "We will search for a renowned Dragon Rider and invite them to our court"
+	recruit_dragon_rider_specialist_decision.tt:0 "Recruits a Renowned Dragon Rider to court"
+	recruit_dragon_rider_decision_confirm:0 "Recruit Specialist"
+	recruit_dragon_rider_decision_tooltip:0 "Recruit Renowned Dragon Rider to court"
+
+	# Recruit Dragon Hatcher decision
+	recruit_dragon_hatcher_decision:0 "Recruit Dragon Hatcher"
+	recruit_dragon_hatcher_decision_desc:0 "We will search for a Dragon Hatcher and invite them to our court"
+	recruit_dragon_hatcher_decision.tt:0 "Recruits a Dragon Hatcher to court"
+	recruit_dragon_hatcher_decision_confirm:0 "Recruit Specialist"
+	recruit_dragon_hatcher_decision_tooltip:0 "Recruit Dragon Hatcher to court"
+
+  # Train with Dragon decision
+  train_with_dragon_decision:0 "Train with Dragon"
+  train_with_dragon_decision_desc:0 "Train with your Dragon and have the chance to upgrade your Dragon Rider tier"
+  train_with_dragon_decision_confirm:0 "Train with your Dragon"
+  train_with_dragon_decision_tooltip:0 "Training gives various rewards and gives a chance to upgrade your Dragon Rider tier"
+
+  # Demand Gold from Populace with Dragon decision
+  demand_gold_from_the_populace_decision:0 "Extract Gold from the Populace"
+  demand_gold_from_the_populace_decision_desc:0 "Mount your Dragon and ride out to extract gold from the populace"
+  demand_gold_from_the_populace_decision_confirm:0 "They have something of mine..."
+  demand_gold_from_the_populace_decision_tooltip:0 "Extract gold from the populace and risk angering them"
+
+  dragon_rider_events.0014.t:0 "Extract Gold from the Populace"
+  dragon_rider_events.0014.desc:0 "Come, it's time to fly..."
+  dragon_rider_events.0014.a_latin:0 ""Volare!""
+  dragon_rider_events.0014.a_high_valyrian:0 ""Sōvēs!""
+
+	# Look for Dragon decision and events
+	dragon_decision_event.0001.t:0 "Looking for Dragons"
+	dragon_decision_event.0001.desc:0 "We have heard rumours of a dragon nearby, we should hunt it and bring it's head back as a trophy"
+	dragon_decision_event.0001.a:0 "Let's find ourselves a dragon!"
+	dragon_decision_event.0001.b:0 "On the other hand..."
+
+	look_for_dragons_decision:0 "Look for Dragons"
+	look_for_dragons_decision_desc:0 "We have heard rumours of a dragon nearby, we should hunt it and bring it's head back as a trophy"
+
+	dragon_decision_event.0002.t:0 "Dragon found"
+	dragon_decision_event.0002.desc:0 "We have found a dragon sleeping in a nearby cave, my men are awaiting my orders..."
+	dragon_decision_event.0002.a:0 "Time to claim my trophy!"
+	dragon_decision_event.0002.b:0 "I cannot kill such a magnificent beast"
+
+	dragon_spawn.0008.t:0 "Dragon Egg hatched"
+	dragon_spawn.0008.desc:0 "My Dragon Egg has finally hatched!"
+	dragon_spawn.0008.a:0 "You shall grow into a mighty beast!"
+	dragon_spawn.0008.a.tt:0 "[newly_created_artifact.GetName] is given a name"
+
+	dragon_artefact_events.0002.t:0 "Dragon Bond"
+	dragon_artefact_events.0002.desc:0 "My Dragon is ageing, and our bond has become stronger from our time together!"
+	dragon_artefact_events.0002.a_latin:0 ""Nos Aetate...""
+	dragon_artefact_events.0002.a_high_valyrian:0 ""Umbātās...""
+	dragon_artefact_events.0002.b_latin:0 ""Volare!""
+	dragon_artefact_events.0002.b_high_valyrian:0 ""Sōvēs!""

@@ -1,0 +1,241 @@
+﻿############################################
+# Dragon Mod Expansion - Scripted Triggers
+# Utility triggers for dragon system
+# File: common/scripted_triggers/00_dragon_triggers_expanded.txt
+############################################
+
+# ═══════════════════════════════════════════
+# DRAGON OWNERSHIP CHECKS
+# ═══════════════════════════════════════════
+
+# Check if character has any rideable dragon
+has_rideable_dragon_trigger = {
+	any_character_artifact = {
+		OR = {
+			artifact_type = type_young_dragon
+			artifact_type = type_adult_dragon
+			artifact_type = type_elder_dragon
+			artifact_type = type_ancient_dragon
+			artifact_type = type_primordial_dragon
+		}
+	}
+}
+
+# Check if character has any dragon at all (including eggs/hatchlings)
+has_any_dragon_trigger = {
+	any_character_artifact = {
+		OR = {
+			artifact_type = dragon_egg
+			artifact_type = type_hatchling_dragon
+			artifact_type = type_adolescent_dragon
+			artifact_type = type_young_dragon
+			artifact_type = type_adult_dragon
+			artifact_type = type_ancient_dragon
+			artifact_type = type_elder_dragon
+			artifact_type = type_primordial_dragon
+		}
+	}
+}
+
+# Check if character has an elder+ dragon (for death risk)
+has_aging_dragon_trigger = {
+	any_character_artifact = {
+		OR = {
+			artifact_type = type_elder_dragon
+			artifact_type = type_ancient_dragon
+			artifact_type = type_primordial_dragon
+		}
+	}
+}
+
+# Check if character has a primordial dragon
+has_primordial_dragon_trigger = {
+	any_character_artifact = {
+		artifact_type = type_primordial_dragon
+	}
+}
+
+# Check if character has a dragon relic
+has_dragon_relic_trigger = {
+	any_character_artifact = {
+		OR = {
+			artifact_type = type_dragon_skull
+			artifact_type = type_dragon_bones
+			artifact_type = type_dragon_heart
+			artifact_type = type_dragonscale_cloak
+			artifact_type = type_dragon_fang_weapon
+		}
+	}
+}
+
+has_dragon_rider_trigger = {
+	has_trait = lifestyle_dragonmaster
+	has_trait_xp = {
+		trait = lifestyle_dragonmaster
+		track = dragon_rider
+		value >= 25
+	}
+}
+
+has_dragon_slayer_trigger = {
+	has_trait = lifestyle_dragonmaster
+	has_trait_xp = {
+		trait = lifestyle_dragonmaster
+		track = dragon_slayer
+		value >= 25
+	}
+}
+
+has_dragon_hatcher_trigger = {
+	has_trait = lifestyle_dragonmaster
+	has_trait_xp = {
+		trait = lifestyle_dragonmaster
+		track = dragon_hatcher
+		value >= 100
+	}
+}
+
+has_dragon_trigger = {
+	any_character_artifact = {
+		OR = {
+			artifact_type = type_young_dragon
+			artifact_type = type_adult_dragon
+			artifact_type = type_ancient_dragon
+		}
+	}
+}
+
+has_dragon_equipped_trigger = {
+	any_equipped_character_artifact = {
+		OR = {
+			artifact_type = type_young_dragon
+			artifact_type = type_adult_dragon
+			artifact_type = type_ancient_dragon
+		}
+	}
+}
+
+# ═══════════════════════════════════════════
+# DRAGON STAGE CHECKS
+# ═══════════════════════════════════════════
+
+# Artifact-scoped: Check if dragon is at peak power (adult)
+is_peak_dragon_trigger = {
+	artifact_type = type_adult_dragon
+}
+
+# Artifact-scoped: Check if dragon is declining
+is_declining_dragon_trigger = {
+	OR = {
+		artifact_type = type_elder_dragon
+		artifact_type = type_ancient_dragon
+		artifact_type = type_primordial_dragon
+	}
+}
+
+# Artifact-scoped: Check if dragon is legendary tier
+is_legendary_dragon_trigger = {
+	OR = {
+		artifact_type = type_ancient_dragon
+		artifact_type = type_primordial_dragon
+	}
+}
+
+# ═══════════════════════════════════════════
+# DRAGON AGE CHECKS (using variable)
+# ═══════════════════════════════════════════
+
+# Check if dragon age is set
+has_dragon_age_variable_trigger = {
+	has_variable = dragon_age
+}
+
+# Check dragon age ranges (artifact-scoped)
+is_hatchling_age_trigger = {
+	has_variable = dragon_age
+	var:dragon_age < 11
+}
+
+is_young_age_trigger = {
+	has_variable = dragon_age
+	var:dragon_age >= 11
+	var:dragon_age < 71
+}
+
+is_adult_age_trigger = {
+	has_variable = dragon_age
+	var:dragon_age >= 71
+	var:dragon_age < 151
+}
+
+is_elder_age_trigger = {
+	has_variable = dragon_age
+	var:dragon_age >= 151
+	var:dragon_age < 251
+}
+
+is_ancient_age_trigger = {
+	has_variable = dragon_age
+	var:dragon_age >= 251
+	var:dragon_age < 301
+}
+
+is_primordial_age_trigger = {
+	has_variable = dragon_age
+	var:dragon_age >= 301
+}
+
+# ═══════════════════════════════════════════
+# SIZE CHECKS
+# ═══════════════════════════════════════════
+
+is_colossal_dragon_trigger = {
+	has_variable = dragon_size
+	var:dragon_size = flag:colossal
+}
+
+is_large_dragon_trigger = {
+	has_variable = dragon_size
+	OR = {
+		var:dragon_size = flag:large
+		var:dragon_size = flag:colossal
+	}
+}
+
+# ═══════════════════════════════════════════
+# TEMPERAMENT CHECKS
+# ═══════════════════════════════════════════
+
+is_calm_dragon_trigger = {
+	has_variable = dragon_temperament
+	var:dragon_temperament = flag:calm
+}
+
+is_trained_dragon_trigger = {
+	has_variable = dragon_temperament
+	var:dragon_temperament = flag:trained
+}
+
+is_wild_dragon_trigger = {
+	has_variable = dragon_temperament
+	var:dragon_temperament = flag:wild
+}
+
+is_vicious_dragon_trigger = {
+	has_variable = dragon_temperament
+	var:dragon_temperament = flag:vicious
+}
+
+is_dangerous_dragon_trigger = {
+	has_variable = dragon_temperament
+	OR = {
+		var:dragon_temperament = flag:wild
+		var:dragon_temperament = flag:vicious
+	}
+}
+#Dragon Event Trigger
+dragon_used_on_populace_county_trigger = {
+	OR = {
+		NOT = { has_county_modifier = gold_extracted_with_dragon }
+	}
+}

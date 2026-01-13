@@ -1,0 +1,133 @@
+﻿l_english:
+ ##############################
+ # CHARACTER MODIFIERS
+ ##############################
+ 
+ # Dragon Breeding Program
+ dragon_breeding_program_modifier:0 "Dragon Breeding Program"
+ dragon_breeding_program_modifier_desc:0 "Your dragon breeding program is producing results, strengthening your bloodlines and increasing egg production."
+ 
+ # Declared Dragon Hunt
+ declared_dragon_hunt_modifier:0 "Dragon Hunt Declared"
+ declared_dragon_hunt_modifier_desc:0 "You have declared a hunt against the dragons and their riders. Your people rally to this cause."
+ 
+ # Dragon Tournament Victor
+ dragon_tournament_victor_modifier:0 "Dragon Tournament Victor"
+ dragon_tournament_victor_modifier_desc:0 "Your victory in the dragon tournament has earned you fame and admiration throughout the realm."
+ 
+ # Dragon Tournament Host
+ dragon_tournament_host_modifier:0 "Tournament Host"
+ dragon_tournament_host_modifier_desc:0 "You successfully hosted a dragon tournament, earning the gratitude and respect of your peers."
+ 
+ # Found Wild Dragon
+ found_wild_dragon_modifier:0 "Dragon Discovered"
+ found_wild_dragon_modifier_desc:0 "Your expedition into the wilderness found signs of wild dragons. This knowledge is valuable."
+ 
+ # Dragon Tribute Paid
+ dragon_tribute_paid_modifier:0 "Dragon Tribute"
+ dragon_tribute_paid_modifier_desc:0 "You pay tribute to a dragonlord in exchange for protection. Some call it cowardice; you call it wisdom."
+ 
+ # Failed Dragon Search
+ dragon_search_failed_modifier:0 "Dragon Hunt Survivor"
+ dragon_search_failed_modifier_desc:0 "Your encounter with a wild dragon did not go as planned. The scars—both physical and mental—remain."
+ 
+ # Refused Dragon Duel
+ refused_dragon_duel_modifier:0 "Refused Dragon Duel"
+ refused_dragon_duel_modifier_desc:0 "You refused a challenge to dragon combat. Your reputation has suffered for this display of cowardice."
+ 
+ # Dragon Injured in Duel
+ dragon_injured_in_duel_modifier:0 "Dragon Wounded"
+ dragon_injured_in_duel_modifier_desc:0 "Your dragon was injured in aerial combat and requires time to recover."
+ 
+ # Challenged to Dragon Duel
+ challenged_to_dragon_duel_modifier:0 "Duel Challenge Pending"
+ challenged_to_dragon_duel_modifier_desc:0 "You have been challenged to dragon combat. The weight of the challenge weighs upon you."
+ 
+ # Dragon Egg Gifted
+ dragon_egg_gifted_modifier:0 "Dragon Egg Received"
+ dragon_egg_gifted_modifier_desc:0 "You have been gifted a dragon egg—a treasure beyond measure."
+ 
+ # Dragon Blood Awakening
+ dragon_blood_awakening_modifier:0 "Blood Awakening"
+ dragon_blood_awakening_modifier_desc:0 "The dragon blood in your veins stirs with unusual potency."
+ 
+ ##############################
+ # COUNTY MODIFIERS
+ ##############################
+ 
+ # Scorpion Tower Defense
+ scorpion_tower_defense_modifier:0 "Scorpion Tower Defenses"
+ scorpion_tower_defense_modifier_desc:0 "Massive ballistae stand ready to bring down any dragon that threatens this land."
+ 
+ # Dragon Breeding Grounds
+ dragon_breeding_grounds_modifier:0 "Dragon Breeding Grounds"
+ dragon_breeding_grounds_modifier_desc:0 "This county hosts facilities for the controlled breeding of dragons."
+ 
+ # Ravaged by Dragon
+ ravaged_by_dragon_modifier:0 "Ravaged by Dragonfire"
+ ravaged_by_dragon_modifier_desc:0 "This land has been burned by dragonfire. The scars will take generations to heal."
+ 
+ # Dragon's Lair Nearby
+ dragon_lair_nearby_modifier:0 "Dragon's Lair Nearby"
+ dragon_lair_nearby_modifier_desc:0 "A dragon makes its lair near these lands. The people live in constant fear."
+ 
+ # Protected by Dragons
+ protected_by_dragons_modifier:0 "Dragon's Protection"
+ protected_by_dragons_modifier_desc:0 "A dragonlord has extended protection over this land. Raiders and invaders know to stay away."
+
+ # MISC Dragon Stuff
+ rode_dragon:0 "Rode Dragon"
+ ate_dragon:0 "Ate Dragon"
+ trusted_by_dragon:0 "Trusted by Dragon"
+ gold_extracted_with_dragon:0 "Gold extracted with Dragon"
+
+ dragon_bond_income_modifier:0 "Dragon Income Bond"
+ dragon_bond_prestige_modifier:0 "Dragon Prestige Bond"
+ dragon_bond_piety_modifier:0 "Dragon Piety Bond"
+ dragon_bond_dread_modifier:0 "Dragon Dread Bond"
+
+ ##############################
+ # MODIFIERS
+ ##############################
+ 
+ # Stage Modifiers
+ dragon_hatchling_modifier:0 "Hatchling Dragon"
+ dragon_young_modifier:0 "Young Dragon"
+ dragon_adult_modifier:0 "Adult Dragon"
+ dragon_elder_modifier:0 "Elder Dragon"
+ dragon_ancient_modifier:0 "Ancient Dragon"
+ dragon_primordial_modifier:0 "Primordial Dragon"
+ 
+ # Size Modifiers
+ dragon_size_tiny:0 "Tiny Dragon"
+ dragon_size_small:0 "Small Dragon"
+ dragon_size_medium:0 "Medium Dragon"
+ dragon_size_large:0 "Large Dragon"
+ dragon_size_colossal:0 "Colossal Dragon"
+ 
+ # Temperament Modifiers
+ dragon_temperament_calm:0 "Calm Dragon"
+ dragon_temperament_trained:0 "Well-Trained Dragon"
+ dragon_temperament_wild:0 "Wild Dragon"
+ dragon_temperament_vicious:0 "Vicious Dragon"
+ 
+ # Health Modifiers
+ dragon_declining_health:0 "Declining Health"
+ dragon_near_death:0 "Near Death"
+ dragon_wounded:0 "Wounded Dragon"
+ dragon_recovering:0 "Recovering Dragon"
+ 
+ # Relic Modifiers
+ dragon_skull_modifier:0 "Dragon Skull"
+ dragon_bones_modifier:0 "Dragon Bones"
+ dragon_heart_modifier:0 "Dragon Heart"
+ dragonscale_cloak_modifier:0 "Dragonscale Cloak"
+ dragon_fang_weapon_modifier:0 "Dragon Fang Weapon"
+ 
+ # Event Modifiers
+ mourning_dragon_loss:0 "Mourning Dragon Loss"
+ mourning_dragon_loss_desc:0 "The loss of a bonded dragon leaves wounds that may never fully heal."
+ fresh_dragon_bond:0 "Fresh Dragon Bond"
+ fresh_dragon_bond_desc:0 "The joy of a new dragon bond fills you with vigor."
+ dragon_primordial_legacy:0 "Rider of a Primordial Dragon"
+ dragon_primordial_legacy_desc:0 "You have ridden a dragon that lived for over three centuries. Your name will echo through history."

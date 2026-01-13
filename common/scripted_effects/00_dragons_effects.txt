@@ -1,0 +1,190 @@
+﻿# Give dragon slayer xp to every attending character
+dragon_slayer_all_attendee_xp_effect = {
+	hidden_effect = {
+		scope:activity = {
+			every_attending_character = {
+				limit = {
+					is_alive = yes
+				}
+				add_to_list = dragon_slayers
+			}
+			activity_host = { add_to_list = dragon_slayers }
+		}
+		every_in_list = {
+			list = dragon_slayers
+			if = {
+				limit = { has_trait = lifestyle_dragonmaster }
+				send_interface_toast = {
+					title = dragonmaster_xp_gain_message
+					dragonmaster_progress_point_gain_effect = { CHANGE = $CHANGE$ RANDOM_CHANGE = $RANDOM$ }
+					hidden_effect = {
+						dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_HATCHER = no DRAGON_SLAYER = yes }
+					}
+				}
+			}
+			else = {
+				add_trait = lifestyle_dragonmaster
+				dragonmaster_progress_point_gain_effect = { CHANGE = $CHANGE$ RANDOM_CHANGE = $RANDOM$ }
+				hidden_effect = {
+					dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_HATCHER = no DRAGON_SLAYER = yes }
+				}
+			}			
+		}
+	}
+}
+
+# Attempt to kill Dragon
+dragons_animal_kill_effect = {
+	save_scope_as = animal_slayer
+	play_sound_effect = "event:/DLC/EP2/SFX/Events/Grand_Activities/Hunts/ConstructionKits/ep2_event_grand_hunt_ck_horn"
+	# Gives Dragon Slayer Lifestyle XP
+	dragonmaster_progress_point_gain_effect = { CHANGE = 1 RANDOM_CHANGE = 3 }
+	hidden_effect = {
+		dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_HATCHER = no DRAGON_SLAYER = yes }
+	}
+	# # Determine who could be wounded
+	# scope:activity ?= {
+	# 	random_attending_character = {
+	# 		limit = { is_alive = yes }
+	# 		save_scope_as = injury_target
+	# 		hunt_wound_select_effect = yes
+	# 	}
+	# }
+	duel = {
+		skill = prowess
+		value = dragons_melee_kill_prowess_value
+		50 = { # Success
+			desc = dragons_kill_success_charge_tt
+			custom_tooltip = dragons_kill_success_charge_tt
+			# Check if the character has a dragon slayer trigger
+    		modifier = {
+				has_dragon_slayer_trigger = yes
+				factor = 1.5
+			}
+			# Check if the character has a dragon artifact equipped
+    		modifier = {
+				any_equipped_character_artifact = {
+					has_artifact_flag = dragon_artifact
+				}
+				factor = 2
+			}
+			# Amount of companions - Few
+			modifier = {
+				scope:activity = {
+					has_activity_option = { category = adventure_option_companions option = adventure_companions_few }
+				}
+				factor = -2
+			}
+			# Amount of companions - Normal
+			modifier = {
+				scope:activity = {
+					has_activity_option = { category = adventure_option_companions option = adventure_companions_normal }
+				}
+				factor = 1.25
+			}
+			# Amount of companions - Many
+			modifier = {
+				scope:activity = {
+					has_activity_option = { category = adventure_option_companions option = adventure_companions_many }
+				}
+				factor = 1.5
+			}
+			compare_modifier = {
+				value = scope:duel_value
+				multiplier = 3.5
+				min = -25
+			}
+			scope:activity ?= {
+				add_activity_log_entry = {
+					key = hunt_bow_log
+					score = 75
+					tags = { kill }
+					character = scope:animal_slayer
+
+					# Effect
+					scope:animal_slayer = {
+						add_prestige = hunt_prestige_bow_value
+						# Complete activity intent if relevant
+						if = {
+							limit = { has_activity_intent = slay_beast_intent }
+							show_as_tooltip = { complete_activity_intent = yes }
+						}
+						hunt_complete_slay_beast_intent_effect = yes
+						hunt_animal_slayer_memory_effect = yes
+					}
+				}
+			}
+			save_scope_as = charge_success
+			scope:activity = {
+				set_variable = {
+					name = dragons_success
+					value = flag:yes
+				}
+			}
+			play_sound_effect = "event:/DLC/EP2/SFX/Events/Grand_Activities/Hunts/ConstructionKits/ep2_event_grand_hunt_ck_spear_impact"
+		}
+		50 = { # Failure
+			desc = dragons_kill_critical_failure_charge_tt
+			compare_modifier = {
+				value = scope:duel_value
+				multiplier = -3.5
+				min = 5
+			}
+			modifier = { add = hunt_bow_danger_value }
+			custom_tooltip = dragon_aventure_entire_expedition_thrased_tt
+			hidden_effect = {
+				scope:host ?= {
+					send_interface_toast = {
+						title = dragons_kill_critical_failure_charge_tt
+						left_icon = scope:animal_slayer
+						right_icon = scope:newly_created_artifact
+						# The Dragon recks the companions
+						scope:activity = {
+							every_attending_character = {
+								limit = { is_alive = yes }
+								hunt_wound_select_effect = yes
+								hunt_wound_apply_effect = { SEVERE = yes }
+							}
+						}
+						# scope:activity = {
+						# 	add_activity_log_entry = {
+						# 		key = hunt_bow_log
+						# 		score = 75
+						# 		tags = { kill }
+						# 		character = scope:animal_slayer
+						# 		target = scope:injury_target
+
+						# 		# Effect
+						# 		scope:animal_slayer = {
+						# 			custom_tooltip = hunt_kill_failure_bow
+						# 			# Complete activity intent if relevant
+						# 			hunt_complete_slay_beast_intent_effect = yes
+						# 		}
+						# 		if = {
+						# 			limit = { exists = scope:injury_target }
+						# 			scope:injury_target = {
+						# 				hunt_wound_apply_effect = { SEVERE = no }
+						# 			}
+						# 		}
+						# 	}
+						# }
+					}
+				}
+			}
+			save_scope_as = charge_failure
+			scope:activity = {
+				set_variable = {
+					name = dragons_success
+					value = flag:no
+				}
+			}
+			play_sound_effect = "event:/DLC/EP2/SFX/Events/Grand_Activities/Hunts/ConstructionKits/ep2_event_grand_hunt_ck_beast_roar"
+		}
+	}
+	# scope:activity = {
+	# 	every_attending_character = {
+	# 		limit = { is_ai = no }
+	# 		trigger_event = hunt.1200
+	# 	}
+	# }
+}

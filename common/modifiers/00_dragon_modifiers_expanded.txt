@@ -1,0 +1,593 @@
+﻿############################################
+# Dragon Mod Expansion - Modifiers
+# Extends Dragon World with scaling stats and decline
+# File: common/modifiers/00_dragon_modifiers_expanded.txt
+############################################
+
+# ═══════════════════════════════════════════
+# DRAGON STAGE BASE MODIFIERS
+# Applied when dragon transitions to new stage
+# ═══════════════════════════════════════════
+
+# Hatchling (Age 1-10) - Cute but useless
+dragon_hatchling_modifier = {
+	icon = health_positive
+	court_grandeur_baseline_add = 5
+	monthly_prestige_gain_mult = 0.05
+	stress_loss_mult = 0.1
+}
+
+# Young Dragon (Age 11-70) - First rideable stage
+dragon_young_modifier = {
+	icon = martial_positive
+	travel_safety = 15
+	travel_speed = 30
+	prowess = 8
+	martial = 2
+	dread_baseline_add = 15
+	monthly_prestige_gain_mult = 0.1
+	knight_effectiveness_mult = 0.1
+}
+
+# Adult Dragon (Age 71-150) - Peak power
+dragon_adult_modifier = {
+	icon = martial_positive
+	travel_safety = 25
+	travel_speed = 40
+	prowess = 15
+	martial = 4
+	dread_baseline_add = 30
+	monthly_prestige_gain_mult = 0.2
+	monthly_dynasty_prestige_mult = 0.1
+	knight_effectiveness_mult = 0.2
+	advantage = 25
+	siege_phase_time = -0.1
+	court_grandeur_baseline_add = 10
+}
+
+# Elder Dragon (Age 151-250) - Declining but wise
+# Bonuses: Wisdom-based stats, intimidation
+# Penalties: Some combat reduction
+dragon_elder_modifier = {
+	icon = learning_positive
+	travel_safety = 20
+	travel_speed = 30
+	prowess = 10
+	martial = 3
+	diplomacy = 2
+	learning = 3
+	dread_baseline_add = 40
+	monthly_prestige_gain_mult = 0.25
+	monthly_dynasty_prestige_mult = 0.15
+	monthly_piety_gain_mult = 0.1
+	knight_effectiveness_mult = 0.15
+	advantage = 15
+	court_grandeur_baseline_add = 15
+	# Decline effects
+	army_maintenance_mult = 0.05
+}
+
+# Ancient Dragon (Age 251-300) - Legendary, fragile
+# High prestige/dread, reduced combat, death risk
+dragon_ancient_modifier = {
+	icon = prestige_positive
+	travel_safety = 15
+	travel_speed = 20
+	prowess = 6
+	martial = 2
+	diplomacy = 4
+	learning = 5
+	dread_baseline_add = 60
+	monthly_prestige_gain_mult = 0.4
+	monthly_dynasty_prestige_mult = 0.25
+	monthly_piety_gain_mult = 0.2
+	knight_effectiveness_mult = 0.1
+	advantage = 10
+	court_grandeur_baseline_add = 25
+	# Further decline
+	army_maintenance_mult = 0.1
+}
+
+# Primordial Dragon (Age 301-500) - Mythic tier
+# Massive prestige/legacy bonuses, minimal combat
+# Very high death risk
+dragon_primordial_modifier = {
+	icon = piety_positive
+	travel_safety = 10
+	travel_speed = 15
+	prowess = 4
+	martial = 1
+	diplomacy = 6
+	intrigue = 3
+	learning = 8
+	dread_baseline_add = 80
+	monthly_prestige_gain_mult = 0.6
+	monthly_dynasty_prestige_mult = 0.4
+	monthly_piety_gain_mult = 0.3
+	knight_effectiveness_mult = 0.05
+	court_grandeur_baseline_add = 40
+	# Severe decline
+	army_maintenance_mult = 0.15
+	health = -0.25
+}
+
+# ═══════════════════════════════════════════
+# DRAGON SIZE MODIFIERS
+# Applied based on dragon_size variable
+# ═══════════════════════════════════════════
+
+dragon_size_tiny = {
+	icon = health_positive
+	# Very small - minimal bonuses
+	travel_speed = 5
+}
+
+dragon_size_small = {
+	icon = martial_positive
+	travel_speed = 10
+	prowess = 2
+	advantage = 5
+}
+
+dragon_size_medium = {
+	icon = martial_positive
+	travel_speed = 15
+	prowess = 4
+	advantage = 10
+	siege_phase_time = -0.05
+}
+
+dragon_size_large = {
+	icon = martial_positive
+	travel_speed = 20
+	prowess = 6
+	advantage = 15
+	siege_phase_time = -0.1
+	dread_baseline_add = 10
+}
+
+dragon_size_colossal = {
+	icon = martial_positive
+	travel_speed = 25
+	prowess = 10
+	advantage = 25
+	siege_phase_time = -0.15
+	dread_baseline_add = 20
+	army_damage_mult = 0.05
+}
+
+# ═══════════════════════════════════════════
+# DRAGON TEMPERAMENT MODIFIERS
+# Applied based on dragon_temperament variable
+# ═══════════════════════════════════════════
+
+dragon_temperament_calm = {
+	icon = diplomacy_positive
+	diplomacy = 2
+	stress_loss_mult = 0.15
+	general_opinion = 5
+	dread_baseline_add = -5
+}
+
+dragon_temperament_trained = {
+	icon = martial_positive
+	martial = 2
+	prowess = 3
+	knight_effectiveness_mult = 0.1
+	advantage = 5
+}
+
+dragon_temperament_wild = {
+	icon = intrigue_positive
+	prowess = 5
+	dread_baseline_add = 15
+	stress_gain_mult = 0.1
+	general_opinion = -5
+}
+
+dragon_temperament_vicious = {
+	icon = dread_positive
+	prowess = 8
+	dread_baseline_add = 30
+	dread_gain_mult = 0.25
+	stress_gain_mult = 0.2
+	general_opinion = -15
+	vassal_opinion = -10
+}
+
+# ═══════════════════════════════════════════
+# DRAGON HEALTH/CONDITION MODIFIERS
+# Applied during decline or illness
+# ═══════════════════════════════════════════
+
+dragon_declining_health = {
+	icon = health_negative
+	prowess = -3
+	travel_speed = -10
+	knight_effectiveness_mult = -0.1
+}
+
+dragon_near_death = {
+	icon = health_negative
+	prowess = -6
+	martial = -2
+	travel_speed = -20
+	knight_effectiveness_mult = -0.2
+	stress_gain_mult = 0.2
+}
+
+dragon_wounded = {
+	icon = health_negative
+	prowess = -4
+	travel_speed = -15
+	advantage = -10
+}
+
+dragon_recovering = {
+	icon = health_positive
+	prowess = -2
+	travel_speed = -5
+}
+
+# ═══════════════════════════════════════════
+# DRAGON RELIC MODIFIERS
+# Applied to artifacts created from dead dragons
+# ═══════════════════════════════════════════
+
+dragon_skull_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 25
+	monthly_prestige_gain_mult = 0.15
+	court_grandeur_baseline_add = 15
+}
+
+dragon_bones_modifier = {
+	icon = stewardship_positive
+	monthly_prestige_gain_mult = 0.1
+	court_grandeur_baseline_add = 10
+	build_gold_cost = -0.05
+}
+
+dragon_heart_modifier = {
+	icon = learning_positive
+	learning = 3
+	health = 0.5
+	fertility = 0.1
+	monthly_piety_gain_mult = 0.15
+}
+
+dragonscale_cloak_modifier = {
+	icon = martial_positive
+	prowess = 8
+	knight_effectiveness_mult = 0.15
+	travel_safety = 15
+	dread_baseline_add = 10
+}
+
+dragon_fang_weapon_modifier = {
+	icon = martial_positive
+	prowess = 12
+	martial = 3
+	dread_baseline_add = 15
+	advantage = 10
+}
+
+# ═══════════════════════════════════════════
+# SPECIAL EVENT MODIFIERS
+# ═══════════════════════════════════════════
+
+# Applied when dragon dies
+mourning_dragon_loss = {
+	icon = stress_positive
+	stress_gain_mult = 0.3
+	diplomacy = -2
+	monthly_prestige_gain_mult = -0.1
+}
+
+# Applied after bonding with dragon
+fresh_dragon_bond = {
+	icon = prestige_positive
+	monthly_prestige_gain_mult = 0.1
+	stress_loss_mult = 0.1
+}
+
+# Dragon reached primordial - legendary status
+dragon_primordial_legacy = {
+	icon = piety_positive
+	monthly_dynasty_prestige_mult = 0.2
+	dynasty_house_opinion = 20
+}
+
+############################################
+# Dragon Mod - Expanded Modifiers
+# File: common/modifiers/dragon_expanded_modifiers.txt
+############################################
+
+##########
+# CHARACTER MODIFIERS
+##########
+
+# Dragon Breeding Program
+dragon_breeding_program_modifier = {
+	icon = hunt_activity
+	
+	fertility = 0.1
+	health = 0.25
+	monthly_prestige = 0.5
+	learning = 2
+}
+
+# Declared Dragon Hunt - bonus against dragonlords
+declared_dragon_hunt_modifier = {
+	icon = hunt_activity
+	
+	prowess = 5
+	martial = 3
+	dread_baseline_add = 15
+	same_culture_opinion = 10
+	monthly_prestige = 0.3
+}
+
+# Dragon Tournament Victor
+dragon_tournament_victor_modifier = {
+	icon = prestige_modifier
+	
+	prowess = 3
+	monthly_prestige = 1.0
+	attraction_opinion = 15
+	general_opinion = 10
+}
+
+# Dragon Tournament Host Prestige
+dragon_tournament_host_modifier = {
+	icon = prestige_modifier
+	
+	monthly_prestige = 0.5
+	diplomacy = 2
+	vassal_opinion = 10
+}
+
+# Found Wild Dragon
+found_wild_dragon_modifier = {
+	icon = hunt_activity
+	
+	monthly_prestige = 0.3
+	stress_loss_mult = 0.1
+}
+
+# Dragon Tribute Paid - protection from raids
+dragon_tribute_paid_modifier = {
+	icon = diplomacy_modifier
+	
+	monthly_prestige = -0.2
+	different_culture_opinion = 15
+}
+
+# Failed Dragon Search - injury/trauma
+dragon_search_failed_modifier = {
+	icon = health_modifier
+	
+	health = -0.5
+	prowess = -2
+	stress_gain_mult = 0.2
+}
+
+##########
+# COUNTY MODIFIERS
+##########
+
+# Scorpion Tower Defense
+scorpion_tower_defense_modifier = {
+	icon = building_modifier
+	
+	garrison_size = 0.2
+	fort_level = 1
+	defender_holding_advantage = 5
+	hostile_raid_time = 0.3
+}
+
+# Dragon Breeding Grounds
+dragon_breeding_grounds_modifier = {
+	icon = county_modifier_development_positive
+	
+	development_growth_factor = 0.1
+	monthly_county_control_growth_add = 0.2
+	build_speed = -0.1
+}
+
+# Ravaged by Dragon - negative effect from dragon attacks
+ravaged_by_dragon_modifier = {
+	icon = negative_building_modifier
+	
+	tax_mult = -0.3
+	levy_size = -0.2
+	development_growth_factor = -0.2
+	build_gold_cost = 0.25
+}
+
+# Dragon's Lair Nearby - fear effect
+dragon_lair_nearby_modifier = {
+	icon = negative_building_modifier
+	
+	hostile_raid_time = -0.5
+	levy_size = -0.1
+	development_growth_factor = -0.05
+}
+
+# Protected by Dragons
+protected_by_dragons_modifier = {
+	icon = county_modifier_development_positive
+	
+	hostile_raid_time = 0.5
+	levy_size = 0.1
+	tax_mult = 0.05
+}
+
+##########
+# DYNASTY/HOUSE MODIFIERS
+##########
+
+# Dragon Blood Awakening - temporary boost during breeding events
+dragon_blood_awakening_modifier = {
+	icon = prestige_modifier
+	
+	health = 0.5
+	fertility = 0.15
+	prowess = 2
+}
+
+##########
+# SCHEME/INTERACTION MODIFIERS  
+##########
+
+# Challenged to Dragon Duel
+challenged_to_dragon_duel_modifier = {
+	icon = martial_modifier
+	
+	stress_gain_mult = 0.3
+	prowess = 2
+}
+
+# Dragon Egg Gifted - gratitude
+dragon_egg_gifted_modifier = {
+	icon = diplomacy_modifier
+	
+	monthly_prestige = 0.25
+}
+
+##########
+# DUEL/COMBAT MODIFIERS
+##########
+
+# Refused a dragon duel - cowardice
+refused_dragon_duel_modifier = {
+	icon = martial_modifier
+	
+	monthly_prestige = -0.5
+	prowess = -2
+	dread_baseline_add = -10
+	same_culture_opinion = -15
+}
+
+# Dragon injured in duel
+dragon_injured_in_duel_modifier = {
+	icon = health_modifier
+	
+	knight_effectiveness_mult = -0.25
+	prowess = -3
+	dread_baseline_add = -5
+}
+
+spawned_dragon_modifier = {
+	travel_safety = 10
+	travel_speed = 25
+	court_grandeur_baseline_add = 10
+	monthly_dynasty_prestige_mult = 0.1
+	monthly_prestige_gain_mult = 0.1
+	dread_gain_mult = 0.5
+	prowess = 20
+	martial = 5
+	intrigue = 3
+	advantage = 50
+	# siege_phase_time = -0.2
+	# casualty_modifier = 0.2
+	# hard_casualty_modifier = -0.1
+}
+
+new_dragon_modifier = {}
+
+rode_dragon = {
+	icon = martial_positive
+	martial = 2
+	prowess = 4
+	monthly_prestige_gain_mult = 0.05
+	general_opinion = -10
+	dread_baseline_add = 20
+}
+
+ate_dragon = {
+	icon = feast_positive
+	health = 1
+	dread_baseline_add = 50
+	general_opinion = -10
+}
+
+trusted_by_dragon = {
+	icon = fertility_positive
+	general_opinion = 25
+}
+
+gold_extracted_with_dragon = {
+	icon = county_modifier_opinion_negative
+	county_opinion_add = -50
+}
+
+dragon_egg_modifier = {
+	icon = health_positive 
+	court_grandeur_baseline_add = 5
+	monthly_prestige_gain_mult = 0.05
+}
+
+dragon_bond_income_modifier = {
+	icon = income_positive
+	monthly_income_mult = 0.03
+}
+
+dragon_bond_prestige_modifier = {
+	icon = prestige_positive
+	monthly_prestige_gain_mult = 0.03
+}
+
+dragon_bond_piety_modifier = {
+	icon = piety_positive
+	monthly_piety_gain_mult = 0.03
+}
+
+dragon_bond_dread_modifier = {
+	icon = dread_positive
+	dread_baseline_add = 10
+}
+
+dragon_adolescent_defaults = {
+	travel_safety = 10
+	travel_speed = 25
+}
+
+dragon_adolescent_diplomacy_defaults = {
+	monthly_diplomacy_lifestyle_xp_gain_mult = 0.1
+	diplomacy = 2
+	prowess = 5
+	monthly_dynasty_prestige_mult = 0.1
+	general_opinion = 10
+}
+dragon_adolescent_martial_defaults = {
+	monthly_martial_lifestyle_xp_gain_mult = 0.1
+	martial = 2
+	prowess = 20
+	siege_phase_time = -0.2
+	monthly_prestige_gain_mult = 0.1
+	advantage = 20
+}
+dragon_adolescent_stewardship_defaults = {
+	monthly_stewardship_lifestyle_xp_gain_mult = 0.1
+	stewardship = 2
+	prowess = 10
+	monthly_prestige_gain_mult = 0.1
+	build_gold_cost = -0.1
+	holding_build_gold_cost = -0.1
+}
+dragon_adolescent_intrigue_defaults = {
+	monthly_intrigue_lifestyle_xp_gain_mult = 0.1
+	intrigue = 2
+	prowess = 5
+	dread_baseline_add = 10
+	dread_gain_mult = 0.25
+	owned_hostile_scheme_success_chance_add = 5
+}
+dragon_adolescent_learning_defaults = {
+	monthly_learning_lifestyle_xp_gain_mult = 0.1
+	learning = 2
+	prowess = 5
+	monthly_piety_gain_mult = 0.1
+	court_grandeur_baseline_add = 10
+}

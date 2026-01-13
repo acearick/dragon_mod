@@ -1,0 +1,28 @@
+﻿l_english:
+
+	
+	
+
+	# Custom Tooltips
+	spawn_dragon_tooltip:0 "A dragon is spawned"
+	no_dragonrider_courtiers_tooltip:0 "There aren't any dragonriders in your court"
+	EXECUTION_DRAGON_LATIN:0 ""Ad Infernum!""
+	EXECUTION_DRAGON_HIGH_VALYRIAN:0 ""Drakarys!""
+
+	# Overriding DEBUG text
+	NOT_ANY_OF_MY_COURTIERS:0 "There aren't any courtiers meeting the requirements in your court"
+
+	# # Dragon Blood Dynasty Legacy
+	# dragon_legacy_track_name:0 "Dragon Blood"
+	# dragon_legacy_track_desc:0 "The power of the sun ... in the palm of my hand"
+	# dragon_legacy_1_name:0 "Dragon Kin"
+	# dragon_legacy_1_effect:0 "Unlocks access to the [GetBuilding('dragon_hatchery_01').GetName] [building|E] and makes the Dragon Tracking [activity|E] cheaper"
+	# dragon_legacy_1_requirement:0 "#R You need to have an equipped Dragon to be able to unlock this legacy. #!"
+	# dragon_legacy_2_name:0 "Those Who Serve, Serve Us"
+	# dragon_legacy_3_name:0 "Unlimited Power"
+	# dragon_legacy_4_name:0 "Dragon Born"
+	# dragon_legacy_4_effect:0 "The [GetTrait('dragon_blood').GetName( GetNullCharacter )] [trait|E] has a 20% chance to spawn for children of this dynasty, and then it will be forevermore passed down through the ages."
+	# dragon_legacy_5_name:0 "Dragon Lords"
+	# dragon_legacy_5_effect:0 "Unlocks Lord's Chosen Men-at-arms"
+
+

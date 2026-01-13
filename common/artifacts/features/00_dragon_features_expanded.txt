@@ -1,0 +1,218 @@
+﻿############################################
+# Dragon Mod Expansion - Artifact Features
+# Adds size and temperament tracking
+# File: common/artifacts/features/00_dragon_features_expanded.txt
+############################################
+
+##########################
+# Dragon Features - Type #
+##########################
+
+# Dragon Element Types
+	dragon_element_fire = {
+		group = dragon_element_type
+		trigger = {
+			scope:owner.var:dragon_type ?= flag:fire
+		}
+		weight = 1
+	}
+
+	dragon_element_water = {
+		group = dragon_element_type
+		trigger = {
+			scope:owner.var:dragon_type ?= flag:water
+		}
+		weight = 1
+	}
+
+	dragon_element_stone = {
+		group = dragon_element_type
+		trigger = {
+			scope:owner.var:dragon_type ?= flag:stone
+		}
+		weight = 1
+	}
+
+# ═══════════════════════════════════════════
+# DRAGON SIZE FEATURES
+# Tracks physical size of dragon
+# ═══════════════════════════════════════════
+
+dragon_size_tiny_feature = {
+	group = dragon_size_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_size
+			var:dragon_size = flag:tiny
+		}
+	}
+	weight = 1
+}
+
+dragon_size_small_feature = {
+	group = dragon_size_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_size
+			var:dragon_size = flag:small
+		}
+	}
+	weight = 1
+}
+
+dragon_size_medium_feature = {
+	group = dragon_size_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_size
+			var:dragon_size = flag:medium
+		}
+	}
+	weight = 1
+}
+
+dragon_size_large_feature = {
+	group = dragon_size_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_size
+			var:dragon_size = flag:large
+		}
+	}
+	weight = 1
+}
+
+dragon_size_colossal_feature = {
+	group = dragon_size_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_size
+			var:dragon_size = flag:colossal
+		}
+	}
+	weight = 1
+}
+
+# ═══════════════════════════════════════════
+# DRAGON TEMPERAMENT FEATURES
+# Tracks behavioral disposition
+# ═══════════════════════════════════════════
+
+dragon_temperament_calm_feature = {
+	group = dragon_temperament_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_temperament
+			var:dragon_temperament = flag:calm
+		}
+	}
+	weight = 1
+}
+
+dragon_temperament_trained_feature = {
+	group = dragon_temperament_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_temperament
+			var:dragon_temperament = flag:trained
+		}
+	}
+	weight = 1
+}
+
+dragon_temperament_wild_feature = {
+	group = dragon_temperament_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_temperament
+			var:dragon_temperament = flag:wild
+		}
+	}
+	weight = 1
+}
+
+dragon_temperament_vicious_feature = {
+	group = dragon_temperament_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_temperament
+			var:dragon_temperament = flag:vicious
+		}
+	}
+	weight = 1
+}
+
+# ═══════════════════════════════════════════
+# DRAGON AGE TIER FEATURES
+# For display purposes based on age variable
+# ═══════════════════════════════════════════
+
+dragon_age_hatchling_feature = {
+	group = dragon_age_tier
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_age
+			var:dragon_age < 11
+		}
+	}
+	weight = 1
+}
+
+dragon_age_young_feature = {
+	group = dragon_age_tier
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_age
+			var:dragon_age >= 11
+			var:dragon_age < 71
+		}
+	}
+	weight = 1
+}
+
+dragon_age_adult_feature = {
+	group = dragon_age_tier
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_age
+			var:dragon_age >= 71
+			var:dragon_age < 151
+		}
+	}
+	weight = 1
+}
+
+dragon_age_elder_feature = {
+	group = dragon_age_tier
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_age
+			var:dragon_age >= 151
+			var:dragon_age < 251
+		}
+	}
+	weight = 1
+}
+
+dragon_age_ancient_feature = {
+	group = dragon_age_tier
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_age
+			var:dragon_age >= 251
+			var:dragon_age < 301
+		}
+	}
+	weight = 1
+}
+
+dragon_age_primordial_feature = {
+	group = dragon_age_tier
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_age
+			var:dragon_age >= 301
+		}
+	}
+	weight = 1
+}
