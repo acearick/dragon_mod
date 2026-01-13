@@ -1,5 +1,0 @@
-﻿l_english:
-  # Custom Deaths
-	death_dragon_ate:0 "was eaten by a Dragon"
-	death_dragon_execution: "was executed by a Dragon"
-	death_dragon_execution_killer: "was executed by [TARGET_CHARACTER.GetUINamePossessive] Dragon"

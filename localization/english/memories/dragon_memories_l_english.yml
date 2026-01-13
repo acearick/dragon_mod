@@ -1,6 +1,0 @@
-﻿l_english:
- # Dragon Memories
-	dragon_tamed:0 "Dragon Tamed"
-	dragon_tamed_desc:1 "I succeeded in taming a Dragon"
-	dragon_tamed_desc_second_perspective:1 "You succeeded in taming a Dragon"
-	dragon_tamed_desc_third_perspective:1 "[owner.GetNamePossessive] succeeded in taming a Dragon"
