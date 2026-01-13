@@ -1,0 +1,32 @@
+﻿l_english:
+ ##############################
+ # CHARACTER INTERACTIONS
+ ##############################
+ 
+ # Challenge to Dragon Duel
+ challenge_dragon_duel_interaction:0 "Challenge to Dragon Duel"
+ challenge_dragon_duel_interaction_desc:0 "Challenge this dragon rider to aerial combat—a duel of skill, courage, and dragonfire."
+ challenge_dragon_duel_declined_title:0 "Duel Declined"
+ challenge_dragon_duel_declined_desc:0 "The coward refused your challenge! Their reputation will suffer for this display of weakness."
+ 
+ # Gift Dragon Egg
+ gift_dragon_egg_interaction:0 "Gift Dragon Egg"
+ gift_dragon_egg_interaction_desc:0 "Present this character with the priceless gift of a dragon egg."
+ dragon_egg_given_away_tt:0 "The dragon egg has been given to its new owner."
+ 
+ # Demand Dragon Tribute
+ demand_dragon_tribute_interaction:0 "Demand Dragon Tribute"
+ demand_dragon_tribute_interaction_desc:0 "Demand that this lesser ruler pay tribute in exchange for being spared your dragon's wrath."
+ tribute_received_tt:0 "The tribute has been received. Let them know their place."
+ 
+ # Request Dragon Training
+ request_dragon_training_interaction:0 "Request Dragon Training"
+ request_dragon_training_interaction_desc:0 "Ask this experienced dragon rider to train you in the ways of dragonriding."
+ request_dragon_training_for_child:0 "Request training for a child"
+ dragon_training_refused_title:0 "Training Refused"
+ dragon_training_refused_desc:0 "Your request for dragon training has been declined."
+ dragon_training_begun_tt:0 "Dragon training has begun! Work hard, and perhaps one day you will ride."
+ child_dragon_training_begun_tt:0 "Your child has been accepted as a dragon squire."
+ dragon_training_started_tt:0 "The training journey begins."
+ 
+ 

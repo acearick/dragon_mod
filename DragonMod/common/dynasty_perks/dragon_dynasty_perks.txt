@@ -8,33 +8,36 @@ dragon_blood_legacy_1 = {
 	
 	# First perk - no prerequisites
 	can_be_picked = {
-		# No requirements for the first perk
+		AND = {
+			has_dragon_rider_trigger = yes
+			has_dragon_equipped_trigger = yes
+		}
 	}
 	
 	effect = {
 		custom_tooltip = dragon_blood_legacy_1_effect_tt
+		custom_tooltip = dragon_blood_legacy_1_requirement
 	}
 	
 	character_modifier = {
-		prowess = 2
-		dread_baseline_add = 5
+		name = dragon_blood_legacy_1_name
+		# Can build Dragon Hatchery in capital
 	}
 	
 	ai_chance = {
-		value = 0
+		value = 11
+		if = {
+			limit = {
+				can_start_new_legacy_track_trigger = no
+			}
+			multiply = 0
+		}
 	}
 }
 
 dragon_blood_legacy_2 = {
 	legacy = dragon_blood_legacy
-	
-	# can_be_picked = {
-	# 	custom_description = {
-	# 		text = must_have_dragon_blood_legacy_1
-	# 		dynasty = { has_dynasty_perk = dragon_blood_legacy_1 }
-	# 	}
-	# }
-	
+		
 	effect = {
 		custom_tooltip = dragon_blood_legacy_2_effect_tt
 	}
@@ -53,13 +56,6 @@ dragon_blood_legacy_2 = {
 dragon_blood_legacy_3 = {
 	legacy = dragon_blood_legacy
 	
-	# can_be_picked = {
-	# 	custom_description = {
-	# 		text = must_have_dragon_blood_legacy_2
-	# 		dynasty = { has_dynasty_perk = dragon_blood_legacy_2 }
-	# 	}
-	# }
-	
 	effect = {
 		custom_tooltip = dragon_blood_legacy_3_effect_tt
 	}
@@ -77,14 +73,7 @@ dragon_blood_legacy_3 = {
 
 dragon_blood_legacy_4 = {
 	legacy = dragon_blood_legacy
-	
-	# can_be_picked = {
-	# 	custom_description = {
-	# 		text = must_have_dragon_blood_legacy_3
-	# 		dynasty = { has_dynasty_perk = dragon_blood_legacy_3 }
-	# 	}
-	# }
-	
+		
 	effect = {
 		custom_tooltip = dragon_blood_legacy_4_effect_tt
 	}
@@ -95,21 +84,14 @@ dragon_blood_legacy_4 = {
 		knight_effectiveness_mult = 0.15
 	}
 	
-	ai_chance = {
-		value = 100
+	traits = {
+		arick_blood_3 = 20
 	}
 }
 
 dragon_blood_legacy_5 = {
 	legacy = dragon_blood_legacy
-	
-	# can_be_picked = {
-	# 	custom_description = {
-	# 		text = must_have_dragon_blood_legacy_4
-	# 		dynasty = { has_dynasty_perk = dragon_blood_legacy_4 }
-	# 	}
-	# }
-	
+		
 	effect = {
 		custom_tooltip = dragon_blood_legacy_5_effect_tt
 	}

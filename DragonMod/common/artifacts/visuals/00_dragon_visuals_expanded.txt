@@ -1,0 +1,368 @@
+﻿############################################
+# Dragon Mod Expansion - Artifact Visuals
+# Extends Dragon World with Elder & Primordial stages
+# File: common/artifacts/visuals/00_dragon_visuals_expanded.txt
+############################################
+
+dragon_egg_visual = {
+	icon = "dragon_egg_image.dds"
+}
+
+dragon_court = {
+	default_type = pedestal
+	icon = "dragon.dds"
+	asset = ep1_generic_jewelry_01_a_entity
+	pedestal = "short_pillow"
+}
+
+hatchling_dragon_visual = {
+	icon = "hatchling_dragon.dds"
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "hatchling_fire_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "hatchling_water_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "hatchling_stone_dragon.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+adolescent_dragon_visual = {
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "teenage_fire_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "teenage_water_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "teenage_stone_dragon.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+young_dragon_visual = {
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "young_fire_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "young_water_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "young_stone_dragon.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+adult_dragon_visual = {
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "fire_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "water_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "stone_dragon.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+ancient_dragon_visual = {
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "ancient_fire_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "ancient_water_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "ancient_stone_dragon.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+# ═══════════════════════════════════════════
+# ELDER DRAGON VISUALS
+# ═══════════════════════════════════════════
+
+elder_dragon_visual = {
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "elder_fire_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "elder_water_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "elder_stone_dragon.dds"
+	}
+	# Fallback if no element (shouldn't happen)
+	icon = {
+		trigger = { always = yes }
+		reference = "elder_fire_dragon.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+# ═══════════════════════════════════════════
+# PRIMORDIAL DRAGON VISUALS
+# ═══════════════════════════════════════════
+
+primordial_dragon_visual = {
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "primordial_fire_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "primordial_water_dragon.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "primordial_stone_dragon.dds"
+	}
+	# Fallback
+	icon = {
+		trigger = { always = yes }
+		reference = "primordial_fire_dragon.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+# ═══════════════════════════════════════════
+# DRAGON RELIC VISUALS
+# ═══════════════════════════════════════════
+
+dragon_skull_visual = {
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "dragon_skull_fire.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "dragon_skull_water.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "dragon_skull_stone.dds"
+	}
+	icon = {
+		trigger = { always = yes }
+		reference = "dragon_skull_fire.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+dragon_bones_visual = {
+	icon = "dragon_bones.dds"
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+dragon_heart_visual = {
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "dragon_heart_fire.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "dragon_heart_water.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "dragon_heart_stone.dds"
+	}
+	icon = {
+		trigger = { always = yes }
+		reference = "dragon_heart_fire.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+dragonscale_cloak_visual = {
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "dragonscale_cloak_fire.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "dragonscale_cloak_water.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "dragonscale_cloak_stone.dds"
+	}
+	icon = {
+		trigger = { always = yes }
+		reference = "dragonscale_cloak_fire.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+dragon_fang_weapon_visual = {
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_fire
+			}
+		}
+		reference = "dragon_fang_fire.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_water
+			}
+		}
+		reference = "dragon_fang_water.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				has_artifact_feature = dragon_element_stone
+			}
+		}
+		reference = "dragon_fang_stone.dds"
+	}
+	icon = {
+		trigger = { always = yes }
+		reference = "dragon_fang_fire.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}

@@ -1,0 +1,53 @@
+﻿l_english:
+ ##############################
+ # EXPANDED DECISIONS
+ ##############################
+ 
+ # Search for Wild Dragons
+ search_for_wild_dragons_decision:0 "Search for Wild Dragons"
+ search_for_wild_dragons_decision_desc:0 "The mountains and wilderness of our ancestral lands still harbor wild dragons. Send an expedition to find one."
+ search_for_wild_dragons_decision_effect_tt:0 "An expedition will be sent to search for wild dragons in the wilderness."
+ search_for_wild_dragons_lore_found_tt:0 "While no dragon was found, valuable dragon lore was discovered."
+ search_for_wild_dragons_injured_tt:0 "The expedition ended in disaster—you were injured by a wild dragon."
+ 
+ # Host Dragon Tournament
+ host_dragon_tournament_decision:0 "Host Dragon Tournament"
+ host_dragon_tournament_decision_desc:0 "Invite dragon riders from across the realm to compete in aerial combat and displays of skill. Such tournaments bring great prestige."
+ host_dragon_tournament_decision_effect_tt:0 "A grand dragon tournament will be organized, attracting riders from far and wide."
+ 
+ # Establish Dragon Breeding Program
+ establish_dragon_breeding_program_decision:0 "Establish Dragon Breeding Program"
+ establish_dragon_breeding_program_decision_desc:0 "Dedicate resources to systematically breeding dragons, selecting for desired traits and ensuring the continuation of bloodlines."
+ establish_dragon_breeding_program_decision_effect_tt:0 "A dragon breeding program will be established in your capital."
+ dragon_breeding_program_established_tt:0 "The dragon breeding program has been established. Eggs will be more plentiful."
+ 
+ # Commission Scorpion Towers
+ commission_scorpion_towers_decision:0 "Commission Scorpion Towers"
+ commission_scorpion_towers_decision_desc:0 "Build defensive towers equipped with scorpion ballistae capable of bringing down dragons."
+ commission_scorpion_towers_decision_effect_tt:0 "Scorpion towers will be constructed to defend against aerial assault."
+ scorpion_towers_ready_tt:0 "The scorpion towers are complete and ready to defend against dragons."
+ 
+ # Offer Dragon Tribute
+ offer_dragon_tribute_decision:0 "Offer Dragon Tribute"
+ offer_dragon_tribute_decision_desc:0 "Rather than risk the wrath of dragonlords, offer tribute to ensure peace and protection."
+ offer_dragon_tribute_decision_effect_tt:0 "Tribute will be sent to a neighboring dragonlord in exchange for peace."
+ no_dragonlord_found_tt:0 "No suitable dragonlord could be found to receive tribute."
+ 
+ # Claim Dragon Egg
+ claim_dragon_egg_decision:0 "Claim Dragon Egg from Hatchery"
+ claim_dragon_egg_decision_desc:0 "Your dragon hatchery may have produced a viable egg. Attempt to claim one."
+ claim_dragon_egg_decision_effect_tt:0 "An attempt will be made to find a viable dragon egg in your hatchery."
+ found_stone_egg_tt:0 "A petrified dragon egg was found—beautiful but lifeless."
+ no_eggs_available_tt:0 "No viable eggs were available at this time."
+ 
+ # Declare Dragon Hunt
+ declare_dragon_hunt_decision:0 "Declare Dragon Hunt"
+ declare_dragon_hunt_decision_desc:0 "Rally the realm's dragon hunters for a coordinated campaign against the dragonlords and their beasts."
+ declare_dragon_hunt_decision_effect_tt:0 "A realm-wide dragon hunt will be declared, rallying all who oppose the scaled tyrants."
+ dragon_hunt_declared_tt:0 "The dragon hunt has been declared! All dragon hunters rally to your banner."
+ 
+ # Clear Ground for Dragon Pit
+ clear_ground_for_dragon_pit:0 "Clear Ground for Dragon Pit"
+ clear_ground_for_dragon_pit_toast:0 "Ground cleared for dragon pit construction."
+ 
+ 

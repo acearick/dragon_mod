@@ -1,5 +1,25 @@
 ﻿l_english:
  ##############################
+ # ACTUAL DRAGON UNITS
+ ##############################
+ 
+ # War Drakes
+ war_drakes:0 "War Drakes"
+ war_drakes_flavor:0 "These minor dragons—too small to carry a rider but deadly nonetheless—hunt in packs across the battlefield. Bred for aggression and trained to respond to horn signals, war drakes breathe gouts of flame and tear through enemy formations with tooth and claw. Their handlers must be careful, for these beasts recognize only strength."
+ 
+ # Hatchling Swarm
+ hatchling_swarm:0 "Hatchling Swarm"
+ hatchling_swarm_flavor:0 "Young dragons not yet large enough for war are nonetheless terrifying to common soldiers. Released in swarms, these hatchlings harry enemy lines, scatter cavalry horses, and chase down fleeing troops. What they lack in raw power they make up for in speed and numbers—and the promise of what they will become."
+ 
+ # Firedrakes
+ firedrakes:0 "Firedrakes"
+ firedrakes_flavor:0 "Mature minor dragons selectively bred for warfare over generations. Firedrakes cannot match true dragons in size or intelligence, but they are far easier to control and can be fielded in greater numbers. Their fiery breath can melt armor and their scaled hides turn aside most weapons. An army with firedrakes has an army that burns."
+ 
+ # Elder Wyrms
+ elder_wyrms:0 "Elder Wyrms"
+ elder_wyrms_flavor:0 "The oldest and most powerful of the minor dragon breeds, elder wyrms are living siege engines. Centuries of careful breeding have produced creatures of immense size and terrible fury. Where elder wyrms walk, fortresses fall and armies flee. Only the most powerful dragonlord dynasties can afford to maintain such devastating weapons of war."
+ 
+ ##############################
  # PRO-DRAGON MEN-AT-ARMS
  ##############################
  
@@ -15,6 +35,14 @@
  scaled_guard:0 "Scaled Guard"
  scaled_guard_flavor:0 "The personal bodyguards of dragonlord houses, clad in armor fashioned from shed dragon scales. These elite soldiers are sworn to protect their lords unto death, and their distinctive armor marks them as the most dangerous warriors in any realm."
  
+ # Dragon Bannermen Maa
+ dragon_bannermen_maa:0 "Dragon Bannermen"
+ dragon_bannermen_maa_flavor:0 "The Dragon Bannermen are a group of warriors who have sworn to protect the Dragon and it's rider"
+
+ # Lord's Chosen Maa
+ lords_chosen_maa:0 "Lord's Chosen"
+ lords_chosen_maa_flavor:0 "The Lord's Chosen are a group of dragon riders who serve and ride alongside their Dragon Lord as their personal guard"
+
  ##############################
  # ANTI-DRAGON MEN-AT-ARMS
  ##############################

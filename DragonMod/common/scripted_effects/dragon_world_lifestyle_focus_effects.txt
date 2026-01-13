@@ -1,0 +1,201 @@
+﻿#Dragonmaster
+dragonmaster_progress_point_gain_effect = {
+	if = {
+		limit = { is_alive = yes }
+		if = {
+			limit = {
+				NOT = { exists = var:dragonmaster_lifestyle_progress }
+			}
+			set_variable = {
+				name = dragonmaster_lifestyle_progress
+				value = $CHANGE$
+			}
+		}
+		else = {
+			change_variable = {
+				name = dragonmaster_lifestyle_progress
+				add = $CHANGE$
+			}
+		}
+		save_scope_value_as = {
+			name = dragonmaster_base_increase
+			value = $CHANGE$
+		}
+		# Tooltips
+		if = {
+			limit = { scope:dragonmaster_base_increase <= 1 }
+			custom_tooltip = dragon_rider_progress_towards_trait_1_tt
+		}
+		else_if = {
+			limit = { scope:dragonmaster_base_increase = 2 }
+			custom_tooltip = dragon_rider_progress_towards_trait_2_tt
+		}
+		else = { custom_tooltip = dragon_rider_progress_towards_trait_3_tt }
+		#Random chance of additional point to increase unpredictability
+		hidden_effect = {
+			random = {
+				chance = 30
+				change_variable = {
+					name = dragonmaster_lifestyle_progress
+					add = $RANDOM_CHANGE$
+				}
+			}
+		}
+	}
+}
+
+dragonmaster_lifestyle_rank_up_check_effect = {
+	save_scope_value_as = {
+		name = dragon_hatcher
+		value = $DRAGON_HATCHER$
+	}
+	save_scope_value_as = {
+		name = dragon_slayer
+		value = $DRAGON_SLAYER$
+	}
+	if = {
+		limit = {
+			is_alive = yes
+			has_trait = lifestyle_dragonmaster
+			exists = var:dragonmaster_lifestyle_progress
+		}
+		add_trait = lifestyle_dragonmaster
+	}
+	# else_if = { # To show host trait gain for guests
+	# 	limit = {
+	# 		is_alive = yes
+	# 		exists = var:dragonmaster_lifestyle_progress
+	# 		NOT = { has_character_flag = host_existing_hunter }
+	# 	}
+	# 	add_trait_force_tooltip = lifestyle_dragonmaster
+	# }
+	if = {
+		limit = {
+			is_alive = yes 
+			exists = var:dragonmaster_lifestyle_progress
+			has_trait = lifestyle_dragonmaster
+			scope:dragon_hatcher = yes
+		}
+		send_interface_toast = {
+			title = dragonmaster_xp_gain_message
+			if = {
+				limit = { var:dragonmaster_lifestyle_progress >= 7 }
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_hatcher
+					value = 15
+				}
+			}
+			else_if = {
+				limit = { var:dragonmaster_lifestyle_progress >= 5 }
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_hatcher
+					value = 10
+				}
+			}
+			else_if = {
+				limit = { var:dragonmaster_lifestyle_progress >= 3 }
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_hatcher
+					value = 5
+				}
+			}
+			else = {
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_hatcher
+					value = 3
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			is_alive = yes 
+			exists = var:dragonmaster_lifestyle_progress
+			has_trait = lifestyle_dragonmaster
+			scope:dragon_slayer = yes
+		}
+		send_interface_toast = {
+			title = dragonmaster_xp_gain_message
+			if = {
+				limit = { var:dragonmaster_lifestyle_progress >= 7 }
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_slayer
+					value = 15
+				}
+			}
+			else_if = {
+				limit = { var:dragonmaster_lifestyle_progress >= 5 }
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_slayer
+					value = 10
+				}
+			}
+			else_if = {
+				limit = { var:dragonmaster_lifestyle_progress >= 3 }
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_slayer
+					value = 5
+				}
+			}
+			else = {
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_slayer
+					value = 3
+				}
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			is_alive = yes
+			exists = var:dragonmaster_lifestyle_progress
+			has_trait = lifestyle_dragonmaster
+		}
+		send_interface_toast = {
+			title = dragonmaster_xp_gain_message
+			if = {
+				limit = { var:dragonmaster_lifestyle_progress >= 7 }
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_rider
+					value = 15
+				}
+			}
+			else_if = {
+				limit = { var:dragonmaster_lifestyle_progress >= 5 }
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_rider
+					value = 10
+				}
+			}
+			else_if = {
+				limit = { var:dragonmaster_lifestyle_progress >= 3 }
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_rider
+					value = 5
+				}
+			}
+			else = {
+				add_trait_xp = {
+					trait = lifestyle_dragonmaster
+					track = dragon_rider
+					value = 3
+				}
+			}
+		}
+	}
+	set_variable = {
+		name = dragonmaster_lifestyle_progress
+		value = 0
+	}
+}

@@ -1,0 +1,137 @@
+﻿############################################
+# Dragon Mod Expansion - On Actions
+# Triggers expanded dragon aging system
+# File: common/on_action/dragon_aging_on_actions.txt
+############################################
+
+# ═══════════════════════════════════════════
+# YEARLY PULSE - Dragon Aging
+# Extends Dragon World's random_yearly_everyone_pulse
+# ═══════════════════════════════════════════
+
+random_yearly_everyone_pulse = {
+	on_actions = {
+		on_dragon_aging_expanded_pulse
+	}
+}
+
+on_dragon_aging_expanded_pulse = {
+	effect = {
+		# Only trigger if character has any dragon artifact
+		if = {
+			limit = {
+				any_character_artifact = {
+					OR = {
+						artifact_type = type_hatchling_dragon
+						artifact_type = type_adolescent_dragon
+						artifact_type = type_young_dragon
+						artifact_type = type_adult_dragon
+						artifact_type = type_ancient_dragon
+						artifact_type = type_elder_dragon
+						artifact_type = type_primordial_dragon
+					}
+				}
+			}
+			trigger_event = dragon_aging_expanded.0001
+		}
+	}
+}
+
+# ═══════════════════════════════════════════
+# ON ARTIFACT INHERITANCE
+# Initialize variables when dragon changes hands
+# ═══════════════════════════════════════════
+
+on_artifact_inheritance = {
+	on_actions = {
+		on_dragon_inheritance_check
+	}
+}
+
+on_dragon_inheritance_check = {
+	effect = {
+		scope:artifact = {
+			if = {
+				limit = {
+					OR = {
+						artifact_type = type_hatchling_dragon
+						artifact_type = type_adolescent_dragon
+						artifact_type = type_young_dragon
+						artifact_type = type_adult_dragon
+						artifact_type = type_ancient_dragon
+						artifact_type = type_elder_dragon
+						artifact_type = type_primordial_dragon
+					}
+				}
+				# Ensure dragon_age variable exists
+				if = {
+					limit = { NOT = { has_variable = dragon_age } }
+					# Set default based on type
+					if = {
+						limit = { artifact_type = type_hatchling_dragon }
+						set_variable = { name = dragon_age value = 3 }
+					}
+					else_if = {
+						limit = { artifact_type = type_adolescent_dragon }
+						set_variable = { name = dragon_age value = 8 }
+					}
+					else_if = {
+						limit = { artifact_type = type_young_dragon }
+						set_variable = { name = dragon_age value = 30 }
+					}
+					else_if = {
+						limit = { artifact_type = type_adult_dragon }
+						set_variable = { name = dragon_age value = 100 }
+					}
+					else_if = {
+						limit = { artifact_type = type_elder_dragon }
+						set_variable = { name = dragon_age value = 180 }
+					}
+					else_if = {
+						limit = { artifact_type = type_ancient_dragon }
+						set_variable = { name = dragon_age value = 270 }
+					}
+					else_if = {
+						limit = { artifact_type = type_primordial_dragon }
+						set_variable = { name = dragon_age value = 350 }
+					}
+				}
+			}
+		}
+	}
+}
+
+# ═══════════════════════════════════════════
+# ON CHARACTER DEATH
+# Handle dragon transfer or wild dragon event
+# ═══════════════════════════════════════════
+
+on_death = {
+	on_actions = {
+		on_dragon_owner_death
+	}
+}
+
+on_dragon_owner_death = {
+	effect = {
+		# Dragons pass to heir normally via artifact inheritance
+		# But we can add flavor events here if desired
+		
+		# Check if dying character had a dragon
+		if = {
+			limit = {
+				any_character_artifact = {
+					OR = {
+						artifact_type = type_young_dragon
+						artifact_type = type_adult_dragon
+						artifact_type = type_elder_dragon
+						artifact_type = type_ancient_dragon
+						artifact_type = type_primordial_dragon
+					}
+				}
+			}
+			# Could trigger event for heir about inheriting dragon
+			# Or event about dragon going wild if no valid heir
+		}
+	}
+}

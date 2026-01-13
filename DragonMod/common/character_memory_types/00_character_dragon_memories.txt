@@ -1,0 +1,26 @@
+﻿dragon_tamed = {
+	categories = { positive }
+	# icon = "friend.dds"
+	icon = "dragon.dds"
+	description = {
+		random_valid = {
+			desc = dragon_tamed_desc
+		}
+	}
+
+	second_perspective_description = {
+		random_valid = {
+			desc = dragon_tamed_desc_second_perspective
+		}
+	}
+
+	third_perspective_description = {
+		random_valid = {
+			desc = dragon_tamed_desc_third_perspective
+		}
+	}
+	
+	duration = {
+		years = memory_default_duration
+	}
+}

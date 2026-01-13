@@ -192,3 +192,18 @@
  trait_stone_egg_owner:0 "Stone Egg Owner"
  trait_stone_egg_owner_desc:0 "This character possesses a petrified dragon egg—once a vessel of life, now a beautiful curiosity. Some say they can still be awakened."
  trait_stone_egg_owner_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] possesses a petrified dragon egg. Though turned to stone, some whisper that the right ritual might still awaken the dragon within."
+
+ 	# # Dragon Master
+	# trait_lifestyle_dragonmaster:0 "Dragon Master"
+	# trait_track_dragon_rider:0 "Dragon Rider"
+	# trait_track_dragon_rider_desc:0 "This character knows how to ride a dragon."
+	# trait_track_dragon_slayer:0 "Dragon Slayer"
+	# trait_track_dragon_slayer_desc:0 "This character knows the best ways of how to slay a dragon."
+	# trait_track_dragon_hatcher:0 "Dragon Hatcher"
+	# trait_track_dragon_hatcher_desc:0 "This character has studied countless books and manuscripts regarding the art of Dragon Hatching, this is no easy feet and from their increased  exposure to Dragon Eggs they are likely to not live as long as most…"
+	# trait_dragon_rider_desc:0 "This character knows the way of the dragon"
+
+	# # Dragon Blood
+	# trait_dragon_blood:0 "Dragon Blood"
+	# trait_dragon_blood_desc:0 "This character is of a dragon bloodline."
+	# trait_dragon_blood_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is of a dragon bloodline."
