@@ -25,7 +25,7 @@
 # - type_ancient_dragon
 
 dragon = {
-	slot = dragon
+	slot = Dragon
 	required_features = { dragon_element_type }
 	can_reforge = no
 }
@@ -38,45 +38,45 @@ dragon_egg = {
 }
 
 type_hatchling_dragon = {
-	slot = dragon
+	slot = Dragon
 	required_features = { dragon_element_type }
 	can_reforge = no
 }
 
 type_adolescent_dragon = {
-	slot = dragon
+	slot = Dragon
 	required_features = { dragon_element_type }
 	can_reforge = no
 }
 
 type_young_dragon = {
-	slot = dragon
+	slot = Dragon
 	required_features = { dragon_element_type }
 	can_reforge = no
 }
 
 type_adult_dragon = {
-	slot = dragon
+	slot = Dragon
 	required_features = { dragon_element_type }
 	can_reforge = no
 }
 
 type_ancient_dragon = {
-	slot = dragon
+	slot = Dragon
 	required_features = { dragon_element_type }
 	can_reforge = no
 }
 
 # NEW: Elder Dragon - Beginning of decline
 type_elder_dragon = {
-	slot = dragon
+	slot = Dragon
 	required_features = { dragon_element_type }
 	can_reforge = no
 }
 
 # NEW: Primordial Dragon - Mythic tier
 type_primordial_dragon = {
-	slot = dragon
+	slot = Dragon
 	required_features = { dragon_element_type }
 	can_reforge = no
 }
@@ -118,4 +118,23 @@ type_dragon_fang_weapon = {
 	slot = primary_armament
 	required_features = { dragon_element_type }
 	can_reforge = yes
+}
+
+# ═══════════════════════════════════════════
+# DRAGON HIDE (Court Artifacts)
+# Wall decorations from slain dragons
+# ═══════════════════════════════════════════
+
+# Dragon Hide - Small wall display (partial hide or smaller dragon)
+dragon_hide = {
+	slot = wall_small
+	required_features = { dragon_hide_type }
+	can_reforge = no
+}
+
+# Dragon Hide Big - Large wall display (full dragon hide)
+dragon_hide_big = {
+	slot = wall_big
+	required_features = { dragon_hide_type }
+	can_reforge = no
 }

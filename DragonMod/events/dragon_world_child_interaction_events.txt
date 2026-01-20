@@ -1,0 +1,196 @@
+﻿namespace = teach_child_to_be_dragon_rider_interaction
+
+# Basic Success Event
+teach_child_to_be_dragon_rider_interaction.1001 = { # Success
+	type = character_event
+	content_source = dlc_009
+	title = teach_child_to_be_dragon_rider_interaction.1001.t
+	desc = {
+		desc = teach_child_to_be_dragon_rider_interaction.1001.desc
+	}
+	theme = family
+	override_background = {
+		trigger = {
+			scope:recipient = {
+				age < 12
+			}
+		}
+		reference = bp2_nursery
+	}
+	override_background = {
+		trigger = {
+			scope:recipient = {
+				age >= 12
+			}
+		}
+		reference = garden
+	}
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = admiration
+	}
+
+	trigger = {
+		exists = scope:target_trait
+	}
+
+	immediate = {
+		scope:recipient = {
+			set_favorite_toy_effect = yes
+		}
+	}
+
+	option = { 
+		name = teach_child_to_be_dragon_rider_interaction.1001.a
+		add_opinion = {
+			target = scope:recipient
+			modifier = pleased_opinion
+			opinion = 20
+		}
+		scope:recipient = {
+			add_trait = scope:target_trait
+			if = {
+				limit = {
+					scope:target_trait = trait:dragon_rider
+				}
+				add_trait_xp = {
+					trait = dragon_rider
+					track = dragon_training
+					value = 25 # Novice
+				}
+			}
+			add_opinion = {
+				target = root
+				modifier = admiration_opinion
+				opinion = 20
+			}
+		}
+		if = {
+			limit = {
+				scope:recipient = {
+					any_parent = {
+						NOT = { this = root }
+						is_ai = no
+					}
+				}
+			}
+			scope:recipient = {
+				every_parent = {
+					limit = {
+						NOT = { this = root }
+					 	is_ai = no
+					}
+					send_interface_message = {
+						type = event_generic_neutral_text
+						title = guardian_influenced_personality
+						desc = guardian_influenced_personality_desc
+						left_icon = scope:recipient
+						right_icon = scope:actor
+					}
+				}
+			}
+		}
+		stress_impact = {
+			base = minor_stress_impact_gain
+		}
+	}
+}
+
+# Basic Failure Event
+teach_child_to_be_dragon_rider_interaction.1002 = { # Failure
+	type = character_event
+	content_source = dlc_009
+	title = teach_child_to_be_dragon_rider_interaction.1002.t
+	desc = {
+		desc = teach_child_to_be_dragon_rider_interaction.1002.desc
+	}
+	theme = family
+	override_background = {
+		trigger = {
+			scope:recipient = {
+				age < 12
+			}
+		}
+		reference = bp2_nursery
+	}
+	override_background = {
+		trigger = {
+			scope:recipient = {
+				age >= 12
+			}
+		}
+		reference = garden
+	}
+	
+	left_portrait = {
+		character = root
+		animation = stress
+	}
+	right_portrait = {
+		character = scope:recipient
+		triggered_animation = {
+			trigger = { scope:target_trait = trait:paranoid }
+			animation = disapproval
+		}
+		triggered_animation = {
+			trigger = { scope:recipient = { age >= 12 } }
+			animation = shame
+		}
+		animation = clutching_toy
+	}
+
+	immediate = {
+		scope:recipient = {
+			set_favorite_toy_effect = yes
+		}
+	}
+
+	option = { 
+		name = teach_child_to_be_dragon_rider_interaction.1002.a
+		scope:recipient = {
+			add_opinion = {
+				target = root
+				modifier = confused_opinion
+				opinion = -20
+			}
+		}
+		add_opinion = {
+			target = scope:recipient
+			modifier = disappointed_opinion
+			opinion = -20
+		}
+		if = {
+			limit = {
+				scope:recipient = {
+					any_parent = {
+						NOT = { this = root }
+						is_ai = no
+					}
+				}
+			}
+			scope:recipient = {
+				every_parent = {
+					limit = {
+						NOT = { this = root }
+					 	is_ai = no
+					}
+					send_interface_message = {
+						type = event_generic_neutral_text
+						title = guardian_influenced_personality_fail
+						desc = guardian_influenced_personality_fail_desc
+						left_icon = scope:recipient
+						right_icon = scope:actor
+					}
+				}
+			}
+		}
+		stress_impact = {
+			base = medium_stress_impact_gain
+		}
+	}
+}

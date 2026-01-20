@@ -15,7 +15,7 @@ dragon_blood_legacy_1 = {
 	}
 	
 	effect = {
-		custom_tooltip = dragon_blood_legacy_1_effect_tt
+		custom_tooltip = dragon_blood_legacy_1_effect
 		custom_tooltip = dragon_blood_legacy_1_requirement
 	}
 	
@@ -75,7 +75,7 @@ dragon_blood_legacy_4 = {
 	legacy = dragon_blood_legacy
 		
 	effect = {
-		custom_tooltip = dragon_blood_legacy_4_effect_tt
+		custom_tooltip = dragon_blood_legacy_4_effect
 	}
 	
 	character_modifier = {
@@ -93,7 +93,7 @@ dragon_blood_legacy_5 = {
 	legacy = dragon_blood_legacy
 		
 	effect = {
-		custom_tooltip = dragon_blood_legacy_5_effect_tt
+		custom_tooltip = dragon_blood_legacy_5_effect
 	}
 	
 	character_modifier = {

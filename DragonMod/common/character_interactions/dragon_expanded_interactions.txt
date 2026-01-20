@@ -111,7 +111,7 @@ challenge_dragon_duel_interaction = {
 		}
 	}
 	
-	ai_potential = {
+	is_available = {
 		is_adult = yes
 		has_dragon_rider_trigger = yes
 		has_dragon_equipped_trigger = yes
@@ -222,7 +222,7 @@ gift_dragon_egg_interaction = {
 		base = 100  # Always accept a dragon egg gift
 	}
 	
-	ai_potential = {
+	is_available = {
 		has_dragon_trigger = yes
 		OR = {
 			has_trait = dragon_egg_owner
@@ -348,9 +348,10 @@ demand_dragon_tribute_interaction = {
 				opinion = -30
 			}
 			
-			# Can be used as casus belli
-			add_character_flag = {
-				flag = tribute_refused_by_@scope:recipient
+			# Can be used as casus belli - track who refused tribute
+			set_variable = {
+				name = tribute_refused_by
+				value = scope:recipient
 				years = 10
 			}
 			
@@ -415,7 +416,7 @@ demand_dragon_tribute_interaction = {
 		}
 	}
 	
-	ai_potential = {
+	is_available = {
 		is_landed = yes
 		has_dragon_rider_trigger = yes
 		has_dragon_equipped_trigger = yes
@@ -491,6 +492,14 @@ request_dragon_training_interaction = {
 	
 	send_option = {
 		is_shown = {
+			always = yes
+		}
+		flag = train_self
+		localization = request_dragon_training_for_self
+	}
+	
+	send_option = {
+		is_shown = {
 			scope:actor = {
 				any_child = {
 					age >= 6
@@ -502,6 +511,8 @@ request_dragon_training_interaction = {
 		flag = train_child
 		localization = request_dragon_training_for_child
 	}
+	
+	send_options_exclusive = yes
 	
 	cooldown_against_recipient = { years = 10 }
 	
@@ -595,7 +606,7 @@ request_dragon_training_interaction = {
 		}
 	}
 	
-	ai_potential = {
+	is_available = {
 		is_adult = yes
 		NOT = { has_dragon_rider_trigger = yes }
 		culture = {

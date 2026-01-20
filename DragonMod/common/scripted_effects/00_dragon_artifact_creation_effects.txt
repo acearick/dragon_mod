@@ -29,6 +29,10 @@
 			name = egg_age
 			value = 0
 		}
+		set_variable = { # Marker for egg identification
+			name = is_dragon_egg
+			value = yes
+		}
 	}
 }
 
@@ -651,6 +655,221 @@ calculate_dragon_death_chance_effect = {
 			set_local_variable = {
 				name = death_chance
 				value = 50
+			}
+		}
+	}
+}
+
+# Create Dragon hide when slaying them
+create_artifact_dragon_hide_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$HUNTER$ = { save_scope_as = hunter }
+	save_scope_value_as = { name = legendary value = yes }
+	scope:owner = {
+		set_variable = { name = animal_type value = flag:dragon days = 5 }
+	}
+	if = {
+		limit = { exists = scope:adventurer }
+		scope:adventurer = { save_scope_as = creator }
+	}
+	else = {
+		scope:hunter = { save_scope_as = creator }
+	}
+	hidden_effect_new_object = {
+		# Get artifact quality, wealth, and materials
+		animal_artifact_wealth_quality_effect = yes
+		get_animal_hunt_location_effect = yes
+		scope:location = { add_to_list = artifact_material_sources }
+		if = {
+			limit = {
+				NOT = { exists = scope:animal_hide_size }
+			}
+			save_scope_value_as = { name = animal_hide_size value = flag:big }
+		}				
+		create_artifact = {
+			name = artifact_dragon_hide_name_legendary
+			creator = scope:creator
+			description = placeholder
+			visuals = dragon_hide_big_visual
+			type = dragon_hide_big
+			modifier = artifact_placeholder_modifier
+			wealth = scope:wealth
+			quality = scope:quality
+			save_scope_as = newly_created_artifact
+		}
+		scope:newly_created_artifact = {
+			# Set grandeur
+			add_scaled_artifact_modifier_grandeur_big_effect = yes
+			# Set prestige
+			add_scaled_artifact_modifier_prestige_effect = yes
+
+			set_max_durability = 60
+			set_variable = {
+				name = adventure_artifact_location
+				value = scope:owner.var:adventure_artifact_location
+			}
+			set_variable = {
+				name = adventure_artifact_hunter
+				value = scope:owner.var:adventure_artifact_hunter
+			}
+			if = {
+				limit = {
+					OR = {
+						rarity = famed
+						rarity = illustrious
+					}
+				}
+				add_scaled_artifact_modifier_dynasty_prestige_effect = yes
+			}
+			remove_artifact_modifier = artifact_placeholder_modifier
+			set_variable = {
+				name = animal_type
+				value = flag:dragon
+			}
+			# Set dragon element for visual display (if owner has dragon_type set)
+			if = {
+				limit = { scope:owner = { has_variable = dragon_type } }
+				set_variable = {
+					name = dragon_element
+					value = scope:owner.var:dragon_type
+				}
+			}
+			set_variable = {
+				name = quality
+				value = scope:quality
+			}
+			set_variable = {
+				name = wealth
+				value = scope:wealth
+			}
+			hunt_animal_artifact_modifier_selection_effect = yes
+			if = {
+				limit = { exists = scope:adventurer }
+				set_artifact_name = artifact_dragon_hide_name_adventurer
+			} else = {
+				set_artifact_name = artifact_dragon_hide_name_legendary
+				set_variable = { name = legendary }
+				add_scaled_artifact_modifier_majesty_effect = yes
+				add_scaled_artifact_modifier_combat_effect = yes
+			}
+			set_artifact_description = artifact_dragon_hide_desc
+		}
+		scope:owner = {
+			remove_variable = adventure_artifact_location
+			remove_variable = adventure_artifact_hunter
+			# Destroy the spawned dragon reference artifact now that we've used its data
+			if = {
+				limit = { exists = var:last_spawned_dragon }
+				destroy_artifact = var:last_spawned_dragon
+				remove_variable = last_spawned_dragon
+			}
+		}
+	}
+}
+# Create small Dragon hide when slaying smaller/younger dragons
+create_artifact_dragon_hide_small_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	$HUNTER$ = { save_scope_as = hunter }
+	save_scope_value_as = { name = legendary value = yes }
+	scope:owner = {
+		set_variable = { name = animal_type value = flag:dragon days = 5 }
+	}
+	if = {
+		limit = { exists = scope:adventurer }
+		scope:adventurer = { save_scope_as = creator }
+	}
+	else = {
+		scope:hunter = { save_scope_as = creator }
+	}
+	hidden_effect_new_object = {
+		# Get artifact quality, wealth, and materials
+		animal_artifact_wealth_quality_effect = yes
+		get_animal_hunt_location_effect = yes
+		scope:location = { add_to_list = artifact_material_sources }
+		if = {
+			limit = {
+				NOT = { exists = scope:animal_hide_size }
+			}
+			save_scope_value_as = { name = animal_hide_size value = flag:small }
+		}				
+		create_artifact = {
+			name = artifact_dragon_hide_name_legendary
+			creator = scope:creator
+			description = placeholder
+			visuals = dragon_hide_visual
+			type = dragon_hide
+			modifier = artifact_placeholder_modifier
+			wealth = scope:wealth
+			quality = scope:quality
+			save_scope_as = newly_created_artifact
+		}
+		scope:newly_created_artifact = {
+			# Set grandeur (smaller for small hides)
+			add_scaled_artifact_modifier_grandeur_small_effect = yes
+			# Set prestige
+			add_scaled_artifact_modifier_prestige_effect = yes
+
+			set_max_durability = 50
+			set_variable = {
+				name = adventure_artifact_location
+				value = scope:owner.var:adventure_artifact_location
+			}
+			set_variable = {
+				name = adventure_artifact_hunter
+				value = scope:owner.var:adventure_artifact_hunter
+			}
+			if = {
+				limit = {
+					OR = {
+						rarity = famed
+						rarity = illustrious
+					}
+				}
+				add_scaled_artifact_modifier_dynasty_prestige_effect = yes
+			}
+			remove_artifact_modifier = artifact_placeholder_modifier
+			set_variable = {
+				name = animal_type
+				value = flag:dragon
+			}
+			# Set dragon element for visual display (if owner has dragon_type set)
+			if = {
+				limit = { scope:owner = { has_variable = dragon_type } }
+				set_variable = {
+					name = dragon_element
+					value = scope:owner.var:dragon_type
+				}
+			}
+			set_variable = {
+				name = quality
+				value = scope:quality
+			}
+			set_variable = {
+				name = wealth
+				value = scope:wealth
+			}
+			hunt_animal_artifact_modifier_selection_effect = yes
+			if = {
+				limit = { exists = scope:adventurer }
+				set_artifact_name = artifact_dragon_hide_name_adventurer
+			} else = {
+				set_artifact_name = artifact_dragon_hide_name_legendary
+				set_variable = { name = legendary }
+				add_scaled_artifact_modifier_majesty_effect = yes
+				add_scaled_artifact_modifier_combat_effect = yes
+			}
+			set_artifact_description = artifact_dragon_hide_desc
+		}
+		scope:owner = {
+			remove_variable = adventure_artifact_location
+			remove_variable = adventure_artifact_hunter
+			# Destroy the spawned dragon reference artifact now that we've used its data
+			if = {
+				limit = { exists = var:last_spawned_dragon }
+				destroy_artifact = var:last_spawned_dragon
+				remove_variable = last_spawned_dragon
 			}
 		}
 	}

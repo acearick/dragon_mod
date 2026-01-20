@@ -1,0 +1,872 @@
+﻿############################################
+# Dragon Mod - Expanded Decisions
+# File: common/decisions/dragon_expanded_decisions.txt
+############################################
+
+##########
+# SEARCH FOR WILD DRAGONS
+# For Arick heritage cultures to find dragons in the wilderness
+##########
+search_for_wild_dragons_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_major_hunt.dds"
+	}
+	
+	desc = search_for_wild_dragons_decision_desc
+	
+	decision_group_type = major
+	
+	cooldown = { years = 5 }
+	
+	ai_check_interval = 60
+	
+	ai_potential = {
+		is_landed = yes
+		is_adult = yes
+		NOT = { has_dragon_trigger = yes }
+		culture = {
+			has_cultural_pillar = heritage_arick
+		}
+	}
+	
+	ai_will_do = {
+		base = 50
+		modifier = {
+			add = 50
+			has_trait = brave
+		}
+		modifier = {
+			add = 25
+			has_trait = ambitious
+		}
+		modifier = {
+			factor = 0
+			has_trait = craven
+		}
+	}
+	
+	is_shown = {
+		is_adult = yes
+		culture = {
+			has_cultural_pillar = heritage_arick
+		}
+		NOT = { has_dragon_trigger = yes }
+	}
+	
+	is_valid = {
+		is_available = yes
+		culture = {
+			has_cultural_pillar = heritage_arick
+		}
+		prestige_level >= 2
+		NOT = { has_dragon_trigger = yes }
+	}
+	
+	cost = {
+		gold = {
+			value = 200
+		}
+		prestige = {
+			value = 150
+		}
+	}
+	
+	effect = {
+		custom_tooltip = search_for_wild_dragons_decision_effect_tt
+		trigger_event = {
+			id = dragon_expanded_decisions.0001
+			days = { 30 60 }
+		}
+	}
+}
+
+##########
+# HOST DRAGON TOURNAMENT
+# Prestige event for dragonlords
+##########
+host_dragon_tournament_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_golden_obligations.dds"
+	}
+	
+	desc = host_dragon_tournament_decision_desc
+	
+	decision_group_type = major
+	
+	cooldown = { years = 10 }
+	
+	ai_check_interval = 120
+	
+	ai_potential = {
+		is_landed = yes
+		highest_held_title_tier >= tier_duchy
+		has_dragon_rider_trigger = yes
+		has_dragon_equipped_trigger = yes
+	}
+	
+	ai_will_do = {
+		base = 25
+		modifier = {
+			add = 50
+			has_trait = ambitious
+		}
+		modifier = {
+			add = 25
+			has_trait = arrogant
+		}
+	}
+	
+	is_shown = {
+		is_landed = yes
+		highest_held_title_tier >= tier_duchy
+		has_dragon_rider_trigger = yes
+	}
+	
+	is_valid = {
+		is_available = yes
+		has_dragon_equipped_trigger = yes
+		gold >= 500
+	}
+	
+	cost = {
+		gold = {
+			value = 500
+		}
+		prestige = {
+			value = 200
+		}
+	}
+	
+	effect = {
+		custom_tooltip = host_dragon_tournament_decision_effect_tt
+		trigger_event = {
+			id = dragon_expanded_decisions.0010
+			days = { 14 30 }
+		}
+	}
+}
+
+##########
+# ESTABLISH DRAGON BREEDING PROGRAM
+# For cultures with dragon_breeders tradition
+##########
+establish_dragon_breeding_program_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_major_ducal.dds"
+	}
+	
+	desc = establish_dragon_breeding_program_decision_desc
+	
+	decision_group_type = major
+	
+	is_shown = {
+		is_landed = yes
+		culture = {
+			has_cultural_tradition = tradition_dragon_breeders
+		}
+		NOT = { has_character_flag = has_breeding_program }
+	}
+	
+	is_valid = {
+		highest_held_title_tier >= tier_duchy
+		gold >= 1000
+		has_dragon_trigger = yes
+	}
+	
+	cost = {
+		gold = {
+			value = 1000
+		}
+		prestige = {
+			value = 500
+		}
+	}
+	
+	effect = {
+		add_character_flag = {
+			flag = has_breeding_program
+		}
+		custom_tooltip = establish_dragon_breeding_program_decision_effect_tt
+		add_character_modifier = {
+			modifier = dragon_breeding_program_modifier
+			years = 50
+		}
+		trigger_event = {
+			id = dragon_expanded_decisions.0020
+			days = 7
+		}
+	}
+	
+	ai_check_interval = 120
+	
+	ai_potential = {
+		is_landed = yes
+		culture = {
+			has_cultural_tradition = tradition_dragon_breeders
+		}
+	}
+	
+	ai_will_do = {
+		base = 100
+	}
+}
+
+##########
+# COMMISSION SCORPION TOWERS
+# For anti-dragon cultures
+##########
+commission_scorpion_towers_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	
+	desc = commission_scorpion_towers_decision_desc
+	
+	cooldown = { years = 15 }
+	
+	is_shown = {
+		is_landed = yes
+		culture = {
+			OR = {
+				has_cultural_tradition = tradition_dragonslayers
+				has_cultural_tradition = tradition_dragon_hunters
+				has_cultural_tradition = tradition_dragon_fearers
+			}
+		}
+	}
+	
+	is_valid = {
+		highest_held_title_tier >= tier_county
+		gold >= 300
+	}
+	
+	cost = {
+		gold = {
+			value = 300
+		}
+	}
+	
+	effect = {
+		custom_tooltip = commission_scorpion_towers_decision_effect_tt
+		capital_county = {
+			add_county_modifier = {
+				modifier = scorpion_tower_defense_modifier
+				years = 25
+			}
+		}
+		trigger_event = {
+			id = dragon_expanded_decisions.0030
+			days = 7
+		}
+	}
+	
+	ai_check_interval = 60
+	
+	ai_potential = {
+		is_landed = yes
+		culture = {
+			OR = {
+				has_cultural_tradition = tradition_dragonslayers
+				has_cultural_tradition = tradition_dragon_hunters
+			}
+		}
+	}
+	
+	ai_will_do = {
+		base = 25
+		modifier = {
+			add = 75
+			any_neighboring_top_liege_realm_owner = {
+				has_dragon_rider_trigger = yes
+			}
+		}
+	}
+}
+
+##########
+# OFFER DRAGON TRIBUTE
+# For dragon tributaries tradition
+##########
+offer_dragon_tribute_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_golden_obligations.dds"
+	}
+	
+	desc = offer_dragon_tribute_decision_desc
+	
+	cooldown = { years = 3 }
+	
+	is_shown = {
+		is_landed = yes
+		culture = {
+			has_cultural_tradition = tradition_dragon_tributaries
+		}
+		any_neighboring_top_liege_realm_owner = {
+			has_dragon_rider_trigger = yes
+		}
+	}
+	
+	is_valid = {
+		gold >= 200
+		any_neighboring_top_liege_realm_owner = {
+			has_dragon_rider_trigger = yes
+			NOT = { is_at_war_with = root }
+		}
+	}
+	
+	cost = {
+		gold = {
+			value = 200
+		}
+	}
+	
+	effect = {
+		custom_tooltip = offer_dragon_tribute_decision_effect_tt
+		trigger_event = {
+			id = dragon_expanded_decisions.0040
+			days = 7
+		}
+	}
+	
+	ai_check_interval = 36
+	
+	ai_potential = {
+		is_landed = yes
+		culture = {
+			has_cultural_tradition = tradition_dragon_tributaries
+		}
+	}
+	
+	ai_will_do = {
+		base = 50
+		modifier = {
+			add = 50
+			any_neighboring_top_liege_realm_owner = {
+				has_dragon_rider_trigger = yes
+				opinion = {
+					target = root
+					value < 0
+				}
+			}
+		}
+	}
+}
+
+##########
+# CLAIM DRAGON EGG FROM HATCHERY
+# For rulers with dragon hatchery buildings
+##########
+claim_dragon_egg_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_legend.dds"
+	}
+	
+	desc = claim_dragon_egg_decision_desc
+	
+	cooldown = { years = 5 }
+	
+	is_shown = {
+		is_landed = yes
+		OR = {
+			any_held_county = {
+				any_county_province = {
+					has_building = dragon_hatchery_01
+				}
+			}
+			any_held_county = {
+				any_county_province = {
+					has_building = dragon_hatchery_02
+				}
+			}
+			any_held_county = {
+				any_county_province = {
+					has_building = dragon_hatchery_03
+				}
+			}
+		}
+	}
+	
+	is_valid = {
+		is_available = yes
+		gold >= 150
+	}
+	
+	cost = {
+		gold = {
+			value = 150
+		}
+		piety = {
+			value = 100
+		}
+	}
+	
+	effect = {
+		custom_tooltip = claim_dragon_egg_decision_effect_tt
+		trigger_event = {
+			id = dragon_expanded_decisions.0050
+			days = { 30 90 }
+		}
+	}
+	
+	ai_check_interval = 60
+	
+	ai_potential = {
+		is_landed = yes
+		NOT = { has_dragon_trigger = yes }
+	}
+	
+	ai_will_do = {
+		base = 75
+		modifier = {
+			add = 50
+			has_dragon_rider_trigger = yes
+		}
+	}
+}
+
+##########
+# DECLARE DRAGON HUNT
+# Major military decision against dragonlords
+##########
+declare_dragon_hunt_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_major_hunt.dds"
+	}
+	
+	desc = declare_dragon_hunt_decision_desc
+	
+	decision_group_type = major
+	
+	cooldown = { years = 20 }
+	
+	is_shown = {
+		is_landed = yes
+		highest_held_title_tier >= tier_duchy
+		culture = {
+			OR = {
+				has_cultural_tradition = tradition_dragonslayers
+				has_cultural_tradition = tradition_dragon_hunters
+			}
+		}
+	}
+	
+	is_valid = {
+		is_available = yes
+		prestige_level >= 3
+		any_neighboring_top_liege_realm_owner = {
+			has_dragon_rider_trigger = yes
+			has_dragon_equipped_trigger = yes
+		}
+	}
+	
+	cost = {
+		prestige = {
+			value = 500
+		}
+		piety = {
+			value = 250
+		}
+	}
+	
+	effect = {
+		custom_tooltip = declare_dragon_hunt_decision_effect_tt
+		add_character_modifier = {
+			modifier = declared_dragon_hunt_modifier
+			years = 10
+		}
+		trigger_event = {
+			id = dragon_expanded_decisions.0060
+			days = 14
+		}
+	}
+	
+	ai_check_interval = 120
+	
+	ai_potential = {
+		is_landed = yes
+		highest_held_title_tier >= tier_duchy
+		culture = {
+			OR = {
+				has_cultural_tradition = tradition_dragonslayers
+				has_cultural_tradition = tradition_dragon_hunters
+			}
+		}
+	}
+	
+	ai_will_do = {
+		base = 10
+		modifier = {
+			add = 40
+			has_trait = brave
+		}
+		modifier = {
+			add = 30
+			has_trait = wrathful
+		}
+		modifier = {
+			factor = 0
+			has_trait = craven
+		}
+	}
+}
+
+##########
+# CLEAR GROUND FOR DRAGON PIT
+# Similar to hatchery clearing but for military pit
+##########
+clear_ground_for_dragon_pit = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	
+	decision_group_type = major
+	sort_order = 100
+	
+	is_shown = {
+		culture = {
+			has_cultural_pillar = heritage_arick
+			has_innovation = innovation_dragon_pits
+		}
+		capital_province = {
+			has_special_building_slot = no
+		}
+	}
+	
+	is_valid = {
+		gold >= 200
+	}
+	
+	cost = {
+		gold = {
+			value = 200
+		}
+	}
+	
+	effect = {
+		send_interface_toast = {
+			title = clear_ground_for_dragon_pit_toast
+			if = {
+				limit = {
+					exists = capital_province
+				}
+				capital_province = {
+					add_special_building_slot = dragon_pit_01
+				}
+			}
+		}
+	}
+	
+	ai_check_interval = 36
+	
+	ai_potential = {
+		is_at_war = no
+		short_term_gold > ai_war_chest_desired_gold_value
+	}
+	
+	ai_will_do = {
+		base = 100
+	}
+}
+
+#Everything below here is from Dragon World
+
+attempt_to_learn_dragon_rider_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/become_a_dragon_rider.dds"
+    }    
+
+    desc = attempt_to_learn_dragon_rider_decision_desc
+
+    decision_group_type = major
+
+    # AI rule check
+    ai_potential = {
+        NOT = {
+            has_game_rule = non_existent_ai_role
+        }
+    }
+    ai_goal = yes
+    ai_will_do = 100
+
+    is_shown = {
+        is_adult = yes
+        not = {
+            has_dragon_rider_trigger = yes
+        }
+    }
+
+    cost = {
+        gold = 100
+    }
+
+    is_valid = {
+        not = {
+            AND = {
+                has_dragon_rider_trigger = yes
+            }
+        }
+    }
+
+    effect = {
+        root = { trigger_event = dragon_world_new_game.0004 }
+    }
+}
+
+recruit_dragon_rider_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_invite_knights.dds"
+    }
+
+	sort_order = 75
+
+	cooldown = { years = 3 }
+
+    desc = recruit_dragon_rider_decision_decision_desc
+
+    # AI rule check
+    ai_potential = {
+        NOT = {
+            has_game_rule = non_existent_ai_role
+        }
+        is_landed = yes
+        is_adult = yes
+        has_dragon_rider_trigger = yes
+    }
+    ai_goal = yes
+
+    ai_will_do = {
+        base = 100
+
+        modifier = {
+            factor = 0
+            any_courtier = {
+                has_dragon_rider_trigger = yes
+            }
+        }
+    }
+
+    is_shown = {
+        is_landed = yes
+        is_adult = yes
+        has_dragon_rider_trigger = yes
+    }
+
+	cost = {
+		gold = {
+			value = minor_gold_value
+		}
+		prestige = {
+			value = medium_prestige_value
+		}
+	}
+
+    is_valid = {
+        AND = {
+            has_dragon_rider_trigger = yes
+        }
+    }
+
+    effect = {
+        # custom_tooltip = recruit_dragon_rider_specialist_decision.tt
+        hidden_effect = {
+            generate_specialist_character_effect = {
+                SPECIALIST_TEMPLATE_CHARACTER = dragon_rider_commander_character
+            }
+        }
+    }
+}
+
+train_with_dragon_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/train_with_dragon.dds"
+    }
+
+    desc = train_with_dragon_decision_desc
+
+    decision_group_type = major
+
+	cooldown = { months = 12 }
+
+    # AI rule check
+    ai_potential = {
+        NOT = {
+            has_game_rule = non_existent_ai_role
+        }
+    }
+    ai_goal = yes
+	ai_will_do = 100
+
+    is_shown = {
+        is_adult = yes
+        has_dragon_rider_trigger = yes
+        has_dragon_trigger = yes
+    }
+
+    cost = {
+        gold = 100
+    }
+
+    is_valid = {
+        has_dragon_rider_trigger = yes
+        has_dragon_equipped_trigger = yes
+    }
+
+    effect = {
+        add_stress = 20
+		custom_tooltip = start_hunt_decision_prestige
+        root = { trigger_event = dragon_world_new_game.0005 }
+    }
+}
+
+demand_gold_from_the_populace_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/extract_gold_from_populace.dds"
+    }
+
+	sort_order = 75
+
+    desc = demand_gold_from_the_populace_decision_desc
+
+	cooldown = { years = 5 }
+    
+    # AI rule check
+    ai_potential = {
+        NOT = {
+            has_game_rule = non_existent_ai_role
+        }
+    }
+	ai_goal = yes
+	ai_will_do = 100
+
+    is_shown = {
+        is_landed = yes
+        is_adult = yes
+		has_dragon_rider_trigger = yes
+        has_dragon_trigger = yes
+    }
+
+    cost = {
+		piety = 250
+    }
+
+    is_valid = {
+		has_dragon_rider_trigger = yes
+        has_dragon_equipped_trigger = yes
+    }
+
+    effect = {
+        if = {
+            limit = { has_trait = sadistic }
+            add_stress = -50
+        }
+        root = { trigger_event = dragon_world_new_game.0014 }
+    }
+}
+
+recruit_dragon_scholar_decision = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_recruitment.dds"
+    }
+
+	sort_order = 74
+
+	cooldown = { years = 10 }
+
+    desc = recruit_dragon_scholar_decision_desc
+
+    # AI rule check
+    ai_potential = {
+        NOT = {
+            has_game_rule = non_existent_ai_role
+        }
+        is_landed = yes
+        is_adult = yes
+        has_dragon_rider_trigger = yes
+    }
+    ai_goal = yes
+
+    ai_will_do = {
+        base = 100
+
+        modifier = {
+            factor = 0
+            any_courtier = {
+                has_dragon_scholar_trigger = yes
+            }
+        }
+    }
+
+    is_shown = {
+        is_landed = yes
+        is_adult = yes
+        has_dragon_rider_trigger = yes
+    }
+
+	cost = {
+		gold = {
+			value = minor_gold_value
+		}
+		prestige = {
+			value = medium_prestige_value
+		}
+	}
+
+    is_valid = {
+        AND = {
+            has_dragon_rider_trigger = yes
+        }
+    }
+
+    effect = {
+        # custom_tooltip = recruit_dragon_scholar_decision.tt
+        hidden_effect = {
+            generate_specialist_character_effect = {
+                SPECIALIST_TEMPLATE_CHARACTER = dragon_hatcher_character
+            }
+        }
+    }
+}
+
+clear_ground_for_dragon_hatchery = {
+    picture = {
+        reference = "gfx/interface/illustrations/decisions/decision_legend.dds"
+    }
+
+    decision_group_type = major
+	sort_order = 100
+
+	is_shown = {
+        dynasty = {
+            has_dynasty_perk = dragon_blood_legacy_1
+        }
+        capital_province = {
+            has_special_building_slot = no
+        }
+	}
+
+	effect = {
+		send_interface_toast = {
+            title = clear_ground_for_dragon_hatchery.toast
+            if = {
+                limit = {
+					exists = capital_province
+                }
+                capital_province = {
+                    add_special_building_slot = dragon_hatchery_01
+                }
+            }
+		}
+	}
+
+	ai_check_interval = 36
+
+	ai_potential = {
+		is_at_war = no
+		short_term_gold > ai_war_chest_desired_gold_value
+		war_chest_gold >= halved_ai_war_chest_gold_maximum
+	}
+
+	ai_will_do = {
+		base = 100 #AI should always reap rewards
+	}
+}

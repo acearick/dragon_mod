@@ -1,0 +1,462 @@
+﻿############################################
+# Dragon Mod - Character Interaction Events
+# File: events/dragon_interaction_events.txt
+############################################
+
+namespace = dragon_interactions
+
+##########
+# DRAGON DUEL EVENTS (0001-0009)
+##########
+
+# Dragon duel begins
+dragon_interactions.0001 = {
+	type = character_event
+	title = dragon_interactions.0001.t
+	desc = dragon_interactions.0001.desc
+	theme = martial
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	right_portrait = {
+		character = scope:recipient
+		animation = anger
+	}
+	
+	immediate = {
+		play_music_cue = mx_cue_combat_1
+		scope:recipient = {
+			save_scope_as = opponent
+		}
+	}
+	
+	# Fierce combat - test prowess
+	option = {
+		name = dragon_interactions.0001.a
+		
+		duel = {
+			skill = prowess
+			target = scope:opponent
+			
+			50 = {
+				# Decisive victory
+				desc = dragon_duel_decisive_victory
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 2
+				}
+				root = {
+					trigger_event = dragon_interactions.0002
+				}
+			}
+			35 = {
+				# Close victory
+				desc = dragon_duel_close_victory
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 1
+				}
+				root = {
+					trigger_event = dragon_interactions.0003
+				}
+			}
+			35 = {
+				# Close defeat
+				desc = dragon_duel_close_defeat
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -1
+				}
+				root = {
+					trigger_event = dragon_interactions.0004
+				}
+			}
+			50 = {
+				# Decisive defeat
+				desc = dragon_duel_decisive_defeat
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -2
+				}
+				root = {
+					trigger_event = dragon_interactions.0005
+				}
+			}
+		}
+	}
+}
+
+# Decisive victory
+dragon_interactions.0002 = {
+	type = character_event
+	title = dragon_interactions.0002.t
+	desc = dragon_interactions.0002.desc
+	theme = martial
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	
+	right_portrait = {
+		character = scope:opponent
+		animation = pain
+	}
+	
+	option = {
+		name = dragon_interactions.0002.a
+		
+		add_prestige = 500
+		add_dread = 25
+		
+		# Gain trait XP
+		if = {
+			limit = { has_trait = dragon_rider }
+			add_trait_xp = {
+				trait = dragon_rider
+				track = dragon_training
+				value = 75
+			}
+		}
+		
+		# Opponent's dragon may be injured/killed
+		scope:opponent = {
+			add_prestige = -300
+			
+			random_list = {
+				60 = {
+					# Dragon injured
+					add_character_modifier = {
+						modifier = dragon_injured_in_duel_modifier
+						years = 3
+					}
+				}
+				25 = {
+					# Dragon killed
+					custom_tooltip = opponent_dragon_killed_tt
+					trigger_event = {
+						id = dragon_interactions.0006
+						days = 1
+					}
+				}
+				15 = {
+					# Minor injuries only
+					add_stress = 50
+				}
+			}
+		}
+		
+		stress_impact = {
+			brave = medium_stress_impact_loss
+			sadistic = medium_stress_impact_loss
+		}
+	}
+}
+
+# Close victory
+dragon_interactions.0003 = {
+	type = character_event
+	title = dragon_interactions.0003.t
+	desc = dragon_interactions.0003.desc
+	theme = martial
+	
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	right_portrait = {
+		character = scope:opponent
+		animation = sadness
+	}
+	
+	option = {
+		name = dragon_interactions.0003.a
+		
+		add_prestige = 250
+		add_dread = 10
+		
+		# Minor injury possible
+		random = {
+			chance = 30
+			add_trait = wounded_1
+		}
+		
+		scope:opponent = {
+			add_prestige = -100
+		}
+	}
+}
+
+# Close defeat
+dragon_interactions.0004 = {
+	type = character_event
+	title = dragon_interactions.0004.t
+	desc = dragon_interactions.0004.desc
+	theme = martial
+	
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	right_portrait = {
+		character = scope:opponent
+		animation = personality_content
+	}
+	
+	option = {
+		name = dragon_interactions.0004.a
+		
+		add_prestige = -100
+		
+		# Injured
+		random = {
+			chance = 50
+			add_trait = wounded_1
+		}
+		
+		scope:opponent = {
+			add_prestige = 250
+			add_dread = 10
+		}
+		
+		stress_impact = {
+			ambitious = minor_stress_impact_gain
+			arrogant = medium_stress_impact_gain
+		}
+	}
+}
+
+# Decisive defeat
+dragon_interactions.0005 = {
+	type = character_event
+	title = dragon_interactions.0005.t
+	desc = dragon_interactions.0005.desc
+	theme = martial
+	
+	left_portrait = {
+		character = root
+		animation = pain
+	}
+	
+	right_portrait = {
+		character = scope:opponent
+		animation = happiness
+	}
+	
+	option = {
+		name = dragon_interactions.0005.a
+		
+		add_prestige = -300
+		
+		# Seriously injured
+		random_list = {
+			50 = {
+				add_trait = wounded_2
+			}
+			30 = {
+				add_trait = wounded_1
+			}
+			20 = {
+				# Dragon might be killed
+				add_character_modifier = {
+					modifier = dragon_injured_in_duel_modifier
+					years = 3
+				}
+			}
+		}
+		
+		scope:opponent = {
+			add_prestige = 500
+			add_dread = 25
+		}
+		
+		stress_impact = {
+			ambitious = medium_stress_impact_gain
+			arrogant = major_stress_impact_gain
+			brave = minor_stress_impact_gain
+		}
+	}
+}
+
+# Opponent's dragon killed - their reaction
+dragon_interactions.0006 = {
+	type = character_event
+	title = dragon_interactions.0006.t
+	desc = dragon_interactions.0006.desc
+	theme = death
+	
+	left_portrait = {
+		character = root
+		animation = grief
+	}
+	
+	option = {
+		name = dragon_interactions.0006.a
+		
+		# Lose dragon trait/artifact
+		remove_trait = dragon_egg_owner
+		remove_trait = young_dragon_owner
+		remove_trait = adult_dragon_owner
+		remove_trait = ancient_dragon_owner
+		
+		add_trait = dragonless
+		add_trait = dragon_grief
+		
+		add_stress = 100
+		
+		# Possible madness
+		random = {
+			chance = 15
+			add_trait = dragon_madness
+		}
+	}
+}
+
+##########
+# GIFT DRAGON EGG EVENTS (0010-0019)
+##########
+
+# Egg gifted notification
+dragon_interactions.0010 = {
+	type = character_event
+	title = dragon_interactions.0010.t
+	desc = dragon_interactions.0010.desc
+	theme = diplomacy
+	
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	right_portrait = {
+		character = scope:recipient
+		animation = happiness
+	}
+	
+	option = {
+		name = dragon_interactions.0010.a
+		
+		custom_tooltip = dragon_egg_given_away_tt
+	}
+}
+
+##########
+# DEMAND TRIBUTE EVENTS (0020-0029)
+##########
+
+# Tribute received
+dragon_interactions.0020 = {
+	type = character_event
+	title = dragon_interactions.0020.t
+	desc = dragon_interactions.0020.desc
+	theme = diplomacy
+	
+	left_portrait = {
+		character = root
+		animation = personality_greedy
+	}
+	
+	option = {
+		name = dragon_interactions.0020.a
+		
+		custom_tooltip = tribute_received_tt
+		
+		stress_impact = {
+			greedy = minor_stress_impact_loss
+			generous = minor_stress_impact_gain
+		}
+	}
+}
+
+# Tribute refused
+dragon_interactions.0021 = {
+	type = character_event
+	title = dragon_interactions.0021.t
+	desc = dragon_interactions.0021.desc
+	theme = martial
+	
+	left_portrait = {
+		character = root
+		animation = anger
+	}
+	
+	right_portrait = {
+		character = scope:recipient
+		animation = personality_bold
+	}
+	
+	# Burn their lands
+	option = {
+		name = dragon_interactions.0021.a
+		trigger = {
+			has_dragon_equipped_trigger = yes
+		}
+		
+		scope:recipient = {
+			capital_county = {
+				add_county_modifier = {
+					modifier = ravaged_by_dragon_modifier
+					years = 10
+				}
+			}
+		}
+		
+		add_dread = 30
+		add_tyranny = 10
+		
+		stress_impact = {
+			wrathful = medium_stress_impact_loss
+			sadistic = medium_stress_impact_loss
+			compassionate = major_stress_impact_gain
+		}
+	}
+	
+	# Remember this insult
+	option = {
+		name = dragon_interactions.0021.b
+		
+		add_opinion = {
+			target = scope:recipient
+			modifier = insulted_opinion
+			opinion = -50
+		}
+		
+		stress_impact = {
+			patient = minor_stress_impact_loss
+			wrathful = minor_stress_impact_gain
+		}
+	}
+}
+
+##########
+# DRAGON TRAINING EVENTS (0030-0039)
+##########
+
+# Training begins
+dragon_interactions.0030 = {
+	type = character_event
+	title = dragon_interactions.0030.t
+	desc = dragon_interactions.0030.desc
+	theme = education
+	
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	right_portrait = {
+		character = scope:recipient
+		animation = personality_honorable
+	}
+	
+	option = {
+		name = dragon_interactions.0030.a
+		
+		custom_tooltip = dragon_training_started_tt
+	}
+}

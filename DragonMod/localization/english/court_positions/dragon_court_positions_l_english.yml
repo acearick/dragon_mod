@@ -1,8 +1,13 @@
 ﻿l_english:
-  # Dragon World court positions
-	# Chosen Dragon Knight
-	chosen_dragon_knight_court_position:0 "Personal Dragon Champion"
-	chosen_dragon_knight_court_position_desc:0 "The Personal Dragon Champion is responsible for accompanying their liege in battle and can be their champion in any Dragon duels"
-	# Dragon Hatcher
-	dragon_hatcher_court_position:0 "Dragon Hatcher"
-	dragon_hatcher_court_position_desc:0 "The Dragon Hatcher is responsible for taking care of their lieges dragon eggs and ensuring they are in suitable conditiions for hatching into great beasts!"
+ # Dragon World court positions
+ # Chosen Dragon Knight
+ chosen_dragon_knight_court_position:0 "Personal Dragon Champion"
+ chosen_dragon_knight_court_position_desc:0 "The Personal Dragon Champion is responsible for accompanying their liege in battle and can be their champion in any Dragon duels"
+ # Dragon Hatcher
+ dragon_hatcher_court_position:0 "Dragon Hatcher"
+ dragon_hatcher_court_position_desc:0 "The Dragon Hatcher is responsible for taking care of their lieges dragon eggs and ensuring they are in suitable conditiions for hatching into great beasts!"
+
+ # XP Gain Messages
+ dragon_scholar_xp_gain_message:0 "Dragon Scholar Experience Gained"
+ dragon_hunter_xp_gain_message:0 "Dragon Hunter Experience Gained"
+#  dragonmaster_xp_gain_message:0 "Dragon Rider Experience Gained"

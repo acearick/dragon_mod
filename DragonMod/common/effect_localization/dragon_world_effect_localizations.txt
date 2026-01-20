@@ -1,0 +1,23 @@
+﻿dragon_blood_legacy_1_effect = {
+	global = dragon_blood_legacy_1_effect
+	first = dragon_blood_legacy_1_effect
+	third = dragon_blood_legacy_1_effect
+}
+
+dragon_blood_legacy_1_requirement = {
+	global = dragon_blood_legacy_1_requirement
+	first = dragon_blood_legacy_1_requirement
+	third = dragon_blood_legacy_1_requirement
+}
+
+dragon_blood_legacy_4_effect = {
+	global = dragon_blood_legacy_4_effect
+	first = dragon_blood_legacy_4_effect
+	third = dragon_blood_legacy_4_effect
+}
+
+dragon_blood_legacy_5_effect = {
+	global = dragon_blood_legacy_5_effect
+	first = dragon_blood_legacy_5_effect
+	third = dragon_blood_legacy_5_effect
+}

@@ -15,6 +15,15 @@
  building_dragon_pit_03:0 "Dragon Fortress"
  building_dragon_pit_03_desc:0 "The ultimate dragon military installation—a massive fortress designed around dragon warfare. Multiple roosts, armories, and training grounds make this a formidable center of aerial power."
  
+ # Clear Ground for Dragon Pit
+ 	clear_ground_for_dragon_pit:0 "Prepare Grounds for a Dragon Pit"
+	clear_ground_for_dragon_pit_tooltip:0 "Unlock a [special_building|E] slot in one of your provinces"
+	clear_ground_for_dragon_pit_desc:0 "We need to prepare the grounds for a Dragon Pit, this will allow us to hatch and raise dragons in our realm."
+	clear_ground_for_dragon_pit_confirm:0 "Begin the preparations"
+	clear_ground_for_dragon_pit_confirm_latin:0 ""Benedicite Terram Draconis!""
+	clear_ground_for_dragon_pit_confirm_high_valyrian:0 ""Jehikagon Se Tegun Hen Zaldrīzes!""
+	clear_ground_for_dragon_pit_toast:0 "Grounds prepared for a Dragon Pit"
+
  ##############################
  # DRAGON SHELTER BUILDINGS
  ##############################
@@ -66,3 +75,7 @@
 	clear_ground_for_dragon_hatchery_confirm_latin:0 ""Benedicite Terram Draconis!""
 	clear_ground_for_dragon_hatchery_confirm_high_valyrian:0 ""Jehikagon Se Tegun Hen Zaldrīzes!""
 	clear_ground_for_dragon_hatchery.toast:0 "Grounds prepared for a Dragon Hatchery"
+
+	 
+ 
+ 

@@ -1,5 +1,7 @@
 ﻿l_english:
-
+ # Artifact Slot
+ artifact_slot_dragon:0 "Dragon"
+ 
   # Dragon types and defaults
 	feature_dragon_element_water:0 "Water Dragon"
 	artifact_water_dragon_name:1 "Water Dragon"
@@ -17,14 +19,15 @@
 	artifact_dragon_egg_name:1 "Dragon Egg"
 	artifact_dragon_egg:1 "Dragon Egg"
 
-	feature_dragon:0 "Dragon"
+	feature_dragon_slot:0 "Dragon"
 	artifact_dragon_name:0 "$artifact_name_prefix$ Dragon"
 	artifact_dragon:1 "Dragon"
 
 	# Custom Dragon Inventory Slot
- 	dragon:0 "Dragon"
-	artifact_type_dragon:0 "Dragon"
-	artifact_slot_dragon:0 "Dragon"
+ 	dragon_slot:0 "Dragon"
+	artifact_type_dragon_slot:0 "Dragon"
+  artifact_type_dragon:0 "Dragon"
+	artifact_slot_dragon_slot:0 "Dragon"
 
   # Dragon Naming
 	event_window_widget_name_dragon_prompt:0 "Dragon Name:"
@@ -54,6 +57,9 @@
 	artifact_type_ancient_dragon:0 "Ancient Dragon"
 	artifact_ancient_dragon_name:0 "Ancient Dragon"
 	artifact_ancient_dragon:0 "An ancient dragon, this dragon has lived for over a hundred years and has grown to its full size and power. It is now a force to be reckoned with, albeit unable to learn any further skills, it is a foe few other dragon riders should want to dare mess with."
+
+	# Aged dragon name (used when dragon grows to next stage)
+	artifact_aged_dragon_name:0 "[scope:newly_created_artifact.GetName]"
 
 	feature_dragon_age_elder_feature:0 "Elder Dragon"
 	artifact_type_elder_dragon:0 "Elder Dragon"
@@ -109,7 +115,6 @@
  artifact_dragonscale_cloak_fire_name:0 "Emberscale Cloak of [scope:dead_dragon.GetName]"
  artifact_dragonscale_cloak_water_name:0 "Tidescale Cloak of [scope:dead_dragon.GetName]"
  artifact_dragonscale_cloak_stone_name:0 "Stonescale Cloak of [scope:dead_dragon.GetName]"
- artifact_dragonscale_cloak_name:0 "Scales of [scope:dead_dragon.GetName]"
  artifact_dragonscale_cloak_desc:0 "A magnificent cloak fashioned from the scales of a fallen dragon. Each scale is harder than steel yet lighter than silk, providing unparalleled protection while marking its wearer as a true dragonlord."
  artifact_dragonscale_cloak_fire_desc:0 "Woven from the crimson and gold scales of a fire dragon, this cloak radiates gentle warmth and seems to ripple like flames in motion. It renders its wearer impervious to ordinary fire and commands respect from all who behold it."
  artifact_dragonscale_cloak_water_desc:0 "Fashioned from the blue-green scales of a sea dragon, this cloak shimmers like sunlight on water. It remains perpetually damp to the touch and allows its wearer to move through water as easily as air."
@@ -126,156 +131,49 @@
  artifact_dragon_fang_weapon_water_desc:0 "Shimmering with an inner light like the deep sea, this weapon moves through the air as though cutting water. Wounds it inflicts never seem to clot, bleeding like the eternal tides."
  artifact_dragon_fang_weapon_stone_desc:0 "Heavy as a mountain's heart, this weapon can shatter shields and crush armor with a single blow. Its edge never dulls, for it is harder than any stone known to man."
  
- ##############################
- # DRAGON SIZE FEATURES
- ##############################
+ # Dragon Hide Artifacts - Add these to your dragon_artifacts_l_english.yml
+ artifact_dragon_hide:0 "Dragon Hide"
+ artifact_dragon_hide_desc:0 "The [SCOPE.Custom('ArtifactQuality')] scale of the [newly_created_artifact.GetFeatureText( 'animal_hide_type' )], [newly_created_artifact.Custom('ArtifactSmallHideAcquisitionMethod')]."
+ artifact_dragon_hide_name_legendary:0 "Scale of the [newly_created_artifact.Custom('ArtifactAnimalType')|U] of [location.GetTitle.GetDeJureLiege.GetNameNoTierNoTooltip]"
+ artifact_dragon_hide_name_adventurer:0 "Scale of the [newly_created_artifact.Custom('ArtifactAnimalAdjective')|U] [newly_created_artifact.Custom('ArtifactAnimalType')|U] of [location.GetBaronyNameExplicitlyNoTooltip]"
+ artifact_dragon_hide_big:0 "Dragon Hide"
  
- feature_dragon_size_tiny_feature:0 "Tiny"
- dragon_size_tiny_feature:0 "Tiny"
- dragon_size_tiny_feature_desc:0 "This dragon is unusually small, barely larger than a hunting hound."
+ # Dragon Hide Features
+ feature_dragon_hide_feature:0 "Dragon"
+ feature_dragon_hide_feature_desc:0 "The scaled hide of a slain dragon, a trophy of legendary proportions."
  
+ feature_dragon_hide_fire_feature:0 "Fire Dragon"
+ feature_dragon_hide_fire_feature_desc:0 "The ember-touched scales of a fire dragon, still warm to the touch and shimmering with heat."
+ 
+ feature_dragon_hide_water_feature:0 "Water Dragon"
+ feature_dragon_hide_water_feature_desc:0 "The iridescent scales of a water dragon, gleaming like the surface of a moonlit sea."
+ 
+ feature_dragon_hide_stone_feature:0 "Stone Dragon"
+ feature_dragon_hide_stone_feature_desc:0 "The rough, earthen scales of a stone dragon, as durable as the mountains themselves."
 
- feature_dragon_size_small_feature:0 "Small"
- dragon_size_small_feature:0 "Small"
- dragon_size_small_feature_desc:0 "This dragon is smaller than average, but no less fierce for its size."
+ # Dragon Temperament Features
+ feature_dragon_temperament_calm_feature:0 "Calm"
+ feature_dragon_temperament_calm_feature_desc:0 "This dragon has a calm demeanor, making it easier to handle and less prone to rash actions."
  
- feature_dragon_size_medium_feature:0 "Medium"
- dragon_size_medium_feature:0 "Medium"
- dragon_size_medium_feature_desc:0 "This dragon is of typical size for its age, neither remarkably large nor small."
+ feature_dragon_temperament_trained_feature:0 "Trained"
+ feature_dragon_temperament_trained_feature_desc:0 "This dragon has been well trained and responds reliably to its rider's commands."
  
- feature_dragon_size_large_feature:0 "Large"
- dragon_size_large_feature:0 "Large"
- dragon_size_large_feature_desc:0 "This dragon has grown larger than most of its kind, an impressive specimen."
+ feature_dragon_temperament_wild_feature:0 "Wild"
+ feature_dragon_temperament_wild_feature_desc:0 "This dragon retains much of its wild nature, making it unpredictable but fiercely powerful in battle."
  
- feature_dragon_size_colossal_feature:0 "Colossal"
- dragon_size_colossal_feature:0 "Colossal"
- dragon_size_colossal_feature_desc:0 "This dragon is enormous, a true titan among its kind. Its shadow blocks out the sun."
+ feature_dragon_temperament_vicious_feature:0 "Vicious"
+ feature_dragon_temperament_vicious_feature_desc:0 "This dragon has a vicious temperament, attacking without hesitation and showing no mercy to enemies."
  
- ##############################
- # DRAGON TEMPERAMENT FEATURES
- ##############################
+ # Dragon Element Features (artifact-based for hides/relics)
+ feature_dragon_element_fire_artifact:0 "Fire Dragon"
+ feature_dragon_element_fire_artifact_desc:0 "This artifact was taken from a fire dragon, its scales still warm with ember-touched heat."
  
- dragon_temperament_calm_feature:0 "Calm"
- dragon_temperament_calm_feature_desc:0 "This dragon possesses an unusually placid temperament, making it easier to handle but perhaps less fierce in battle."
+ feature_dragon_element_water_artifact:0 "Water Dragon"
+ feature_dragon_element_water_artifact_desc:0 "This artifact was taken from a water dragon, its scales gleaming with oceanic iridescence."
  
- dragon_temperament_trained_feature:0 "Well-Trained"
- dragon_temperament_trained_feature_desc:0 "This dragon has been expertly trained, responding to commands with precision and reliability."
+ feature_dragon_element_stone_artifact:0 "Stone Dragon"
+ feature_dragon_element_stone_artifact_desc:0 "This artifact was taken from a stone dragon, its scales as durable as mountain rock."
  
- dragon_temperament_wild_feature:0 "Wild"
- dragon_temperament_wild_feature_desc:0 "This dragon retains much of its wild nature, fierce and unpredictable but capable of surprising ferocity."
- 
- dragon_temperament_vicious_feature:0 "Vicious"
- dragon_temperament_vicious_feature_desc:0 "This dragon is dangerously aggressive, a terror to enemies and sometimes to allies alike."
- 
- ##############################
- # DRAGON AGE TIER FEATURES
- ##############################
- 
- dragon_age_hatchling_feature:0 "Hatchling"
- dragon_age_hatchling_feature_desc:0 "A newly hatched dragon, full of potential but too young to ride."
- 
- dragon_age_young_feature:0 "Young"
- dragon_age_young_feature_desc:0 "A young dragon in the prime of its early life, old enough to carry a rider."
- 
- dragon_age_adult_feature:0 "Adult"
- dragon_age_adult_feature_desc:0 "An adult dragon at the peak of its power, a fearsome beast of war."
- 
- dragon_age_elder_feature:0 "Elder"
- dragon_age_elder_feature_desc:0 "An elder dragon, its power waning but its wisdom unmatched."
- 
- dragon_age_ancient_feature:0 "Ancient"
- dragon_age_ancient_feature_desc:0 "An ancient dragon, a living legend rarely seen in the world."
- 
- dragon_age_primordial_feature:0 "Primordial"
- dragon_age_primordial_feature_desc:0 "A primordial dragon, having lived beyond the normal span of its kind. Such creatures are the stuff of myth."
- 
- ##############################
- # DRAGON ELEMENT FEATURES
- ##############################
- 
- dragon_element_fire:0 "Fire Dragon"
- dragon_element_fire_desc:0 "This dragon breathes fire and is associated with the element of flame."
- 
- dragon_element_water:0 "Water Dragon"
- dragon_element_water_desc:0 "This dragon is associated with the sea and water, able to survive in the ocean depths."
- 
- dragon_element_stone:0 "Stone Dragon"
- dragon_element_stone_desc:0 "This dragon is associated with earth and stone, its scales as hard as mountain granite."
- 
- ##############################
- # MODIFIER DESCRIPTIONS
- ##############################
- 
- # Dragon Stage Modifier Descriptions
- dragon_hatchling_modifier_desc:0 "A young hatchling provides companionship and prestige, but is too small to ride."
- dragon_young_modifier_desc:0 "A young dragon is capable of bearing a rider and fighting in battle."
- dragon_adult_modifier_desc:0 "An adult dragon at the peak of its power is a devastating weapon of war."
- dragon_elder_modifier_desc:0 "An elder dragon brings wisdom and respect, though its body has begun to fail."
- dragon_ancient_modifier_desc:0 "An ancient dragon is a living legend, worth more in reputation than in battle."
- dragon_primordial_modifier_desc:0 "A primordial dragon has transcended the normal lifespan of its kind, a true wonder of the world."
- 
- # Dragon Size Modifier Descriptions
- dragon_size_tiny_desc:0 "An unusually small dragon."
- dragon_size_small_desc:0 "A dragon smaller than average."
- dragon_size_medium_desc:0 "A dragon of typical size."
- dragon_size_large_desc:0 "An impressively large dragon."
- dragon_size_colossal_desc:0 "A colossal dragon of legendary proportions."
- 
- # Dragon Temperament Modifier Descriptions
- dragon_temperament_calm_desc:0 "This dragon has a gentle disposition."
- dragon_temperament_trained_desc:0 "This dragon responds perfectly to commands."
- dragon_temperament_wild_desc:0 "This dragon retains its fierce, wild nature."
- dragon_temperament_vicious_desc:0 "This dragon is dangerously aggressive."
- 
- # Dragon Relic Modifier Descriptions
- dragon_skull_modifier_desc:0 "The skull of a great dragon mounted as a trophy, striking fear into all who see it."
- dragon_bones_modifier_desc:0 "Dragon bones of exceptional quality, prized by craftsmen throughout the realm."
- dragon_heart_modifier_desc:0 "The preserved heart of a dragon, still pulsing with mystical power."
- dragonscale_cloak_modifier_desc:0 "A magnificent cloak of dragon scales, protecting its wearer while marking them as a true dragonlord."
- dragon_fang_weapon_modifier_desc:0 "A fearsome weapon crafted from dragon fang, capable of piercing any armor."
- 
- # Health/Condition Modifier Descriptions
- dragon_declining_health_desc:0 "This dragon's health is failing with age."
- dragon_near_death_desc:0 "This dragon is close to death and may pass at any time."
- dragon_wounded_desc:0 "This dragon has suffered injuries and needs time to recover."
- dragon_recovering_desc:0 "This dragon is recovering from its wounds."
- 
- ##############################
- # RELIC CREATION TOOLTIPS
- ##############################
- 
- create_dragon_skull_tt:0 "Create §H[artifact_type_dragon_skull]§! artifact"
- create_dragon_bones_tt:0 "Create §H[artifact_type_dragon_bones]§! artifact"
- create_dragon_heart_tt:0 "Create §H[artifact_type_dragon_heart]§! artifact"
- create_dragonscale_cloak_tt:0 "Create §H[artifact_type_dragonscale_cloak]§! artifact"
- create_dragon_fang_weapon_tt:0 "Create §H[artifact_type_dragon_fang_weapon]§! artifact"
- 
- ##############################
- # ADDITIONAL RELIC FLAVOR TEXT
- ##############################
- 
- # Generic relic acquisition text
- dragon_relic_acquired:0 "A dragon relic has been acquired"
- dragon_relic_acquired_desc:0 "This treasure was salvaged from the remains of a fallen dragon."
- 
- # Relic quality descriptions
- dragon_relic_quality_masterwork:0 "Masterwork"
- dragon_relic_quality_masterwork_desc:0 "This relic was crafted by master artisans, preserving every detail of the dragon's remains."
- 
- dragon_relic_quality_exceptional:0 "Exceptional"
- dragon_relic_quality_exceptional_desc:0 "This relic is of exceptional quality, a credit to the craftsmen who created it."
- 
- dragon_relic_quality_standard:0 "Standard"
- dragon_relic_quality_standard_desc:0 "This relic is of standard quality, functional and impressive but not extraordinary."
- 
- # Relic age descriptions (based on original dragon age)
- dragon_relic_from_elder:0 "From an Elder Dragon"
- dragon_relic_from_elder_desc:0 "This relic was taken from an elder dragon, weathered by centuries of life."
- 
- dragon_relic_from_ancient:0 "From an Ancient Dragon"
- dragon_relic_from_ancient_desc:0 "This relic was taken from an ancient dragon, a living legend that walked the earth for over two centuries."
- 
- dragon_relic_from_primordial:0 "From a Primordial Dragon"
- dragon_relic_from_primordial_desc:0 "This relic was taken from a primordial dragon, a creature that lived for over three hundred years. Such materials are priceless beyond measure."
-
-
+ # Dragon Hide Types
+ artifact_type_dragon_hide:0 "Dragon Hide"
+ artifact_type_dragon_hide_big:0 "Large Dragon Hide"

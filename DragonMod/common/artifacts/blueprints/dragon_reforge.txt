@@ -1,9 +1,7 @@
 ﻿dragon_to_court = {
-	#KEEP UNTIL CUSTOM SLOT
+	# Blueprint for converting dragon artifacts to court display
 	in_type = helmet
-	#KEEP UNTIL CUSTOM SLOT
-	in_visuals = wearing_iron_crown
+	in_visuals = dragon_court
 	out_type = pedestal
-	#KEEP UNTIL CUSTOM/MORE-RELEVANT VISUAL
 	out_visuals = pedestal_crown_iron
 }

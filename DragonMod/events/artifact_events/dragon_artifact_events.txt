@@ -1,0 +1,267 @@
+﻿namespace = dragon_artefact_events
+
+dragon_artefact_events.0002 = {
+	type = character_event
+	title = dragon_artefact_events.0002.t
+	desc = dragon_artefact_events.0002.desc
+	theme = pet
+
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	artifact = { # To display the artifact in the event-window
+		target = scope:dragon_artifact
+		position = lower_center_portrait
+	}
+
+	trigger = {
+		any_equipped_character_artifact = {
+			OR = {
+				artifact_type = type_adult_dragon
+				artifact_type = type_young_dragon
+			}
+		}
+	}
+
+	immediate = {
+		random_equipped_character_artifact = {
+			limit = {
+				OR = {
+					artifact_type = type_adult_dragon
+					artifact_type = type_young_dragon
+				}
+			}
+			save_scope_as = dragon_artifact
+		}
+	}
+
+	option = {
+		trigger = {
+			has_trait = education_martial
+		}
+		name = {
+			text = dragon_artefact_events.0002.a_high_valyrian
+			trigger = { has_game_rule = high_valyrian_commands }
+		}
+		name = {
+			text = dragon_artefact_events.0002.a_latin
+			trigger = { has_game_rule = latin_commands }
+		}
+		add_martial_skill = 2
+		root = {
+			dragonmaster_progress_point_gain_effect = { CHANGE = 3 RANDOM_CHANGE = 1 }
+			hidden_effect = {
+				dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_trait = education_martial
+		}
+		name = {
+			text = dragon_artefact_events.0002.b_high_valyrian
+			trigger = { has_game_rule = high_valyrian_commands }
+		}
+		name = {
+			text = dragon_artefact_events.0002.b_latin
+			trigger = { has_game_rule = latin_commands }
+		}
+		add_prowess_skill = 3
+		scope:dragon_artifact = {
+			add_artifact_modifier = artifact_martial_1_modifier
+		}
+		root = {
+			dragonmaster_progress_point_gain_effect = { CHANGE = 3 RANDOM_CHANGE = 1 }
+			hidden_effect = {
+				dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+			}
+		}
+	}
+
+	option = {
+		trigger = {
+			has_trait = education_stewardship
+		}
+		name = {
+			text = dragon_artefact_events.0002.a_high_valyrian
+			trigger = { has_game_rule = high_valyrian_commands }
+		}
+		name = {
+			text = dragon_artefact_events.0002.a_latin
+			trigger = { has_game_rule = latin_commands }
+		}
+		add_stewardship_skill = 2
+		root = {
+			dragonmaster_progress_point_gain_effect = { CHANGE = 3 RANDOM_CHANGE = 1 }
+			hidden_effect = {
+				dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_trait = education_stewardship
+		}
+		name = {
+			text = dragon_artefact_events.0002.b_high_valyrian
+			trigger = { has_game_rule = high_valyrian_commands }
+		}
+		name = {
+			text = dragon_artefact_events.0002.b_latin
+			trigger = { has_game_rule = latin_commands }
+		}
+		add_character_modifier = {
+			modifier = dragon_bond_income_modifier
+		}
+		scope:dragon_artifact = {
+			add_artifact_modifier = artifact_stewardship_1_modifier
+		}
+		root = {
+			dragonmaster_progress_point_gain_effect = { CHANGE = 3 RANDOM_CHANGE = 1 }
+			hidden_effect = {
+				dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+			}
+		}
+	}
+
+	option = {
+		trigger = {
+			has_trait = education_learning
+		}
+		name = {
+			text = dragon_artefact_events.0002.a_high_valyrian
+			trigger = { has_game_rule = high_valyrian_commands }
+		}
+		name = {
+			text = dragon_artefact_events.0002.a_latin
+			trigger = { has_game_rule = latin_commands }
+		}
+		add_learning_skill = 2
+		root = {
+			dragonmaster_progress_point_gain_effect = { CHANGE = 3 RANDOM_CHANGE = 1 }
+			hidden_effect = {
+				dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_trait = education_learning
+		}
+		name = {
+			text = dragon_artefact_events.0002.b_high_valyrian
+			trigger = { has_game_rule = high_valyrian_commands }
+		}
+		name = {
+			text = dragon_artefact_events.0002.b_latin
+			trigger = { has_game_rule = latin_commands }
+		}
+		add_character_modifier = {
+			modifier = dragon_bond_piety_modifier
+		}
+		scope:dragon_artifact = {
+			add_artifact_modifier = artifact_learning_1_modifier
+		}
+		root = {
+			dragonmaster_progress_point_gain_effect = { CHANGE = 3 RANDOM_CHANGE = 1 }
+			hidden_effect = {
+				dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+			}
+		}
+	}
+
+	option = {
+		trigger = {
+			has_trait = education_intrigue
+		}
+		name = {
+			text = dragon_artefact_events.0002.a_high_valyrian
+			trigger = { has_game_rule = high_valyrian_commands }
+		}
+		name = {
+			text = dragon_artefact_events.0002.a_latin
+			trigger = { has_game_rule = latin_commands }
+		}
+		add_intrigue_skill = 2
+		root = {
+			dragonmaster_progress_point_gain_effect = { CHANGE = 3 RANDOM_CHANGE = 1 }
+			hidden_effect = {
+				dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_trait = education_intrigue
+		}
+		name = {
+			text = dragon_artefact_events.0002.b_high_valyrian
+			trigger = { has_game_rule = high_valyrian_commands }
+		}
+		name = {
+			text = dragon_artefact_events.0002.b_latin
+			trigger = { has_game_rule = latin_commands }
+		}
+		add_character_modifier = {
+			modifier = dragon_bond_dread_modifier
+		}
+		scope:dragon_artifact = {
+			add_artifact_modifier = artifact_intrigue_1_modifier
+		}
+		root = {
+			dragonmaster_progress_point_gain_effect = { CHANGE = 3 RANDOM_CHANGE = 1 }
+			hidden_effect = {
+				dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+			}
+		}
+	}
+
+	option = {
+		trigger = {
+			has_trait = education_diplomacy
+		}
+		name = {
+			text = dragon_artefact_events.0002.a_high_valyrian
+			trigger = { has_game_rule = high_valyrian_commands }
+		}
+		name = {
+			text = dragon_artefact_events.0002.a_latin
+			trigger = { has_game_rule = latin_commands }
+		}
+		add_diplomacy_skill = 2
+		root = {
+			dragonmaster_progress_point_gain_effect = { CHANGE = 3 RANDOM_CHANGE = 1 }
+			hidden_effect = {
+				dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_trait = education_diplomacy
+		}
+		name = {
+			text = dragon_artefact_events.0002.b_high_valyrian
+			trigger = { has_game_rule = high_valyrian_commands }
+		}
+		name = {
+			text = dragon_artefact_events.0002.b_latin
+			trigger = { has_game_rule = latin_commands }
+		}
+		add_character_modifier = {
+			modifier = dragon_bond_prestige_modifier
+		}
+		scope:dragon_artifact = {
+			add_artifact_modifier = artifact_diplomacy_1_modifier
+		}
+		root = {
+			dragonmaster_progress_point_gain_effect = { CHANGE = 3 RANDOM_CHANGE = 1 }
+			hidden_effect = {
+				dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+			}
+		}
+	}
+}

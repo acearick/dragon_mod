@@ -3,3 +3,4 @@ dragon_element_type = {}
 dragon_size_type = {}
 dragon_temperament_type = {}
 dragon_age_tier = {}
+dragon_hide_type = {}

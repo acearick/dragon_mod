@@ -82,7 +82,7 @@ gift_artifact_interaction = {
 
 	is_valid_showing_failures_only = {
 		# needs to have an artifact to give away
-		scope:recipient = { is_busy_in_events_localised = yes }
+		scope:recipient = { is_available = yes }
 		scope:actor = {
 			NOT = {
 				is_at_war_with = scope:recipient

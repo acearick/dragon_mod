@@ -1,9 +1,9 @@
 ﻿l_english:
   # Activity Trait Progress Tooltips
-	dragon_rider_progress_towards_trait_1_tt:0 "Slightly increases [GetTrait('lifestyle_dragonmaster').GetName( GetNullCharacter )] [trait_level_track_xp|E]"
-	dragon_rider_progress_towards_trait_2_tt:0 "Increases [GetTrait('lifestyle_dragonmaster').GetName( GetNullCharacter )] [trait_level_track_xp|E]"
-	dragon_rider_progress_towards_trait_3_tt:0 "Greatly increases [GetTrait('lifestyle_dragonmaster').GetName( GetNullCharacter )] [trait_level_track_xp|E]"
-	dragonmaster_xp_gain_message:0 "[GetTrait('lifestyle_dragonmaster').GetName( GetNullCharacter )] Experience"
+	dragon_rider_progress_towards_trait_1_tt:0 "Slightly increases [GetTrait('dragon_rider').GetName( GetNullCharacter )] [trait_level_track_xp|E]"
+	dragon_rider_progress_towards_trait_2_tt:0 "Increases [GetTrait('dragon_rider').GetName( GetNullCharacter )] [trait_level_track_xp|E]"
+	dragon_rider_progress_towards_trait_3_tt:0 "Greatly increases [GetTrait('dragon_rider').GetName( GetNullCharacter )] [trait_level_track_xp|E]"
+	dragonmaster_xp_gain_message:0 "[GetTrait('dragon_rider').GetName( GetNullCharacter )] Experience"
 
 	# Dragon Adventure Activity
 	activity_dragons:0 "Dragon Adventure"

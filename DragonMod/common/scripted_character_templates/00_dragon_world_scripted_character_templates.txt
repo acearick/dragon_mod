@@ -1,0 +1,98 @@
+﻿dragon_rider_commander_character = {
+	age = { 30 50 }
+	dynasty = none
+	random_traits = yes
+	faith = this.faith
+	culture = this.culture
+
+	prowess = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+	random_traits_list = {
+		count = 1
+		education_martial_3 = {}
+		education_martial_4 = {}
+	}
+	trait = dragon_rider
+	random_traits_list = {
+		count = 3
+		diligent = {}
+		patient = {}
+		brave = {}
+		callous = {}
+		stubborn = {}
+		humble = {}
+		lustful = {}
+		chaste = {}
+		cynical = {}
+		zealous = {}
+	}
+	random_traits_list = {
+		count = { 0 1 }
+		logistician = {}
+		aggressive_attacker = {}
+		unyielding_defender = {}
+		reaver = {}
+		open_terrain_expert = {}
+		rough_terrain_expert = {}
+	}
+	
+	martial  = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+
+	after_creation = {
+		add_trait_xp = {
+			trait = dragon_rider
+			track = dragon_training
+			value = 33
+		}
+		random = {
+			chance = 75
+			add_trait = scarred
+		}
+	}
+}
+
+dragon_hatcher_character = {
+	age = { 40 60 }
+	dynasty = none
+	random_traits = yes
+	faith = this.faith
+	culture = this.culture
+
+	random_traits_list = {
+		count = 1
+		education_learning_3 = {}
+		education_learning_4 = {}
+	}
+	trait = dragon_scholar
+	random_traits_list = {
+		count = 3
+		diligent = {}
+		patient = {}
+		brave = {}
+		callous = {}
+		stubborn = {}
+		humble = {}
+		lustful = {}
+		chaste = {}
+		cynical = {}
+		zealous = {}
+	}
+	
+	learning  = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+
+	after_creation = {
+		add_trait_xp = {
+			trait = dragon_scholar
+			track = dragon_hatching
+			value = 33
+		}
+	}
+}

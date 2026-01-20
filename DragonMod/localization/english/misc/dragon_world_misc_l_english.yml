@@ -1,16 +1,22 @@
 ﻿l_english:
-
-	
-	
-
 	# Custom Tooltips
 	spawn_dragon_tooltip:0 "A dragon is spawned"
 	no_dragonrider_courtiers_tooltip:0 "There aren't any dragonriders in your court"
 	EXECUTION_DRAGON_LATIN:0 ""Ad Infernum!""
 	EXECUTION_DRAGON_HIGH_VALYRIAN:0 ""Drakarys!""
 
-	# Overriding DEBUG text
-	NOT_ANY_OF_MY_COURTIERS:0 "There aren't any courtiers meeting the requirements in your court"
+ #  # Progress Tooltips
+ #  dragon_rider_progress_towards_trait_1_tt:0 "Gained minor progress towards dragon mastery"
+ #  dragon_rider_progress_towards_trait_2_tt:0 "Gained moderate progress towards dragon mastery"
+ #  dragon_rider_progress_towards_trait_3_tt:0 "Gained significant progress towards dragon mastery"
+
+ # Dragon Adventure Tooltips
+ dragon_adventure_attain_egg_tt:0 "You attain a Dragon egg"
+ dragon_adventure_forced_fight_tt:0 "Forced to fight the Dragon"
+ dragon_adventure_party_eggs_tt:0 "Everyone in your party attains a Dragon egg"
+
+ # Overriding DEBUG text
+ NOT_ANY_OF_MY_COURTIERS:0 "There aren't any courtiers meeting the requirements in your court"
 
 	# # Dragon Blood Dynasty Legacy
 	# dragon_legacy_track_name:0 "Dragon Blood"
@@ -24,5 +30,3 @@
 	# dragon_legacy_4_effect:0 "The [GetTrait('dragon_blood').GetName( GetNullCharacter )] [trait|E] has a 20% chance to spawn for children of this dynasty, and then it will be forevermore passed down through the ages."
 	# dragon_legacy_5_name:0 "Dragon Lords"
 	# dragon_legacy_5_effect:0 "Unlocks Lord's Chosen Men-at-arms"
-
-

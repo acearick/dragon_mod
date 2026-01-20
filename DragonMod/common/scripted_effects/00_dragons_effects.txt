@@ -13,20 +13,20 @@ dragon_slayer_all_attendee_xp_effect = {
 		every_in_list = {
 			list = dragon_slayers
 			if = {
-				limit = { has_trait = lifestyle_dragonmaster }
+				limit = { has_trait = dragon_hunter }
 				send_interface_toast = {
-					title = dragonmaster_xp_gain_message
+					title = dragon_hunter_xp_gain_message
 					dragonmaster_progress_point_gain_effect = { CHANGE = $CHANGE$ RANDOM_CHANGE = $RANDOM$ }
 					hidden_effect = {
-						dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_HATCHER = no DRAGON_SLAYER = yes }
+						dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = yes }
 					}
 				}
 			}
 			else = {
-				add_trait = lifestyle_dragonmaster
+				add_trait = dragon_hunter
 				dragonmaster_progress_point_gain_effect = { CHANGE = $CHANGE$ RANDOM_CHANGE = $RANDOM$ }
 				hidden_effect = {
-					dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_HATCHER = no DRAGON_SLAYER = yes }
+					dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = yes }
 				}
 			}			
 		}
@@ -40,7 +40,7 @@ dragons_animal_kill_effect = {
 	# Gives Dragon Slayer Lifestyle XP
 	dragonmaster_progress_point_gain_effect = { CHANGE = 1 RANDOM_CHANGE = 3 }
 	hidden_effect = {
-		dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_HATCHER = no DRAGON_SLAYER = yes }
+		dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = yes }
 	}
 	# # Determine who could be wounded
 	# scope:activity ?= {
@@ -64,7 +64,7 @@ dragons_animal_kill_effect = {
 			# Check if the character has a dragon artifact equipped
     		modifier = {
 				any_equipped_character_artifact = {
-					has_artifact_flag = dragon_artifact
+					artifact_slot_type = dragon
 				}
 				factor = 2
 			}

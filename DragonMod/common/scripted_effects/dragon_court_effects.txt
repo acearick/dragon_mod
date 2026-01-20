@@ -1,0 +1,69 @@
+﻿############################################
+# Dragon Court Position Effects
+############################################
+
+# Chosen Dragon Knight - Position Accepted
+chosen_dragon_knight_accepted_effect = {
+	add_character_modifier = {
+		modifier = dragon_knight_duty_modifier
+		years = 100
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = had_dragon_knight_position }
+		}
+		add_character_flag = {
+			flag = had_dragon_knight_position
+		}
+		add_prestige = 200
+	}
+}
+
+# Chosen Dragon Knight - Position Revoked
+chosen_dragon_knight_revoked_effect = {
+	remove_character_modifier = dragon_knight_duty_modifier
+	add_prestige = -100
+	add_opinion = {
+		target = scope:liege
+		modifier = angry_opinion
+		opinion = -20
+	}
+}
+
+# Chosen Dragon Knight - Position Invalidated
+chosen_dragon_knight_invalidated_effect = {
+	remove_character_modifier = dragon_knight_duty_modifier
+}
+
+# Dragon Hatcher - Position Accepted
+dragon_hatcher_accepted_effect = {
+	add_character_modifier = {
+		modifier = dragon_hatcher_duty_modifier
+		years = 100
+	}
+	if = {
+		limit = {
+			NOT = { has_character_flag = had_dragon_hatcher_position }
+		}
+		add_character_flag = {
+			flag = had_dragon_hatcher_position
+		}
+		add_prestige = 150
+	}
+}
+
+# Dragon Hatcher - Position Revoked
+dragon_hatcher_revoked_effect = {
+	remove_character_modifier = dragon_hatcher_duty_modifier
+	add_prestige = -75
+	add_opinion = {
+		target = scope:liege
+		modifier = angry_opinion
+		opinion = -15
+	}
+}
+
+# Dragon Hatcher - Position Invalidated
+dragon_hatcher_invalidated_effect = {
+	remove_character_modifier = dragon_hatcher_duty_modifier
+}

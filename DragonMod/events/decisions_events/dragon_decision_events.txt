@@ -1,0 +1,15 @@
+﻿namespace = dragon_decision_event
+
+# TODO: Placeholder event for future re-usage of this file
+# dragon_decision_event.0001 = {
+#     type = character_event
+#     title = dragon_decision_event.0001.t
+#     desc = dragon_decision_event.0001.desc
+
+# 	left_portrait = root
+# 	theme = death
+
+# 	immediate = {
+# 		play_music_cue = mx_cue_stress
+# 	}
+# }

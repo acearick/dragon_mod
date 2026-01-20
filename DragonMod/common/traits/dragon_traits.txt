@@ -777,7 +777,7 @@ dragon_hunter = {
 }
 
 ##############################
-# DRAGON SCHOLAR TRAIT (LIFESTYLE WITH TRACK)
+# DRAGON SCHOLAR TRAIT (LIFESTYLE WITH TWO TRACKS)
 ##############################
 
 dragon_scholar = {
@@ -792,23 +792,57 @@ dragon_scholar = {
 	
 	ruler_designer_cost = 50
 	
-	# Single track for scholarly progression
-	track = {
-		50 = {
-			# Knowledgeable Scholar
-			learning = 1
-			diplomacy = 1
-			monthly_prestige = 0.15
-			stress_loss_mult = 0.05
+	# Two tracks: dragon_lore and dragon_hatching
+	tracks = {
+		# Dragon Lore - academic knowledge of dragons, history, and behavior
+		dragon_lore = {
+			33 = {
+				# Novice Scholar
+				learning = 1
+				monthly_prestige = 0.1
+				stress_loss_mult = 0.03
+			}
+			66 = {
+				# Dragon Historian
+				learning = 2
+				diplomacy = 1
+				monthly_prestige = 0.2
+				stress_loss_mult = 0.08
+			}
+			100 = {
+				# Dragon Loremaster
+				learning = 4
+				diplomacy = 2
+				monthly_prestige = 0.4
+				stress_loss_mult = 0.15
+				courtier_and_guest_opinion = 10
+			}
 		}
-		100 = {
-			# Dragon Loremaster
-			learning = 3
-			diplomacy = 2
-			monthly_prestige = 0.3
-			stress_loss_mult = 0.1
-			health = 0.15
-			fertility = 0.05
+		# Dragon Hatching - practical skill at hatching and nurturing dragon eggs
+		dragon_hatching = {
+			33 = {
+				# Egg Keeper
+				stewardship = 1
+				health = 0.1
+				fertility = 0.03
+			}
+			66 = {
+				# Skilled Incubator
+				stewardship = 1
+				learning = 1
+				health = 0.2
+				fertility = 0.08
+				stress_loss_mult = 0.05
+			}
+			100 = {
+				# Master Hatcher
+				stewardship = 2
+				learning = 2
+				health = 0.35
+				fertility = 0.15
+				stress_loss_mult = 0.1
+				monthly_piety = 0.2
+			}
 		}
 	}
 	
@@ -820,23 +854,87 @@ dragon_scholar = {
 				}
 				desc = trait_dragon_scholar
 			}
+			# Master of both tracks
 			triggered_desc = {
 				trigger = {
 					has_trait_xp = {
 						trait = dragon_scholar
+						track = dragon_lore
+						value >= 100
+					}
+					has_trait_xp = {
+						trait = dragon_scholar
+						track = dragon_hatching
 						value >= 100
 					}
 				}
-				desc = trait_dragon_scholar_2
+				desc = trait_dragon_scholar_master
 			}
+			# Loremaster (maxed lore track)
 			triggered_desc = {
 				trigger = {
 					has_trait_xp = {
 						trait = dragon_scholar
-						value >= 50
+						track = dragon_lore
+						value >= 100
 					}
 				}
-				desc = trait_dragon_scholar_1
+				desc = trait_dragon_scholar_loremaster
+			}
+			# Master Hatcher (maxed hatching track)
+			triggered_desc = {
+				trigger = {
+					has_trait_xp = {
+						trait = dragon_scholar
+						track = dragon_hatching
+						value >= 100
+					}
+				}
+				desc = trait_dragon_scholar_master_hatcher
+			}
+			# High lore
+			triggered_desc = {
+				trigger = {
+					has_trait_xp = {
+						trait = dragon_scholar
+						track = dragon_lore
+						value >= 66
+					}
+				}
+				desc = trait_dragon_scholar_historian
+			}
+			# High hatching
+			triggered_desc = {
+				trigger = {
+					has_trait_xp = {
+						trait = dragon_scholar
+						track = dragon_hatching
+						value >= 66
+					}
+				}
+				desc = trait_dragon_scholar_incubator
+			}
+			# Some lore progress
+			triggered_desc = {
+				trigger = {
+					has_trait_xp = {
+						trait = dragon_scholar
+						track = dragon_lore
+						value >= 33
+					}
+				}
+				desc = trait_dragon_scholar_novice
+			}
+			# Some hatching progress
+			triggered_desc = {
+				trigger = {
+					has_trait_xp = {
+						trait = dragon_scholar
+						track = dragon_hatching
+						value >= 33
+					}
+				}
+				desc = trait_dragon_scholar_egg_keeper
 			}
 			desc = trait_dragon_scholar
 		}
@@ -850,23 +948,65 @@ dragon_scholar = {
 				}
 				desc = trait_dragon_scholar_desc
 			}
+			# Master of both
 			triggered_desc = {
 				trigger = {
 					has_trait_xp = {
 						trait = dragon_scholar
+						track = dragon_lore
+						value >= 100
+					}
+					has_trait_xp = {
+						trait = dragon_scholar
+						track = dragon_hatching
 						value >= 100
 					}
 				}
-				desc = trait_dragon_scholar_2_character_desc
+				desc = trait_dragon_scholar_master_character_desc
 			}
+			# Loremaster
 			triggered_desc = {
 				trigger = {
 					has_trait_xp = {
 						trait = dragon_scholar
-						value >= 50
+						track = dragon_lore
+						value >= 100
 					}
 				}
-				desc = trait_dragon_scholar_1_character_desc
+				desc = trait_dragon_scholar_loremaster_character_desc
+			}
+			# Master Hatcher
+			triggered_desc = {
+				trigger = {
+					has_trait_xp = {
+						trait = dragon_scholar
+						track = dragon_hatching
+						value >= 100
+					}
+				}
+				desc = trait_dragon_scholar_master_hatcher_character_desc
+			}
+			# Historian
+			triggered_desc = {
+				trigger = {
+					has_trait_xp = {
+						trait = dragon_scholar
+						track = dragon_lore
+						value >= 66
+					}
+				}
+				desc = trait_dragon_scholar_historian_character_desc
+			}
+			# Incubator
+			triggered_desc = {
+				trigger = {
+					has_trait_xp = {
+						trait = dragon_scholar
+						track = dragon_hatching
+						value >= 66
+					}
+				}
+				desc = trait_dragon_scholar_incubator_character_desc
 			}
 			desc = trait_dragon_scholar_character_desc
 		}
@@ -881,6 +1021,7 @@ dragon_scholar = {
 		patient = @pos_compat_medium
 		diligent = @pos_compat_low
 		dragon_rider = @pos_compat_medium
+		dragon_egg_owner = @pos_compat_high
 		arick_blood_1 = @pos_compat_low
 		arick_blood_2 = @pos_compat_low
 		arick_blood_3 = @pos_compat_medium

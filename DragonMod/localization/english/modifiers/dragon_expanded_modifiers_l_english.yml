@@ -131,3 +131,13 @@
  fresh_dragon_bond_desc:0 "The joy of a new dragon bond fills you with vigor."
  dragon_primordial_legacy:0 "Rider of a Primordial Dragon"
  dragon_primordial_legacy_desc:0 "You have ridden a dragon that lived for over three centuries. Your name will echo through history."
+
+ ##############################
+ # COURT POSITION DUTY MODIFIERS
+ ##############################
+ 
+ dragon_knight_duty_modifier:0 "Chosen Dragon Knight"
+ dragon_knight_duty_modifier_desc:0 "As the Chosen Dragon Knight, you serve your liege with distinction, bringing the power of dragonfire to the realm's defense."
+ 
+ dragon_hatcher_duty_modifier:0 "Dragon Hatcher Duty"
+ dragon_hatcher_duty_modifier_desc:0 "You tend to the precious dragon eggs in your liege's care, nurturing the future of dragonkind."

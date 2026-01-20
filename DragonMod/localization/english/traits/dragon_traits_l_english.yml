@@ -4,6 +4,9 @@
  ##############################
  
  # Arick Blood Level 1 - Trace
+ 
+ # Trait Group Name
+ trait_arick_blood:0 "Arick Blood"
  trait_arick_blood_1:0 "Trace Arick Blood"
  trait_arick_blood_1_desc:0 "The faintest whisper of ancient Arick dragonlord heritage runs through this bloodline, barely detectable but present nonetheless."
  trait_arick_blood_1_character_desc:0 "The faintest trace of Arick blood runs through [ROOT.GetCharacter.GetFirstNamePossessiveNoTooltip] veins—so faint that most would never notice, yet it is there."
@@ -102,24 +105,39 @@
  trait_track_dragon_tracker_desc:0 "Skill in locating, tracking, and studying dragons in preparation for the hunt."
  
  ##############################
- # DRAGON SCHOLAR TRAIT & TRACK
+ # DRAGON SCHOLAR TRAIT & TRACKS
  ##############################
  
  # Base Dragon Scholar
  trait_dragon_scholar:0 "Dragon Scholar"
- trait_dragon_scholar_desc:0 "This character has devoted themselves to studying dragons—their history, behavior, breeding, and care. Such knowledge is rare and valuable."
+ trait_dragon_scholar_desc:0 "This character has devoted themselves to studying dragons—their history, behavior, breeding, and the secrets of hatching eggs. Such knowledge is rare and valuable."
  trait_dragon_scholar_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has devoted [ROOT.GetCharacter.GetHerHis] life to the scholarly study of dragons. [ROOT.GetCharacter.GetHerHis] knowledge of the great beasts is unparalleled."
  
- # Dragon Scholar Levels
- trait_dragon_scholar_1:0 "Dragon Scholar"
- trait_dragon_scholar_1_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has accumulated significant knowledge about dragons. [ROOT.GetCharacter.GetSheHe|U] can identify dragon breeds, understand their behaviors, and advise on their care."
+ # Dragon Scholar - Combined Mastery
+ trait_dragon_scholar_master:0 "Grand Dragon Sage"
+ trait_dragon_scholar_master_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has achieved mastery of both dragon lore and the art of hatching. [ROOT.GetCharacter.GetSheHe|U] is a Grand Dragon Sage, possessing knowledge that borders on the mystical."
  
- trait_dragon_scholar_2:0 "Dragon Loremaster"
- trait_dragon_scholar_2_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a true Dragon Loremaster, possessing knowledge of dragons that borders on the mystical. [ROOT.GetCharacter.GetSheHe|U] understands the secrets of dragon breeding and can coax even the most reluctant eggs to hatch."
+ # Dragon Lore Track Names
+ trait_dragon_scholar_novice:0 "Dragon Scholar"
+ trait_dragon_scholar_historian:0 "Dragon Historian"
+ trait_dragon_scholar_historian_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has become a Dragon Historian, possessing deep knowledge of draconic history, lineages, and behavior. [ROOT.GetCharacter.GetHerHis] counsel is sought by lords and dragonriders alike."
+ trait_dragon_scholar_loremaster:0 "Dragon Loremaster"
+ trait_dragon_scholar_loremaster_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a true Dragon Loremaster, possessing knowledge of dragons that borders on the mystical. Ancient texts yield their secrets to [ROOT.GetCharacter.GetHerHim], and [ROOT.GetCharacter.GetSheHe] can speak of dragons long dead as if they lived yesterday."
  
- # Dragon Scholar Track
- trait_track_dragon_scholar:0 "Dragon Lore"
- trait_track_dragon_scholar_desc:0 "Accumulated knowledge about dragons, their history, behavior, and the secrets of their breeding."
+ # Dragon Hatching Track Names
+ trait_dragon_scholar_egg_keeper:0 "Egg Keeper"
+ trait_dragon_scholar_incubator:0 "Dragon Incubator"
+ trait_dragon_scholar_incubator_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has mastered the delicate art of nurturing dragon eggs. [ROOT.GetCharacter.GetSheHe|U] knows the precise temperatures, the ritual words, and the ancient techniques that coax life from shell."
+ trait_dragon_scholar_master_hatcher:0 "Master Hatcher"
+ trait_dragon_scholar_master_hatcher_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a Master Hatcher, able to awaken dragon eggs that others would deem cold and lifeless. Even petrified eggs might stir under [ROOT.GetCharacter.GetHerHis] care, for [ROOT.GetCharacter.GetSheHe] has unlocked secrets lost since the age of the dragonlords."
+ 
+ # Dragon Lore Track
+ trait_track_dragon_lore:0 "Dragon Lore"
+ trait_track_dragon_lore_desc:0 "Accumulated knowledge about dragons—their history, lineages, behavior, and the ancient texts that record their deeds."
+ 
+ # Dragon Hatching Track
+ trait_track_dragon_hatching:0 "Dragon Hatching"
+ trait_track_dragon_hatching_desc:0 "Practical skill in nurturing and hatching dragon eggs, including knowledge of incubation techniques, ritual practices, and the care of hatchlings."
  
  ##############################
  # NEGATIVE DRAGON TRAITS
@@ -194,7 +212,7 @@
  trait_stone_egg_owner_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] possesses a petrified dragon egg. Though turned to stone, some whisper that the right ritual might still awaken the dragon within."
 
  	# # Dragon Master
-	# trait_lifestyle_dragonmaster:0 "Dragon Master"
+	# trait_dragon_rider:0 "Dragon Master"
 	# trait_track_dragon_rider:0 "Dragon Rider"
 	# trait_track_dragon_rider_desc:0 "This character knows how to ride a dragon."
 	# trait_track_dragon_slayer:0 "Dragon Slayer"

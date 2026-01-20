@@ -1,20 +1,18 @@
 ﻿############################################
 # Dragon Mod - Men-at-Arms Types
-# File: common/men_at_arms_types/99_dragon_maa_types.txt
+# File: common/men_at_arms_types/dragon_maa_types.txt
+# Standardized: All unlock via innovation only
 ############################################
 
-# Standard costs
 @maa_buy_cost = 150
 @maa_low_maintenance_cost = 1.0
 @maa_high_maintenance_cost = 5.0
 @cultural_maa_extra_ai_score = 80
 
-# Dragon-specific costs (more expensive due to rarity)
 @dragon_maa_buy_cost = 250
 @dragon_maa_low_maintenance_cost = 2.0
 @dragon_maa_high_maintenance_cost = 8.0
 
-# Provisions Costs
 @provisions_cost_infantry_cheap = 3
 @provisions_cost_infantry_moderate = 7
 @provisions_cost_infantry_expensive = 12
@@ -34,7 +32,6 @@
 # DRAGON UNITS (Actual Dragons)
 ##############################
 
-# War Drakes - Pack of minor dragons used in battle
 war_drakes = {
 	type = skirmishers
 	
@@ -73,8 +70,8 @@ war_drakes = {
 	
 	can_recruit = {
 		culture = {
-			has_cultural_pillar = heritage_arick
 			has_innovation = innovation_dragon_taming
+			has_cultural_pillar = heritage_arick
 		}
 	}
 
@@ -88,7 +85,6 @@ war_drakes = {
 	icon = skirmishers
 }
 
-# Hatchling Swarm - Young dragons used for harassment and terror
 hatchling_swarm = {
 	type = skirmishers
 	
@@ -122,16 +118,8 @@ hatchling_swarm = {
 	
 	can_recruit = {
 		culture = {
+			has_innovation = innovation_dragon_taming
 			has_cultural_pillar = heritage_arick
-		}
-		OR = {
-			has_trait = dragon_egg_owner
-			has_trait = young_dragon_owner
-			has_trait = adult_dragon_owner
-			has_trait = ancient_dragon_owner
-			culture = {
-				has_cultural_tradition = tradition_dragon_breeders
-			}
 		}
 	}
 
@@ -145,7 +133,6 @@ hatchling_swarm = {
 	icon = skirmishers
 }
 
-# Firedrakes - Mature minor dragons bred for war
 firedrakes = {
 	type = heavy_cavalry
 	
@@ -186,8 +173,8 @@ firedrakes = {
 	
 	can_recruit = {
 		culture = {
-			has_cultural_pillar = heritage_arick
 			has_innovation = innovation_dragon_breeding
+			has_cultural_pillar = heritage_arick
 		}
 	}
 
@@ -201,7 +188,6 @@ firedrakes = {
 	icon = heavy_cavalry
 }
 
-# Elder Wyrms - Ancient minor dragons of immense power
 elder_wyrms = {
 	type = heavy_cavalry
 	
@@ -243,8 +229,8 @@ elder_wyrms = {
 	
 	can_recruit = {
 		culture = {
-			has_cultural_pillar = heritage_arick
 			has_innovation = innovation_dragon_mastery
+			has_cultural_pillar = heritage_arick
 		}
 	}
 
@@ -259,7 +245,7 @@ elder_wyrms = {
 }
 
 lords_chosen_maa = {
-    type = dragon
+	type = heavy_cavalry
 
 	max_sub_regiments = 1
 
@@ -271,7 +257,7 @@ lords_chosen_maa = {
 	terrain_bonus = {
 		plains = { damage = 500 }
 		drylands = { damage = 500 }
-        farmlands = { damage = 1000 }
+		farmlands = { damage = 1000 }
 		hills = { damage = -500 }
 		mountains = { damage = -1000 pursuit = -200 toughness = 250 screen = -250 }
 		desert_mountains = { damage = -1000 pursuit = -200 toughness = 250 screen = -250 }
@@ -279,7 +265,7 @@ lords_chosen_maa = {
 	}
 
 	counters = {
-        skirmishers = 1
+		skirmishers = 1
 		heavy_infantry = 1
 		light_cavalry = 1
 		heavy_cavalry = 1
@@ -297,15 +283,13 @@ lords_chosen_maa = {
 	
 	stack = 10
 	ai_quality = { value = 100 }
-	icon = dragon
+	icon = heavy_cavalry
 
 	can_recruit = {
-		AND = {
-			has_dragon_rider_trigger = yes
-			has_dragon_equipped_trigger = yes
-			exists = dynasty
-			dynasty = { has_dynasty_perk = dragon_blood_legacy_5 }
-		}
+		has_dragon_rider_trigger = yes
+		has_dragon_equipped_trigger = yes
+		exists = dynasty
+		dynasty = { has_dynasty_perk = dragon_blood_legacy_5 }
 	}
 }
 
@@ -313,10 +297,8 @@ lords_chosen_maa = {
 # PRO-DRAGON MEN-AT-ARMS
 ##############################
 
-#Dragon Bannermen
-
-dragon_bannermen_maa = {
-    type = heavy_infantry
+dragon_bannermen = {
+	type = heavy_infantry
 
 	max_sub_regiments = 3
 
@@ -328,7 +310,7 @@ dragon_bannermen_maa = {
 	terrain_bonus = {
 		plains = { damage = 50 }
 		drylands = { damage = 50 }
-        farmlands = { damage = 100 }
+		farmlands = { damage = 100 }
 		hills = { damage = -50 }
 		mountains = { damage = -100 pursuit = -20 toughness = 25 screen = -25 }
 		desert_mountains = { damage = -100 pursuit = -20 toughness = 25 screen = -25 }
@@ -336,9 +318,9 @@ dragon_bannermen_maa = {
 	}
 
 	counters = {
-        skirmishers = 1
+		skirmishers = 1
 		archers = 1
-        pikemen = 1
+		pikemen = 1
 	}
 	
 	winter_bonus = {
@@ -352,17 +334,14 @@ dragon_bannermen_maa = {
 	
 	stack = 50
 	ai_quality = { value = 100 }
-	icon = dragon_bannermen
+	icon = heavy_infantry
 
 	can_recruit = {
-		AND = {
-			has_dragon_rider_trigger = yes
-			has_dragon_equipped_trigger = yes
-		}
+		has_dragon_rider_trigger = yes
+		has_dragon_equipped_trigger = yes
 	}
 }
 
-# Dragonrider Cavalry - Elite aerial cavalry
 dragonrider_cavalry = {
 	type = heavy_cavalry
 	
@@ -397,13 +376,8 @@ dragonrider_cavalry = {
 	
 	can_recruit = {
 		culture = {
-			OR = {
-				has_cultural_parameter = unlock_maa_dragonrider_cavalry
-				has_innovation = innovation_dragon_riding
-			}
-			AND = {
-				has_cultural_pillar = heritage_arick
-			}
+			has_innovation = innovation_dragon_riding
+			has_cultural_pillar = heritage_arick
 		}
 	}
 
@@ -417,7 +391,6 @@ dragonrider_cavalry = {
 	icon = heavy_cavalry
 }
 
-# Firebreathers - Infantry trained alongside dragons
 firebreathers = {
 	type = heavy_infantry
 	
@@ -460,7 +433,6 @@ firebreathers = {
 	icon = heavy_infantry
 }
 
-# Scaled Guard - Elite bodyguards of dragonlord houses
 scaled_guard = {
 	type = heavy_infantry
 	
@@ -488,8 +460,8 @@ scaled_guard = {
 	
 	can_recruit = {
 		OR = {
-		culture = culture:scaled
-		culture = culture:arick
+			culture = culture:scaled
+			culture = culture:arick
 		}
 	}
 
@@ -507,7 +479,6 @@ scaled_guard = {
 # ANTI-DRAGON MEN-AT-ARMS
 ##############################
 
-# Dragon Hunters - Specialists trained to kill dragons
 dragon_hunters = {
 	type = skirmishers
 	
@@ -537,9 +508,9 @@ dragon_hunters = {
 	
 	can_recruit = {
 		culture = {
-			OR = {
-				has_cultural_parameter = dragonslayer_maa_enabled
-				has_innovation = innovation_dragon_hunting
+			has_innovation = innovation_dragon_hunting
+			NOR = {
+				has_cultural_pillar = heritage_arick
 			}
 		}
 	}
@@ -554,7 +525,6 @@ dragon_hunters = {
 	icon = skirmishers
 }
 
-# Scorpion Crew - Operators of anti-dragon siege weapons
 scorpion_crew = {
 	type = archers
 	
@@ -585,9 +555,9 @@ scorpion_crew = {
 	
 	can_recruit = {
 		culture = {
-			OR = {
-				has_cultural_parameter = scorpion_siege_bonus
-				has_innovation = innovation_scorpion_ballista
+			has_innovation = innovation_scorpion_ballista
+			NOR = {
+				has_cultural_pillar = heritage_arick
 			}
 		}
 	}
@@ -602,7 +572,6 @@ scorpion_crew = {
 	icon = bowmen
 }
 
-# Ashguard - Defensive specialists who survived dragon attacks
 ashguard = {
 	type = heavy_infantry
 	

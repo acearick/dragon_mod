@@ -1,0 +1,79 @@
+﻿lifestyle_dragonmaster = {
+	icon = dragon_rider.dds
+	category = lifestyle
+	ruler_designer_cost = 50
+
+	desc = trait_dragon_rider_desc
+
+	tracks = {
+		dragon_slayer = {
+			25 = {
+				prowess = 2
+			}
+			50 = {
+				intrigue = 1
+				prowess = 4
+			}
+			100 = {
+				intrigue = 1
+				prowess = 6
+				health = 0.25
+			}
+		}
+		dragon_rider = {
+			25 = {
+				martial = 1
+				prowess = 2
+			}
+			50 = {	
+				martial = 1
+				prowess = 2
+				health = 0.25
+			}
+			100 = {
+				martial = 2
+				prowess = 4
+				health = 0.25
+			}
+		}
+		dragon_hatcher = {
+			100 = {
+				learning = 4
+				health = -0.25
+			}
+		}
+	}
+
+	compatibility = {
+		brave = @pos_compat_low
+		diligent = @pos_compat_low
+		ambitious = @pos_compat_low
+	}
+
+	ai_energy = 25
+}
+
+dragon_blood = {
+	physical = yes
+	health = 1
+	martial = 5
+	learning = 5
+	inbreeding_chance = 0.25
+	
+	inherit_chance = 100
+	inherit_from_real_father = yes
+	
+	ruler_designer_cost = 80
+
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { exists = this }
+				}
+				desc = trait_dragon_blood_desc
+			}
+			desc = trait_dragon_blood_character_desc
+		}
+	}
+}

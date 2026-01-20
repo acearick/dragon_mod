@@ -1,0 +1,45 @@
+﻿namespace = dragon_egg_events
+
+# Trigger to age Dragon Eggs
+dragon_egg_events.0001 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		any_character_artifact = {
+			artifact_type = dragon_egg
+		}
+	}
+
+	immediate = {
+		random_character_artifact = {
+			limit = {
+				artifact_type = dragon_egg
+			}
+			save_scope_as = dragon_egg_artifact
+		}
+		trigger_event = dragon_egg_events.0002
+	}
+}
+
+# Age Dragon Egg
+dragon_egg_events.0002 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				scope:dragon_egg_artifact.var:egg_age >= 2 # aka if already 2 years old, this is its 3rd year, so it hatches
+			}
+			trigger_event = dragon_spawn.0008
+		} else = {
+			scope:dragon_egg_artifact = {
+				change_variable = {
+					name = egg_age
+					add = 1
+				}
+			}
+		}
+	}
+}

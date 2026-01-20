@@ -1,0 +1,675 @@
+﻿############################################
+# Dragon Mod - Expanded Decision Events
+# File: events/dragon_expanded_decisions_events.txt
+############################################
+
+namespace = dragon_expanded_decisions
+
+##########
+# SEARCH FOR WILD DRAGONS (0001-0009)
+##########
+
+# Initial search event
+dragon_expanded_decisions.0001 = {
+	type = character_event
+	title = dragon_expanded_decisions.0001.t
+	desc = dragon_expanded_decisions.0001.desc
+	theme = hunt_activity
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	immediate = {
+		play_music_cue = mx_cue_hunt
+		# Determine outcome based on traits
+		random_list = {
+			# Success chance - find dragon egg
+			30 = {
+				modifier = {
+					add = 10
+					has_trait = brave
+				}
+				modifier = {
+					add = 5
+					has_trait = patient
+				}
+				modifier = {
+					add = 10
+					has_trait = diligent
+				}
+				set_variable = {
+					name = dragon_search_result
+					value = flag:success
+				}
+			}
+			# Partial success - find lore
+			35 = {
+				modifier = {
+					add = 10
+					has_trait = patient
+				}
+				modifier = {
+					add = 5
+					has_trait = curious
+				}
+				set_variable = {
+					name = dragon_search_result
+					value = flag:partial
+				}
+			}
+			# Failure
+			35 = {
+				modifier = {
+					add = 10
+					has_trait = craven
+				}
+				modifier = {
+					add = 5
+					has_trait = lazy
+				}
+				set_variable = {
+					name = dragon_search_result
+					value = flag:failure
+				}
+			}
+		}
+	}
+	
+	# Success - find a dragon egg
+	option = {
+		name = dragon_expanded_decisions.0001.a
+		trigger = {
+			has_variable = dragon_search_result
+			var:dragon_search_result = flag:success
+		}
+		
+		add_character_modifier = {
+			modifier = found_wild_dragon_modifier
+			years = 5
+		}
+		
+		# Trigger egg acquisition
+		trigger_event = {
+			id = dragon_expanded_decisions.0002
+			days = 7
+		}
+		
+		stress_impact = {
+			brave = minor_stress_impact_loss
+			ambitious = minor_stress_impact_loss
+		}
+		
+		hidden_effect = {
+			remove_variable = dragon_search_result
+		}
+	}
+	
+	# Partial success - find dragon lore
+	option = {
+		name = dragon_expanded_decisions.0001.b
+		trigger = {
+			has_variable = dragon_search_result
+			var:dragon_search_result = flag:partial
+		}
+		
+		add_prestige = 100
+		
+		if = {
+			limit = {
+				NOT = { has_trait = dragon_scholar }
+			}
+			add_trait_xp = {
+				trait = dragon_scholar
+				track = dragon_lore
+				value = 5
+			}
+		}
+		
+		custom_tooltip = search_for_wild_dragons_lore_found_tt
+		
+		hidden_effect = {
+			remove_variable = dragon_search_result
+		}
+	}
+	
+	# Failure - dangerous encounter
+	option = {
+		name = dragon_expanded_decisions.0001.c
+		trigger = {
+			has_variable = dragon_search_result
+			var:dragon_search_result = flag:failure
+		}
+		
+		add_character_modifier = {
+			modifier = dragon_search_failed_modifier
+			years = 2
+		}
+		
+		random_list = {
+			50 = {
+				# Minor injury
+				add_trait = wounded_1
+				custom_tooltip = search_for_wild_dragons_injured_tt
+			}
+			30 = {
+				# Stress from failure
+				add_stress = 30
+			}
+			20 = {
+				# Nothing happens
+				add_prestige = -50
+			}
+		}
+		
+		stress_impact = {
+			craven = major_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+		
+		hidden_effect = {
+			remove_variable = dragon_search_result
+		}
+	}
+}
+
+# Dragon egg found
+dragon_expanded_decisions.0002 = {
+	type = character_event
+	title = dragon_expanded_decisions.0002.t
+	desc = dragon_expanded_decisions.0002.desc
+	theme = hunt_activity
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	
+	immediate = {
+		play_music_cue = mx_cue_positive_effect
+	}
+	
+	option = {
+		name = dragon_expanded_decisions.0002.a
+		
+		# Create dragon egg artifact using Dragon World's system
+		create_artifact_dragon_egg_effect = { OWNER = root }
+		
+		add_prestige = 500
+		
+		stress_impact = {
+			ambitious = medium_stress_impact_loss
+		}
+	}
+}
+
+##########
+# DRAGON TOURNAMENT (0010-0019)
+##########
+
+# Tournament begins
+dragon_expanded_decisions.0010 = {
+	type = character_event
+	title = dragon_expanded_decisions.0010.t
+	desc = dragon_expanded_decisions.0010.desc
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	
+	immediate = {
+		play_music_cue = mx_cue_combat_1
+		
+		add_character_modifier = {
+			modifier = dragon_tournament_host_modifier
+			years = 5
+		}
+	}
+	
+	# Grand tournament - many participants
+	option = {
+		name = dragon_expanded_decisions.0010.a
+		
+		add_prestige = 300
+		
+		# Invite dragon riders
+		every_ruler = {
+			limit = {
+				has_dragon_rider_trigger = yes
+				NOT = { this = root }
+				is_ai = yes
+			}
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 20
+			}
+		}
+		
+		trigger_event = {
+			id = dragon_expanded_decisions.0011
+			days = { 14 30 }
+		}
+	}
+	
+	# Intimate tournament - select guests
+	option = {
+		name = dragon_expanded_decisions.0010.b
+		
+		add_prestige = 150
+		
+		trigger_event = {
+			id = dragon_expanded_decisions.0012
+			days = { 7 14 }
+		}
+	}
+}
+
+# Tournament outcome - victory
+dragon_expanded_decisions.0011 = {
+	type = character_event
+	title = dragon_expanded_decisions.0011.t
+	desc = dragon_expanded_decisions.0011.desc
+	theme = martial
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	# Player wins
+	option = {
+		name = dragon_expanded_decisions.0011.a
+		trigger = {
+			prowess >= 12
+		}
+		
+		add_character_modifier = {
+			modifier = dragon_tournament_victor_modifier
+			years = 10
+		}
+		
+		add_prestige = 500
+		
+		if = {
+			limit = { has_trait = dragon_rider }
+			add_trait_xp = {
+				trait = dragon_rider
+				track = dragon_training
+				value = 5
+			}
+		}
+	}
+	
+	# Close competition
+	option = {
+		name = dragon_expanded_decisions.0011.b
+		trigger = {
+			prowess >= 8
+			prowess < 12
+		}
+		
+		add_prestige = 250
+		
+		random_list = {
+			50 = {
+				add_character_modifier = {
+					modifier = dragon_tournament_victor_modifier
+					years = 5
+				}
+			}
+			50 = {
+				add_stress = 20
+			}
+		}
+	}
+	
+	# Lost but learned
+	option = {
+		name = dragon_expanded_decisions.0011.c
+		
+		add_prestige = 100
+		
+		if = {
+			limit = { has_trait = dragon_rider }
+			add_trait_xp = {
+				trait = dragon_rider
+				track = dragon_
+				value = 25
+			}
+		}
+		
+		stress_impact = {
+			ambitious = minor_stress_impact_gain
+			arrogant = medium_stress_impact_gain
+		}
+	}
+}
+
+# Intimate tournament outcome
+dragon_expanded_decisions.0012 = {
+	type = character_event
+	title = dragon_expanded_decisions.0012.t
+	desc = dragon_expanded_decisions.0012.desc
+	theme = martial
+	
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	option = {
+		name = dragon_expanded_decisions.0012.a
+		
+		add_prestige = 200
+		
+		# Strengthen bonds with vassals
+		every_vassal = {
+			limit = {
+				has_dragon_rider_trigger = yes
+			}
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 30
+			}
+		}
+	}
+}
+
+##########
+# DRAGON BREEDING PROGRAM (0020-0029)
+##########
+
+# Program established
+dragon_expanded_decisions.0020 = {
+	type = character_event
+	title = dragon_expanded_decisions.0020.t
+	desc = dragon_expanded_decisions.0020.desc
+	theme = stewardship
+	
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	immediate = {
+		play_music_cue = mx_cue_positive_effect
+	}
+	
+	option = {
+		name = dragon_expanded_decisions.0020.a
+		
+		capital_county = {
+			add_county_modifier = {
+				modifier = dragon_breeding_grounds_modifier
+				years = 25
+			}
+		}
+		
+		add_prestige = 300
+		
+		custom_tooltip = dragon_breeding_program_established_tt
+	}
+}
+
+##########
+# COMMISSION SCORPION TOWERS (0030-0039)
+##########
+
+# Towers commissioned
+dragon_expanded_decisions.0030 = {
+	type = character_event
+	title = dragon_expanded_decisions.0030.t
+	desc = dragon_expanded_decisions.0030.desc
+	theme = stewardship
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	option = {
+		name = dragon_expanded_decisions.0030.a
+		
+		add_prestige = 100
+		
+		custom_tooltip = scorpion_towers_ready_tt
+		
+		# Neighboring dragonlords take notice
+		every_neighboring_top_liege_realm_owner = {
+			limit = {
+				has_dragon_rider_trigger = yes
+			}
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -20
+			}
+		}
+	}
+}
+
+##########
+# DRAGON TRIBUTE (0040-0049)
+##########
+
+# Tribute offered
+dragon_expanded_decisions.0040 = {
+	type = character_event
+	title = dragon_expanded_decisions.0040.t
+	desc = dragon_expanded_decisions.0040.desc
+	theme = diplomacy
+	
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	
+	immediate = {
+		random_neighboring_top_liege_realm_owner = {
+			limit = {
+				has_dragon_rider_trigger = yes
+				NOT = { is_at_war_with = root }
+			}
+			save_scope_as = dragonlord_neighbor
+		}
+	}
+	
+	option = {
+		name = dragon_expanded_decisions.0040.a
+		trigger = {
+			exists = scope:dragonlord_neighbor
+		}
+		
+		add_character_modifier = {
+			modifier = dragon_tribute_paid_modifier
+			years = 5
+		}
+		
+		scope:dragonlord_neighbor = {
+			add_gold = 200
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 40
+			}
+		}
+		
+		capital_county = {
+			add_county_modifier = {
+				modifier = protected_by_dragons_modifier
+				years = 5
+			}
+		}
+		
+		stress_impact = {
+			brave = medium_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+	}
+	
+	# No suitable dragonlord found
+	option = {
+		name = dragon_expanded_decisions.0040.b
+		trigger = {
+			NOT = { exists = scope:dragonlord_neighbor }
+		}
+		
+		add_prestige = -50
+		custom_tooltip = no_dragonlord_found_tt
+	}
+}
+
+##########
+# CLAIM DRAGON EGG (0050-0059)
+##########
+
+# Egg claim result
+dragon_expanded_decisions.0050 = {
+	type = character_event
+	title = dragon_expanded_decisions.0050.t
+	desc = dragon_expanded_decisions.0050.desc
+	theme = stewardship
+	
+	left_portrait = {
+		character = root
+		animation = personality_content
+	}
+	
+	immediate = {
+		# Determine outcome via random_list
+		random_list = {
+			60 = {
+				set_variable = {
+					name = egg_claim_result
+					value = flag:success
+				}
+			}
+			20 = {
+				set_variable = {
+					name = egg_claim_result
+					value = flag:stone
+				}
+			}
+			20 = {
+				set_variable = {
+					name = egg_claim_result
+					value = flag:failure
+				}
+			}
+		}
+	}
+	
+	# Success - egg found
+	option = {
+		name = dragon_expanded_decisions.0050.a
+		trigger = {
+			has_variable = egg_claim_result
+			var:egg_claim_result = flag:success
+		}
+		
+		create_artifact_dragon_egg_effect = { OWNER = root }
+		
+		add_prestige = 200
+		
+		hidden_effect = {
+			remove_variable = egg_claim_result
+		}
+	}
+	
+	# Partial success - egg is stone
+	option = {
+		name = dragon_expanded_decisions.0050.b
+		trigger = {
+			has_variable = egg_claim_result
+			var:egg_claim_result = flag:stone
+		}
+		
+		add_prestige = 50
+		
+		custom_tooltip = found_stone_egg_tt
+		
+		hidden_effect = {
+			remove_variable = egg_claim_result
+		}
+	}
+	
+	# Failure - no viable eggs
+	option = {
+		name = dragon_expanded_decisions.0050.c
+		trigger = {
+			has_variable = egg_claim_result
+			var:egg_claim_result = flag:failure
+		}
+		
+		add_prestige = -25
+		
+		custom_tooltip = no_eggs_available_tt
+		
+		hidden_effect = {
+			remove_variable = egg_claim_result
+		}
+	}
+}
+
+##########
+# DECLARE DRAGON HUNT (0060-0069)
+##########
+
+# Hunt declared
+dragon_expanded_decisions.0060 = {
+	type = character_event
+	title = dragon_expanded_decisions.0060.t
+	desc = dragon_expanded_decisions.0060.desc
+	theme = martial
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	immediate = {
+		play_music_cue = mx_cue_combat_1
+	}
+	
+	option = {
+		name = dragon_expanded_decisions.0060.a
+		
+		add_prestige = 200
+		
+		# All dragon hunters in realm gain bonuses
+		every_vassal = {
+			limit = {
+				culture = {
+					OR = {
+						has_cultural_tradition = tradition_dragonslayers
+						has_cultural_tradition = tradition_dragon_hunters
+					}
+				}
+			}
+			add_opinion = {
+				target = root
+				modifier = grateful_opinion
+				opinion = 25
+			}
+		}
+		
+		# Dragonlords become hostile
+		every_neighboring_top_liege_realm_owner = {
+			limit = {
+				has_dragon_rider_trigger = yes
+			}
+			add_opinion = {
+				target = root
+				modifier = angry_opinion
+				opinion = -50
+			}
+		}
+		
+		custom_tooltip = dragon_hunt_declared_tt
+	}
+}

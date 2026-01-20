@@ -4,6 +4,7 @@ random_yearly_everyone_pulse = {
 		on_dragon_egg_pulse
 		on_dragon_age_pulse
 		on_dragon_mature_pulse
+		on_dragon_rider_pulse
 	}
 }
 
@@ -22,5 +23,12 @@ on_dragon_age_pulse = {
 on_dragon_egg_pulse = {
 	effect = {
 		trigger_event = dragon_egg_events.0001
+	}
+}
+
+# Dragon rider bonding events
+on_dragon_rider_pulse = {
+	effect = {
+		trigger_event = dragon_rider_events.0001
 	}
 }

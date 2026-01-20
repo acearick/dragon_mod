@@ -232,7 +232,7 @@
 	dragon_spawn.0006.a:0 "Huzzah!"
 
 	# Get Dragon Master decision
-	attempt_to_learn_dragon_rider_decision:0 "Learn to ride Dragons"
+	attempt_to_learn_dragon_rider_decision:0 "Learn to Ride Dragons"
 	attempt_to_learn_dragon_rider_decision_desc:0 "We know somewhere nearby that will help us learn how to ride dragons, let's pay them a visit..."
 	attempt_to_learn_dragon_rider_decision_confirm:0 "Prepare for the journey"
 	attempt_to_learn_dragon_rider_decision_tooltip:0 "Learn to ride Dragons"
@@ -269,12 +269,12 @@
 	recruit_dragon_rider_decision_confirm:0 "Recruit Specialist"
 	recruit_dragon_rider_decision_tooltip:0 "Recruit Renowned Dragon Rider to court"
 
-	# Recruit Dragon Hatcher decision
-	recruit_dragon_hatcher_decision:0 "Recruit Dragon Hatcher"
-	recruit_dragon_hatcher_decision_desc:0 "We will search for a Dragon Hatcher and invite them to our court"
-	recruit_dragon_hatcher_decision_tt:0 "Recruits a Dragon Hatcher to court"
-	recruit_dragon_hatcher_decision_confirm:0 "Recruit Specialist"
-	recruit_dragon_hatcher_decision_tooltip:0 "Recruit Dragon Hatcher to court"
+	# Recruit Dragon scholar decision
+	recruit_dragon_scholar_decision:0 "Recruit Dragon Scholar"
+	recruit_dragon_scholar_decision_desc:0 "We will search for a Dragon scholar and invite them to our court"
+	recruit_dragon_scholar_decision_tt:0 "Recruits a Dragon scholar to court"
+	recruit_dragon_scholar_decision_confirm:0 "Recruit Specialist"
+	recruit_dragon_scholar_decision_tooltip:0 "Recruit Dragon scholar to court"
 
   # Train with Dragon decision
   train_with_dragon_decision:0 "Train with Dragon"
@@ -311,6 +311,7 @@
 	dragon_spawn.0008.desc:0 "My Dragon Egg has finally hatched!"
 	dragon_spawn.0008.a:0 "You shall grow into a mighty beast!"
 	dragon_spawn.0008.a.tt:0 "[newly_created_artifact.GetName] is given a name"
+	dragon_spawn.0008.b:0 "I shall name you myself!"
 
 	dragon_artefact_events.0002.t:0 "Dragon Bond"
 	dragon_artefact_events.0002.desc:0 "My Dragon is ageing, and our bond has become stronger from our time together!"
@@ -318,3 +319,16 @@
 	dragon_artefact_events.0002.a_high_valyrian:0 ""Umbātās...""
 	dragon_artefact_events.0002.b_latin:0 ""Volare!""
 	dragon_artefact_events.0002.b_high_valyrian:0 ""Sōvēs!""
+
+ ##############################
+ # DRAGON RIDER BONDING EVENTS
+ ##############################
+ 
+ dragon_rider_events.0005.t:0 "A Moment with My Dragon"
+ dragon_rider_events.0005.desc:0 "The sun rises over my domain, and I find myself drawn to the dragon roost. My dragon stirs at my approach, those ancient eyes watching me with what I've come to recognize as affection. We have flown together through countless battles, weathered storms both literal and political. This bond between rider and dragon is something few will ever understand."
+ dragon_rider_events.0005.a:0 "Let us train together."
+ dragon_rider_events.0005.b:0 "Rest with me, old friend."
+ dragon_rider_events.0005.c:0 "We must push our limits."
+ dragon_rider_events.0005.c.success:0 "Our bond grows stronger!"
+ dragon_rider_events.0005.c.failure:0 "Perhaps I pushed too hard..."
+ dragon_rider_events.0005.after_tt:0 "Your bond with your dragon deepens."

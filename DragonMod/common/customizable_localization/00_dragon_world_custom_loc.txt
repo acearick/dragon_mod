@@ -140,7 +140,7 @@ InventoryCourtArtifact = {
 				artifact_slot_type = primary_armament
 				artifact_slot_type = regalia
 				artifact_slot_type = miscellaneous
-				artifact_slot_type = dragon
+				artifact_slot_type = Dragon
 			}
 		}
 		localization_key = game_concept_inventory_artifact

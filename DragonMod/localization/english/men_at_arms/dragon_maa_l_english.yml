@@ -35,9 +35,9 @@
  scaled_guard:0 "Scaled Guard"
  scaled_guard_flavor:0 "The personal bodyguards of dragonlord houses, clad in armor fashioned from shed dragon scales. These elite soldiers are sworn to protect their lords unto death, and their distinctive armor marks them as the most dangerous warriors in any realm."
  
- # Dragon Bannermen Maa
- dragon_bannermen_maa:0 "Dragon Bannermen"
- dragon_bannermen_maa_flavor:0 "The Dragon Bannermen are a group of warriors who have sworn to protect the Dragon and it's rider"
+ # Dragon Bannermen
+ dragon_bannermen:0 "Dragon Bannermen"
+ dragon_bannermen_flavor:0 "The Dragon Bannermen are a group of warriors who have sworn to protect the Dragon and it's rider"
 
  # Lord's Chosen Maa
  lords_chosen_maa:0 "Lord's Chosen"

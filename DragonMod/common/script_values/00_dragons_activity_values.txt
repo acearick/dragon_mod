@@ -9,7 +9,7 @@
 				has_court_position = bodyguard_court_position
 				has_court_position = court_physician_court_position
 				has_any_good_relationship_with_character_trigger = { CHARACTER = scope:host }
-				has_trait = lifestyle_dragonmaster
+				has_trait = dragon_rider
 			}
 			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
 		}
@@ -72,7 +72,7 @@ dragon_adventure_entourage_extras_set_weighting_value = {
 				is_knight_of = scope:host
 				has_trait = education_martial
 				has_trait = education_martial_prowess
-				has_trait = lifestyle_dragonmaster
+				has_trait = dragon_rider
 				prowess >= decent_skill_rating
 			}
 			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }

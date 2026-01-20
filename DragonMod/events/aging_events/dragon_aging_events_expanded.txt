@@ -1,0 +1,1030 @@
+﻿############################################
+# Dragon Mod Expansion - Aging Events
+# Extends Dragon World with expanded lifespan and death
+# File: events/dragon_aging_events_expanded.txt
+############################################
+
+namespace = dragon_aging_expanded
+
+# ═══════════════════════════════════════════
+# EVENT 0001: Yearly Dragon Age Pulse
+# Triggers for all characters with dragons
+# ═══════════════════════════════════════════
+
+dragon_aging_expanded.0001 = {
+	type = character_event
+	hidden = yes
+	
+	trigger = {
+		any_character_artifact = {
+			OR = {
+				artifact_type = type_hatchling_dragon
+				artifact_type = type_adolescent_dragon
+				artifact_type = type_young_dragon
+				artifact_type = type_adult_dragon
+				artifact_type = type_ancient_dragon
+				artifact_type = type_elder_dragon
+				artifact_type = type_primordial_dragon
+			}
+		}
+	}
+	
+	immediate = {
+		every_character_artifact = {
+			limit = {
+				OR = {
+					artifact_type = type_hatchling_dragon
+					artifact_type = type_adolescent_dragon
+					artifact_type = type_young_dragon
+					artifact_type = type_adult_dragon
+					artifact_type = type_ancient_dragon
+					artifact_type = type_elder_dragon
+					artifact_type = type_primordial_dragon
+				}
+			}
+			save_scope_as = dragon_artifact
+			
+			# Initialize unified dragon_age if using old DW variables
+			if = {
+				limit = { NOT = { has_variable = dragon_age } }
+				# Convert from Dragon World's stage-specific age vars
+				if = {
+					limit = { 
+						artifact_type = type_hatchling_dragon
+						has_variable = hatchling_dragon_age
+					}
+					set_variable = {
+						name = dragon_age
+						value = var:hatchling_dragon_age
+					}
+				}
+				else_if = {
+					limit = { 
+						artifact_type = type_adolescent_dragon
+						has_variable = adolescent_dragon_age
+					}
+					set_variable = {
+						name = dragon_age
+						value = {
+							value = var:adolescent_dragon_age
+							add = 5
+						}
+					}
+				}
+				else_if = {
+					limit = { 
+						artifact_type = type_young_dragon
+						has_variable = young_dragon_age
+					}
+					set_variable = {
+						name = dragon_age
+						value = {
+							value = var:young_dragon_age
+							add = 15
+						}
+					}
+				}
+				else_if = {
+					limit = { 
+						artifact_type = type_adult_dragon
+						has_variable = adult_dragon_age
+					}
+					set_variable = {
+						name = dragon_age
+						value = {
+							value = var:adult_dragon_age
+							add = 30
+						}
+					}
+				}
+				else = {
+					# Default: set based on type
+					if = {
+						limit = { artifact_type = type_hatchling_dragon }
+						set_variable = { name = dragon_age value = 1 }
+					}
+					else_if = {
+						limit = { artifact_type = type_adolescent_dragon }
+						set_variable = { name = dragon_age value = 6 }
+					}
+					else_if = {
+						limit = { artifact_type = type_young_dragon }
+						set_variable = { name = dragon_age value = 16 }
+					}
+					else_if = {
+						limit = { artifact_type = type_adult_dragon }
+						set_variable = { name = dragon_age value = 71 }
+					}
+					else_if = {
+						limit = { artifact_type = type_ancient_dragon }
+						set_variable = { name = dragon_age value = 251 }
+					}
+					else_if = {
+						limit = { artifact_type = type_elder_dragon }
+						set_variable = { name = dragon_age value = 151 }
+					}
+					else_if = {
+						limit = { artifact_type = type_primordial_dragon }
+						set_variable = { name = dragon_age value = 301 }
+					}
+				}
+			}
+			
+			# Increment age
+			change_variable = {
+				name = dragon_age
+				add = 1
+			}
+			
+			# Trigger appropriate follow-up event
+			root = {
+				trigger_event = dragon_aging_expanded.0002
+			}
+		}
+	}
+}
+
+# ═══════════════════════════════════════════
+# EVENT 0002: Process Dragon Aging
+# Checks for stage transitions and death
+# ═══════════════════════════════════════════
+
+dragon_aging_expanded.0002 = {
+	type = character_event
+	hidden = yes
+	
+	immediate = {
+		scope:dragon_artifact = {
+			# Check for stage transitions
+			# Hatchling -> Young (age 11)
+			if = {
+				limit = {
+					OR = {
+						artifact_type = type_hatchling_dragon
+						artifact_type = type_adolescent_dragon
+					}
+					var:dragon_age >= 11
+				}
+				root = { trigger_event = dragon_aging_expanded.0010 }
+			}
+			# Young -> Adult (age 71)
+			else_if = {
+				limit = {
+					artifact_type = type_young_dragon
+					var:dragon_age >= 71
+				}
+				root = { trigger_event = dragon_aging_expanded.0020 }
+			}
+			# Adult -> Elder (age 151)
+			else_if = {
+				limit = {
+					artifact_type = type_adult_dragon
+					var:dragon_age >= 151
+				}
+				root = { trigger_event = dragon_aging_expanded.0030 }
+			}
+			# Elder -> Ancient (age 251)
+			else_if = {
+				limit = {
+					artifact_type = type_elder_dragon
+					var:dragon_age >= 251
+				}
+				root = { trigger_event = dragon_aging_expanded.0040 }
+			}
+			# Ancient -> Primordial (age 301)
+			else_if = {
+				limit = {
+					artifact_type = type_ancient_dragon
+					var:dragon_age >= 301
+				}
+				root = { trigger_event = dragon_aging_expanded.0050 }
+			}
+			
+			# Check for death (Elder+ dragons)
+			if = {
+				limit = {
+					OR = {
+						artifact_type = type_elder_dragon
+						artifact_type = type_ancient_dragon
+						artifact_type = type_primordial_dragon
+					}
+				}
+				root = { trigger_event = dragon_aging_expanded.0100 }
+			}
+		}
+	}
+}
+
+# ═══════════════════════════════════════════
+# STAGE TRANSITION EVENTS
+# ═══════════════════════════════════════════
+
+# Hatchling/Adolescent -> Young Dragon (Age 11)
+dragon_aging_expanded.0010 = {
+	type = character_event
+	title = dragon_aging_expanded.0010.t
+	desc = dragon_aging_expanded.0010.desc
+	theme = hunt_activity
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	
+	artifact = {
+		target = scope:dragon_artifact
+		position = lower_right_portrait
+	}
+	
+	immediate = {
+		scope:dragon_artifact = {
+			save_scope_as = old_dragon
+			set_variable = {
+				name = saved_dragon_age
+				value = var:dragon_age
+			}
+			if = {
+				limit = { has_variable = dragon_size }
+				set_variable = {
+					name = saved_dragon_size
+					value = var:dragon_size
+				}
+			}
+			if = {
+				limit = { has_variable = dragon_temperament }
+				set_variable = {
+					name = saved_dragon_temperament
+					value = var:dragon_temperament
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = dragon_aging_expanded.0010.a
+		
+		# Create new young dragon
+		set_artifact_rarity_illustrious = yes
+		create_artifact = {
+			name = artifact_aged_dragon_name
+			description = artifact_young_dragon
+			type = type_young_dragon
+			template = dragon_template
+			visuals = young_dragon_visual
+			wealth = scope:wealth
+			quality = scope:quality
+			modifier = dragon_young_modifier
+			save_scope_as = new_dragon
+			decaying = no
+			history = {
+				location = root.capital_province
+				actor = root
+				recipient = root
+				type = created
+			}
+		}
+		
+		# Copy data from old dragon
+		scope:new_dragon = {
+			copy_artifact_modifiers = scope:old_dragon
+			set_artifact_name = artifact_aged_dragon_name
+			
+			set_variable = {
+				name = dragon_age
+				value = scope:old_dragon.var:saved_dragon_age
+			}
+			
+			if = {
+				limit = { scope:old_dragon = { has_variable = saved_dragon_size } }
+				set_variable = {
+					name = dragon_size
+					value = scope:old_dragon.var:saved_dragon_size
+				}
+			}
+			else = {
+				set_variable = { name = dragon_size value = flag:small }
+			}
+			
+			if = {
+				limit = { scope:old_dragon = { has_variable = saved_dragon_temperament } }
+				set_variable = {
+					name = dragon_temperament
+					value = scope:old_dragon.var:saved_dragon_temperament
+				}
+			}
+		}
+		
+		# Destroy old dragon artifact
+		scope:old_dragon = {
+			destroy_artifact = this
+		}
+		
+		add_prestige = 500
+		
+		stress_impact = {
+			base = -20
+		}
+	}
+}
+
+# Young -> Adult Dragon (Age 71)
+dragon_aging_expanded.0020 = {
+	type = character_event
+	title = dragon_aging_expanded.0020.t
+	desc = dragon_aging_expanded.0020.desc
+	theme = hunt_activity
+	
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	
+	artifact = {
+		target = scope:dragon_artifact
+		position = lower_right_portrait
+	}
+	
+	immediate = {
+		scope:dragon_artifact = {
+			save_scope_as = old_dragon
+			set_variable = { name = saved_dragon_age value = var:dragon_age }
+			if = {
+				limit = { has_variable = dragon_size }
+				set_variable = { name = saved_dragon_size value = var:dragon_size }
+			}
+			if = {
+				limit = { has_variable = dragon_temperament }
+				set_variable = { name = saved_dragon_temperament value = var:dragon_temperament }
+			}
+		}
+	}
+	
+	option = {
+		name = dragon_aging_expanded.0020.a
+		
+		set_artifact_rarity_illustrious = yes
+		create_artifact = {
+			name = artifact_aged_dragon_name
+			description = artifact_adult_dragon
+			type = type_adult_dragon
+			template = dragon_template
+			visuals = adult_dragon_visual
+			wealth = scope:wealth
+			quality = scope:quality
+			modifier = dragon_adult_modifier
+			save_scope_as = new_dragon
+			decaying = no
+			history = {
+				location = root.capital_province
+				actor = root
+				recipient = root
+				type = created
+			}
+		}
+		
+		scope:new_dragon = {
+			copy_artifact_modifiers = scope:old_dragon
+			set_artifact_name = artifact_aged_dragon_name
+			set_variable = { name = dragon_age value = scope:old_dragon.var:saved_dragon_age }
+			
+			if = {
+				limit = { scope:old_dragon = { has_variable = saved_dragon_size } }
+				set_variable = { name = dragon_size value = scope:old_dragon.var:saved_dragon_size }
+			}
+			else = {
+				set_variable = { name = dragon_size value = flag:medium }
+			}
+			
+			if = {
+				limit = { scope:old_dragon = { has_variable = saved_dragon_temperament } }
+				set_variable = { name = dragon_temperament value = scope:old_dragon.var:saved_dragon_temperament }
+			}
+		}
+		
+		scope:old_dragon = { destroy_artifact = this }
+		
+		add_prestige = 1000
+		add_dread = 15
+		
+		stress_impact = {
+			base = -30
+		}
+	}
+}
+
+# Adult -> Elder Dragon (Age 151)
+dragon_aging_expanded.0030 = {
+	type = character_event
+	title = dragon_aging_expanded.0030.t
+	desc = dragon_aging_expanded.0030.desc
+	theme = hunt_activity
+	
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+	
+	artifact = {
+		target = scope:dragon_artifact
+		position = lower_right_portrait
+	}
+	
+	immediate = {
+		scope:dragon_artifact = {
+			save_scope_as = old_dragon
+			set_variable = { name = saved_dragon_age value = var:dragon_age }
+			if = {
+				limit = { has_variable = dragon_size }
+				set_variable = { name = saved_dragon_size value = var:dragon_size }
+			}
+			if = {
+				limit = { has_variable = dragon_temperament }
+				set_variable = { name = saved_dragon_temperament value = var:dragon_temperament }
+			}
+		}
+	}
+	
+	option = {
+		name = dragon_aging_expanded.0030.a
+		
+		set_artifact_rarity_illustrious = yes
+		create_artifact = {
+			name = artifact_aged_dragon_name
+			description = artifact_elder_dragon_desc
+			type = type_elder_dragon
+			template = dragon_template
+			visuals = elder_dragon_visual
+			wealth = scope:wealth
+			quality = scope:quality
+			modifier = dragon_elder_modifier
+			save_scope_as = new_dragon
+			decaying = no
+			history = {
+				location = root.capital_province
+				actor = root
+				recipient = root
+				type = created
+			}
+		}
+		
+		scope:new_dragon = {
+			copy_artifact_modifiers = scope:old_dragon
+			set_artifact_name = artifact_aged_dragon_name
+			set_variable = { name = dragon_age value = scope:old_dragon.var:saved_dragon_age }
+			set_variable = { name = dragon_size value = flag:large }
+			
+			if = {
+				limit = { scope:old_dragon = { has_variable = saved_dragon_temperament } }
+				set_variable = { name = dragon_temperament value = scope:old_dragon.var:saved_dragon_temperament }
+			}
+		}
+		
+		scope:old_dragon = { destroy_artifact = this }
+		
+		add_prestige = 2000
+		add_piety = 500
+		
+		custom_tooltip = dragon_aging_expanded.0030.warning_tt
+	}
+}
+
+# Elder -> Ancient Dragon (Age 251)
+dragon_aging_expanded.0040 = {
+	type = character_event
+	title = dragon_aging_expanded.0040.t
+	desc = dragon_aging_expanded.0040.desc
+	theme = hunt_activity
+	
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+	
+	artifact = {
+		target = scope:dragon_artifact
+		position = lower_right_portrait
+	}
+	
+	immediate = {
+		scope:dragon_artifact = {
+			save_scope_as = old_dragon
+			set_variable = { name = saved_dragon_age value = var:dragon_age }
+			if = {
+				limit = { has_variable = dragon_temperament }
+				set_variable = { name = saved_dragon_temperament value = var:dragon_temperament }
+			}
+		}
+	}
+	
+	option = {
+		name = dragon_aging_expanded.0040.a
+		
+		set_artifact_rarity_illustrious = yes
+		create_artifact = {
+			name = artifact_aged_dragon_name
+			description = artifact_ancient_dragon
+			type = type_ancient_dragon
+			template = dragon_template
+			visuals = ancient_dragon_visual
+			wealth = scope:wealth
+			quality = scope:quality
+			modifier = dragon_ancient_modifier
+			save_scope_as = new_dragon
+			decaying = no
+			history = {
+				location = root.capital_province
+				actor = root
+				recipient = root
+				type = created
+			}
+		}
+		
+		scope:new_dragon = {
+			copy_artifact_modifiers = scope:old_dragon
+			set_artifact_name = artifact_aged_dragon_name
+			set_variable = { name = dragon_age value = scope:old_dragon.var:saved_dragon_age }
+			set_variable = { name = dragon_size value = flag:colossal }
+			
+			if = {
+				limit = { scope:old_dragon = { has_variable = saved_dragon_temperament } }
+				set_variable = { name = dragon_temperament value = scope:old_dragon.var:saved_dragon_temperament }
+			}
+			
+			set_variable = { name = historical_unique_artifact value = yes }
+		}
+		
+		scope:old_dragon = { destroy_artifact = this }
+		
+		add_prestige = 3000
+		add_piety = 1000
+		add_dread = 25
+		
+		custom_tooltip = dragon_aging_expanded.0040.warning_tt
+	}
+}
+
+# Ancient -> Primordial Dragon (Age 301)
+dragon_aging_expanded.0050 = {
+	type = character_event
+	title = dragon_aging_expanded.0050.t
+	desc = dragon_aging_expanded.0050.desc
+	theme = faith
+	
+	left_portrait = {
+		character = root
+		animation = ecstasy
+	}
+	
+	artifact = {
+		target = scope:dragon_artifact
+		position = lower_right_portrait
+	}
+	
+	immediate = {
+		scope:dragon_artifact = {
+			save_scope_as = old_dragon
+			set_variable = { name = saved_dragon_age value = var:dragon_age }
+			if = {
+				limit = { has_variable = dragon_temperament }
+				set_variable = { name = saved_dragon_temperament value = var:dragon_temperament }
+			}
+		}
+	}
+	
+	option = {
+		name = dragon_aging_expanded.0050.a
+		
+		set_artifact_rarity_illustrious = yes
+		create_artifact = {
+			name = artifact_aged_dragon_name
+			description = artifact_primordial_dragon_desc
+			type = type_primordial_dragon
+			template = dragon_template
+			visuals = primordial_dragon_visual
+			wealth = scope:wealth
+			quality = scope:quality
+			modifier = dragon_primordial_modifier
+			save_scope_as = new_dragon
+			decaying = no
+			history = {
+				location = root.capital_province
+				actor = root
+				recipient = root
+				type = created
+			}
+		}
+		
+		scope:new_dragon = {
+			copy_artifact_modifiers = scope:old_dragon
+			set_artifact_name = artifact_aged_dragon_name
+			set_variable = { name = dragon_age value = scope:old_dragon.var:saved_dragon_age }
+			set_variable = { name = dragon_size value = flag:colossal }
+			
+			if = {
+				limit = { scope:old_dragon = { has_variable = saved_dragon_temperament } }
+				set_variable = { name = dragon_temperament value = scope:old_dragon.var:saved_dragon_temperament }
+			}
+			
+			set_variable = { name = historical_unique_artifact value = yes }
+		}
+		
+		scope:old_dragon = { destroy_artifact = this }
+		
+		add_prestige = 5000
+		add_piety = 2000
+		add_dread = 50
+		
+		# Apply legendary modifier to owner
+		add_character_modifier = {
+			modifier = dragon_primordial_legacy
+			years = 100
+		}
+		
+		custom_tooltip = dragon_aging_expanded.0050.legend_tt
+		custom_tooltip = dragon_aging_expanded.0050.warning_tt
+	}
+}
+
+# ═══════════════════════════════════════════
+# DEATH CHECK EVENT
+# Rolls for dragon death based on age
+# ═══════════════════════════════════════════
+
+dragon_aging_expanded.0100 = {
+	type = character_event
+	hidden = yes
+	
+	trigger = {
+		scope:dragon_artifact = {
+			OR = {
+				artifact_type = type_elder_dragon
+				artifact_type = type_ancient_dragon
+				artifact_type = type_primordial_dragon
+			}
+		}
+	}
+	
+	immediate = {
+		scope:dragon_artifact = {
+			# Calculate death chance based on age
+			# Elder (151-250): 1-5% per year
+			# Ancient (251-300): 5-15% per year  
+			# Primordial (301-500): 15-50% per year
+			
+			if = {
+				limit = { artifact_type = type_elder_dragon }
+				random = {
+					chance = {
+						value = 1
+						add = {
+							value = var:dragon_age
+							subtract = 151
+							multiply = 0.04
+						}
+					}
+					root = { trigger_event = dragon_aging_expanded.1000 }
+				}
+			}
+			else_if = {
+				limit = { artifact_type = type_ancient_dragon }
+				random = {
+					chance = {
+						value = 5
+						add = {
+							value = var:dragon_age
+							subtract = 251
+							multiply = 0.2
+						}
+					}
+					root = { trigger_event = dragon_aging_expanded.1000 }
+				}
+			}
+			else_if = {
+				limit = { artifact_type = type_primordial_dragon }
+				random = {
+					chance = {
+						value = 15
+						add = {
+							value = var:dragon_age
+							subtract = 301
+							multiply = 0.175
+							min = 0
+							max = 35
+						}
+					}
+					root = { trigger_event = dragon_aging_expanded.1000 }
+				}
+			}
+		}
+	}
+}
+
+# ═══════════════════════════════════════════
+# DRAGON DEATH EVENT
+# Player chooses what to do with remains
+# ═══════════════════════════════════════════
+
+dragon_aging_expanded.1000 = {
+	type = character_event
+	title = dragon_aging_expanded.1000.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:dragon_artifact = { artifact_type = type_primordial_dragon }
+				}
+				desc = dragon_aging_expanded.1000.desc_primordial
+			}
+			triggered_desc = {
+				trigger = {
+					scope:dragon_artifact = { artifact_type = type_ancient_dragon }
+				}
+				desc = dragon_aging_expanded.1000.desc_ancient
+			}
+			desc = dragon_aging_expanded.1000.desc_elder
+		}
+	}
+	theme = death
+	
+	left_portrait = {
+		character = root
+		animation = grief
+	}
+	
+	artifact = {
+		target = scope:dragon_artifact
+		position = lower_right_portrait
+	}
+	
+	immediate = {
+		scope:dragon_artifact = {
+			save_scope_as = dead_dragon
+		}
+		
+		# Apply grief modifier
+		add_character_modifier = {
+			modifier = mourning_dragon_loss
+			years = 5
+		}
+		
+		add_stress = 50
+	}
+	
+	# Option A: Keep the Skull (Dread/Prestige focus)
+	option = {
+		name = dragon_aging_expanded.1000.a
+		
+		custom_tooltip = dragon_aging_expanded.1000.a_tt
+		
+		set_artifact_rarity_illustrious = yes
+		set_local_variable = { name = wealth value = 100 }
+		set_local_variable = { name = quality value = 100 }
+		
+		create_artifact = {
+			name = artifact_dragon_skull_name
+			description = artifact_dragon_skull_desc
+			type = type_dragon_skull
+			template = dragon_egg_template
+			visuals = dragon_skull_visual
+			wealth = local_var:wealth
+			quality = local_var:quality
+			modifier = dragon_skull_modifier
+			save_scope_as = new_relic
+			decaying = no
+			history = {
+				location = root.capital_province
+				actor = root
+				recipient = root
+				type = created
+			}
+		}
+		
+		# Copy element feature
+		scope:new_relic = {
+			if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_fire } }
+			}
+			else_if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_water } }
+			}
+			else_if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_stone } }
+			}
+		}
+		
+		scope:dead_dragon = { destroy_artifact = this }
+		
+		add_dread = 20
+	}
+	
+	# Option B: Preserve the Heart (Health/Learning focus)
+	option = {
+		name = dragon_aging_expanded.1000.b
+		
+		custom_tooltip = dragon_aging_expanded.1000.b_tt
+		
+		set_artifact_rarity_illustrious = yes
+		set_local_variable = { name = wealth value = 100 }
+		set_local_variable = { name = quality value = 100 }
+		
+		create_artifact = {
+			name = artifact_dragon_heart_name
+			description = artifact_dragon_heart_desc
+			type = type_dragon_heart
+			template = dragon_egg_template
+			visuals = dragon_heart_visual
+			wealth = local_var:wealth
+			quality = local_var:quality
+			modifier = dragon_heart_modifier
+			save_scope_as = new_relic
+			decaying = no
+			history = {
+				location = root.capital_province
+				actor = root
+				recipient = root
+				type = created
+			}
+		}
+		
+		scope:new_relic = {
+			if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_fire } }
+			}
+			else_if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_water } }
+			}
+			else_if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_stone } }
+			}
+		}
+		
+		scope:dead_dragon = { destroy_artifact = this }
+		
+		add_piety = 300
+	}
+	
+	# Option C: Forge a Dragonscale Cloak (Combat armor)
+	option = {
+		name = dragon_aging_expanded.1000.c
+		
+		custom_tooltip = dragon_aging_expanded.1000.c_tt
+		
+		set_artifact_rarity_illustrious = yes
+		set_local_variable = { name = wealth value = 100 }
+		set_local_variable = { name = quality value = 100 }
+		
+		create_artifact = {
+			name = artifact_dragonscale_cloak_name
+			description = artifact_dragonscale_cloak_desc
+			type = type_dragonscale_cloak
+			template = dragon_egg_template
+			visuals = dragonscale_cloak_visual
+			wealth = local_var:wealth
+			quality = local_var:quality
+			modifier = dragonscale_cloak_modifier
+			save_scope_as = new_relic
+			decaying = no
+			history = {
+				location = root.capital_province
+				actor = root
+				recipient = root
+				type = created
+			}
+		}
+		
+		scope:new_relic = {
+			if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_fire } }
+			}
+			else_if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_water } }
+			}
+			else_if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_stone } }
+			}
+		}
+		
+		scope:dead_dragon = { destroy_artifact = this }
+	}
+	
+	# Option D: Craft a Dragon Fang Weapon (Prowess weapon)
+	option = {
+		name = dragon_aging_expanded.1000.d
+		
+		custom_tooltip = dragon_aging_expanded.1000.d_tt
+		
+		set_artifact_rarity_illustrious = yes
+		set_local_variable = { name = wealth value = 100 }
+		set_local_variable = { name = quality value = 100 }
+		
+		create_artifact = {
+			name = artifact_dragon_fang_weapon_name
+			description = artifact_dragon_fang_weapon_desc
+			type = type_dragon_fang_weapon
+			template = dragon_egg_template
+			visuals = dragon_fang_weapon_visual
+			wealth = local_var:wealth
+			quality = local_var:quality
+			modifier = dragon_fang_weapon_modifier
+			save_scope_as = new_relic
+			decaying = no
+			history = {
+				location = root.capital_province
+				actor = root
+				recipient = root
+				type = created
+			}
+		}
+		
+		scope:new_relic = {
+			if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_fire } }
+			}
+			else_if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_water } }
+			}
+			else_if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_stone } }
+			}
+		}
+		
+		scope:dead_dragon = { destroy_artifact = this }
+	}
+	
+	# Option E: Keep the Bones (Crafting material, can be reforged)
+	option = {
+		name = dragon_aging_expanded.1000.e
+		
+		custom_tooltip = dragon_aging_expanded.1000.e_tt
+		
+		set_artifact_rarity_famed = yes
+		set_local_variable = { name = wealth value = 80 }
+		set_local_variable = { name = quality value = 80 }
+		
+		create_artifact = {
+			name = artifact_dragon_bones_name
+			description = artifact_dragon_bones_desc
+			type = type_dragon_bones
+			template = dragon_egg_template
+			visuals = dragon_bones_visual
+			wealth = local_var:wealth
+			quality = local_var:quality
+			modifier = dragon_bones_modifier
+			save_scope_as = new_relic
+			decaying = no
+			history = {
+				location = root.capital_province
+				actor = root
+				recipient = root
+				type = created
+			}
+		}
+		
+		scope:new_relic = {
+			if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_fire } }
+			}
+			else_if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_water } }
+			}
+			else_if = {
+				limit = { scope:dead_dragon = { has_artifact_feature = dragon_element_stone } }
+			}
+		}
+		
+		scope:dead_dragon = { destroy_artifact = this }
+		
+		add_gold = 200
+	}
+	
+	# Option F: Give the dragon a proper burial (Piety focus, no relic)
+	option = {
+		name = dragon_aging_expanded.1000.f
+		trigger = {
+			OR = {
+				has_trait = compassionate
+				has_trait = just
+				piety_level >= 2
+			}
+		}
+		
+		custom_tooltip = dragon_aging_expanded.1000.f_tt
+		
+		scope:dead_dragon = { destroy_artifact = this }
+		
+		add_piety = 1000
+		add_prestige = 500
+		
+		stress_impact = {
+			base = -30
+			compassionate = -20
+		}
+		
+		# Remove grief faster
+		remove_character_modifier = mourning_dragon_loss
+		add_character_modifier = {
+			modifier = mourning_dragon_loss
+			years = 2
+		}
+	}
+}

@@ -69,28 +69,28 @@ has_dragon_relic_trigger = {
 }
 
 has_dragon_rider_trigger = {
-	has_trait = lifestyle_dragonmaster
+	has_trait = dragon_rider
 	has_trait_xp = {
-		trait = lifestyle_dragonmaster
-		track = dragon_rider
-		value >= 25
+		trait = dragon_rider
+		track = dragon_training
+		value >= 33
 	}
 }
 
 has_dragon_slayer_trigger = {
-	has_trait = lifestyle_dragonmaster
+	has_trait = dragon_hunter
 	has_trait_xp = {
-		trait = lifestyle_dragonmaster
+		trait = dragon_hunter
 		track = dragon_slayer
-		value >= 25
+		value >= 33
 	}
 }
 
-has_dragon_hatcher_trigger = {
-	has_trait = lifestyle_dragonmaster
+has_dragon_scholar_trigger = {
+	has_trait = dragon_scholar
 	has_trait_xp = {
-		trait = lifestyle_dragonmaster
-		track = dragon_hatcher
+		trait = dragon_scholar
+		track = dragon_hatching
 		value >= 100
 	}
 }
@@ -235,7 +235,5 @@ is_dangerous_dragon_trigger = {
 }
 #Dragon Event Trigger
 dragon_used_on_populace_county_trigger = {
-	OR = {
 		NOT = { has_county_modifier = gold_extracted_with_dragon }
-	}
 }

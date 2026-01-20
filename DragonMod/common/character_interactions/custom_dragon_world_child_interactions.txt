@@ -1,5 +1,4 @@
-﻿
-### Trait interaction for guardians
+﻿### Trait interaction for guardians
 # actor = guardian
 # recipient = ward/hostage
 # This has to be update every time a new trait is added to the game, otherwise you won't be able to pass it down
@@ -38,11 +37,11 @@ train_child_in_dragon_riding_ways = {
 	is_valid_showing_failures_only = {
 		scope:recipient = { #be old enough to climb and hold onto a dragon
 			age >= 8
-			is_busy_in_events_localised = yes
+			is_available = yes
 		}
 		scope:actor = {
 			is_adult = yes
-			is_busy_in_events_localised = yes
+			is_available = yes
 			has_dragon_rider_trigger = yes
 		}
 	}
@@ -57,19 +56,19 @@ train_child_in_dragon_riding_ways = {
 		is_valid = {
 			scope:recipient = {
 				NOT = {
-					has_trait = lifestyle_dragonmaster
+					has_trait = dragon_rider
 				}
 			}
 		}
-		flag = lifestyle_dragonmaster
-		localization = trait_lifestyle_dragonmaster
+		flag = dragon_rider
+		localization = trait_dragon_rider
 	}
 
-	#send_options_exclusive = yes
+	# Single option interaction - no exclusivity needed
 
 	on_send = {
-		scope:lifestyle_dragonmaster = {
-			trait:lifestyle_dragonmaster = { save_scope_as = target_trait }
+		scope:dragon_rider = {
+			trait:dragon_rider = { save_scope_as = target_trait }
 		}
 	}
 
@@ -88,8 +87,8 @@ train_child_in_dragon_riding_ways = {
 		}
 		scope:recipient = {
 			show_as_tooltip = {
-				scope:lifestyle_dragonmaster = {
-					trait:lifestyle_dragonmaster = { save_scope_as = target_trait }
+				scope:dragon_rider = {
+					trait:dragon_rider = { save_scope_as = target_trait }
 				}
 				if = {
 					limit = { exists = scope:target_trait }
@@ -224,7 +223,7 @@ train_child_in_dragon_riding_ways = {
 			add = 15
 			switch = {
 				trigger = yes
-				scope:lifestyle_dragonmaster = {
+				scope:dragon_rider = {
 					scope:recipient = {
 						OR = {
 							has_trait = pensive

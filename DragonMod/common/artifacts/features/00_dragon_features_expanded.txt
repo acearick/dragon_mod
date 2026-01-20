@@ -216,3 +216,100 @@ dragon_age_primordial_feature = {
 	}
 	weight = 1
 }
+
+# ═══════════════════════════════════════════
+# DRAGON HIDE FEATURES
+# For dragon hide wall artifacts from slain dragons
+# ═══════════════════════════════════════════
+
+# Generic Dragon Hide - default for all dragon hides
+dragon_hide_feature = {
+	group = dragon_hide_type
+	trigger = {
+		scope:artifact = {
+			has_variable = animal_type
+			var:animal_type = flag:dragon
+		}
+	}
+	weight = 100
+}
+
+# Fire Dragon Hide - scales with ember patterns
+dragon_hide_fire_feature = {
+	group = dragon_hide_type
+	trigger = {
+		scope:artifact = {
+			has_variable = animal_type
+			var:animal_type = flag:dragon
+			has_variable = dragon_element
+			var:dragon_element = flag:fire
+		}
+	}
+	weight = 200
+}
+
+# Water Dragon Hide - scales with oceanic patterns
+dragon_hide_water_feature = {
+	group = dragon_hide_type
+	trigger = {
+		scope:artifact = {
+			has_variable = animal_type
+			var:animal_type = flag:dragon
+			has_variable = dragon_element
+			var:dragon_element = flag:water
+		}
+	}
+	weight = 200
+}
+
+# Stone Dragon Hide - scales with earthen patterns
+dragon_hide_stone_feature = {
+	group = dragon_hide_type
+	trigger = {
+		scope:artifact = {
+			has_variable = animal_type
+			var:animal_type = flag:dragon
+			has_variable = dragon_element
+			var:dragon_element = flag:stone
+		}
+	}
+	weight = 200
+}
+
+# ═══════════════════════════════════════════
+# DRAGON ELEMENT FEATURES (for hides and relics)
+# These check artifact variables set during creation
+# ═══════════════════════════════════════════
+
+dragon_element_fire_artifact = {
+	group = dragon_element_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_element
+			var:dragon_element = flag:fire
+		}
+	}
+	weight = 150
+}
+
+dragon_element_water_artifact = {
+	group = dragon_element_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_element
+			var:dragon_element = flag:water
+		}
+	}
+	weight = 150
+}
+
+dragon_element_stone_artifact = {
+	group = dragon_element_type
+	trigger = {
+		scope:artifact = {
+			has_variable = dragon_element
+			var:dragon_element = flag:stone
+		}
+	}
+	weight = 150
+}

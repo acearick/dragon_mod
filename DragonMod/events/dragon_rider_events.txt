@@ -1,0 +1,149 @@
+﻿namespace = dragon_rider_events
+
+##############################
+# DRAGON RIDER PERIODIC EVENTS
+# Triggered from on_actions for characters with equipped dragons
+##############################
+
+# Hidden pulse event - checks for equipped dragons and triggers bonding events
+dragon_rider_events.0001 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		is_alive = yes
+		any_equipped_character_artifact = {
+			artifact_slot_type = dragon
+			OR = {
+				artifact_type = type_young_dragon
+				artifact_type = type_adult_dragon
+				artifact_type = type_ancient_dragon
+				artifact_type = type_elder_dragon
+				artifact_type = type_primordial_dragon
+			}
+		}
+	}
+
+	immediate = {
+		random_equipped_character_artifact = {
+			limit = {
+				artifact_slot_type = dragon
+				OR = {
+					artifact_type = type_young_dragon
+					artifact_type = type_adult_dragon
+					artifact_type = type_ancient_dragon
+					artifact_type = type_elder_dragon
+					artifact_type = type_primordial_dragon
+				}
+			}
+			save_scope_as = equipped_dragon
+		}
+		# Small chance for bonding event
+		random = {
+			chance = 15
+			trigger_event = dragon_rider_events.0005
+		}
+	}
+}
+
+# Dragon Bonding Event - Strengthens connection between rider and dragon
+dragon_rider_events.0005 = {
+	type = character_event
+	title = dragon_rider_events.0005.t
+	desc = dragon_rider_events.0005.desc
+	theme = pet
+	
+	left_portrait = {
+		character = root
+		animation = happiness
+	}
+	
+	artifact = {
+		target = scope:equipped_dragon
+		position = lower_center_portrait
+	}
+
+	trigger = {
+		exists = scope:equipped_dragon
+	}
+
+	immediate = {
+		# Save dragon type for localization
+		if = {
+			limit = { scope:equipped_dragon = { has_artifact_feature = dragon_element_fire } }
+			set_local_variable = { name = dragon_element value = flag:fire }
+		}
+		else_if = {
+			limit = { scope:equipped_dragon = { has_artifact_feature = dragon_element_water } }
+			set_local_variable = { name = dragon_element value = flag:water }
+		}
+		else = {
+			set_local_variable = { name = dragon_element value = flag:stone }
+		}
+	}
+
+	# Option A: Train together - martial focus
+	option = {
+		name = dragon_rider_events.0005.a
+		add_prestige = 50
+		stress_impact = {
+			base = -10
+		}
+		if = {
+			limit = { has_trait = dragon_rider }
+			root = {
+				dragonmaster_progress_point_gain_effect = { CHANGE = 2 RANDOM_CHANGE = 1 }
+				hidden_effect = {
+					dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+				}
+			}
+		}
+	}
+	
+	# Option B: Rest together - bonding focus
+	option = {
+		name = dragon_rider_events.0005.b
+		add_character_modifier = {
+			modifier = fresh_dragon_bond
+			years = 1
+		}
+		stress_impact = {
+			base = -20
+		}
+	}
+	
+	# Option C: Push the dragon harder - risky but rewarding
+	option = {
+		name = dragon_rider_events.0005.c
+		trigger = {
+			has_trait = ambitious
+		}
+		random_list = {
+			70 = {
+				desc = dragon_rider_events.0005.c.success
+				add_prowess_skill = 1
+				if = {
+					limit = { has_trait = dragon_rider }
+					root = {
+						dragonmaster_progress_point_gain_effect = { CHANGE = 4 RANDOM_CHANGE = 2 }
+						hidden_effect = {
+							dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = no }
+						}
+					}
+				}
+			}
+			30 = {
+				desc = dragon_rider_events.0005.c.failure
+				add_character_modifier = {
+					modifier = dragon_wounded
+					years = 1
+				}
+			}
+		}
+	}
+	
+	after = {
+		# Use the fresh_dragon_bond modifier (removes the "unused modifier" warning)
+		custom_tooltip = dragon_rider_events.0005.after_tt
+	}
+}

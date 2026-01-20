@@ -1,0 +1,1063 @@
+﻿namespace = dragon_adventure
+
+# Start Tracking Adventure
+dragon_adventure.0001 = {
+	type = activity_event
+	title = {
+		desc = dragon_adventure.0001.t
+	}
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:hunt_participant
+					scope:hunt_participant = { has_court_position = chosen_dragon_knight_court_position }
+				}
+				desc = dragon_adventure_opening_chosen_dragon_knight
+			}
+			triggered_desc = {
+				trigger = { exists = scope:hunt_participant }
+				desc = dragon_adventure_opening_expedition_leader
+			}
+			desc = dragon_adventure_opening
+		}
+		desc = dragon_adventure_opening_rural
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:activity = {
+						has_activity_option = { category = adventure_option_companions option = adventure_companions_few }
+					}
+				}
+				desc = dragon_adventure_opening_entourage_few
+			}
+			triggered_desc = {
+				trigger = {
+					scope:activity = {
+						has_activity_option = { category = adventure_option_companions option = adventure_companions_normal }
+					}
+				}
+				desc = dragon_adventure_opening_entourage_normal
+			}
+			triggered_desc = {
+				trigger = {
+					scope:activity = {
+						has_activity_option = { category = adventure_option_companions option = adventure_companions_many }
+					}
+				}
+				desc = dragon_adventure_opening_entourage_many
+			}
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					NOT = { this = scope:host }
+				}
+				desc = dragon_adventure.0001.guest
+			}
+		}
+	}
+	theme = hunt_activity_camp
+	left_portrait = {
+		character = scope:host
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:hunt_participant
+		animation = admiration
+	}
+
+	widget = {
+		gui = "event_window_widget_activity_intent"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+		if = {
+			limit = { this = scope:host }
+			hunt_activity_random_subordinate_participant_effect = {
+				ARCHETYPE = hunter
+				COMBATANT = yes
+				SCOPE = hunt_participant
+			}
+		}
+		scope:activity = {
+			set_variable = {
+				name = hunt_success_chance
+				value = hunt_success_chance_value
+			}
+		}
+	}
+
+	option = { # Let's start the adventure!
+		name = hunt.0500.a
+		custom_tooltip = dragon_adventure_seek_current_tt
+		ai_chance = {
+			base = 25
+			ai_value_modifier = {
+				ai_boldness = -0.5
+				ai_energy = 1
+			}
+		}
+	}
+
+	after = {
+		if = {
+			limit = { this = scope:host }
+			scope:activity = {
+				every_attending_character = {
+					limit = {
+						NOT = { this = scope:host }
+					}
+					trigger_event = dragon_adventure.0001
+				}
+				set_variable = dragon_adventure_started
+				set_variable = {
+					name = hunt_success_chance
+					value = hunt_success_chance_value
+				}
+			}
+		}
+	}
+}
+
+# Found Dragon Tracks
+dragon_adventure.1010 = {
+	type = activity_event
+	title = dragon_adventure.1010.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { this = scope:host }
+				desc = dragon_adventure.1010.desc
+			}
+			desc = {
+				desc = dragon_adventure.1010.guest
+				first_valid = {
+					desc = dragon_adventure.1010.found_tracks
+				}
+			}
+		}
+	}
+	theme = hunt_activity
+	left_portrait = {
+		character = scope:host
+		animation = aggressive_sword
+	}
+	right_portrait = {
+		character = scope:hunt_participant
+		animation = hunting_horn
+	}
+	center_portrait = {
+		character = root
+		trigger = {
+			NOR = {
+				this = scope:hunt_participant
+				this = scope:host
+			}
+		}
+		animation = ecstasy
+	}
+	cooldown = { weeks = 1 }
+
+	trigger = {
+		trigger_if = {
+			limit = {
+				NOT = { this = scope:host }
+			}
+			is_ai = no
+		}
+		scope:activity = {
+			NOT = {
+				has_activity_option = { category = adventure_option_companions option = adventure_companions_few }
+			}
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		modifier = {
+			factor = 2
+			court_position:chosen_dragon_knight_court_position ?= {
+				is_participant_in_activity = scope:activity
+			}
+		}
+		modifier = {
+			factor = 2
+			scope:activity = {
+				has_activity_option = { category = adventure_option_companions option = adventure_companions_many }
+			}
+		}
+		modifier = {
+			factor = 0.25
+			government_has_flag = government_is_tribal
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = { this = scope:host }
+			hunt_activity_random_subordinate_participant_effect = {
+				ARCHETYPE = hunter
+				COMBATANT = yes
+				SCOPE = hunt_participant
+			}
+			if = {
+				limit = { exists = scope:hunt_participant }
+				scope:activity = {
+					set_variable = {
+						name = participant_to_use
+						value = scope:hunt_participant
+						years = 1
+					}
+				}
+			}
+		}
+		else = {
+			custom_tooltip = dragon_adventure_activity_found_dragon_tt
+		}
+	}
+
+	option = {
+		name = dragon_adventure.1010.a
+		trigger = { this = scope:host }
+		stress_impact = {
+			impatient = minor_stress_impact_gain
+			craven = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 40
+				OR = {
+					has_trait = craven
+					has_trait = impatient
+				}
+			}
+		}
+	}
+
+	option = {
+		name = dragon_adventure.1010.b
+		trigger = {
+			NOT = { this = scope:host }
+		}
+	}
+
+	after = {
+		if = {
+			limit = { this = scope:host }
+			scope:activity = {
+				every_attending_character = {
+					limit = {
+						NOT = { this = scope:host }
+					}
+					trigger_event = dragon_adventure.1010
+				}
+			}
+		}
+	}
+}
+
+# Untameable Dragon Encountered
+dragon_adventure.1011 = {
+	type = activity_event
+	title = dragon_adventure.1011.t
+	desc = dragon_adventure.1011.opening
+	theme = hunt_activity
+	left_portrait = {
+		character = scope:host
+		triggered_animation = {
+			trigger = {
+				has_trait = craven
+			}
+			animation = worry
+		}
+		animation = marshal
+	}
+	right_portrait = {
+		character = scope:hunt_participant
+		trigger = {
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+			root = {
+				NOT = {
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+				}
+			}
+		}
+		triggered_animation = {
+			trigger = {
+				has_trait = craven
+			}
+			animation = worry
+		}
+		animation = marshal
+	}
+	artifact = { # To display the artifact in the event-window
+		target = scope:newly_created_artifact
+		position = lower_center_portrait
+	}
+	cooldown = { weeks = 1 }
+
+	# weight_multiplier = {
+	# 	base = 1
+	# 	modifier = { add = involved_activity.var:hunt_success_chance }
+	# }
+
+	immediate = {
+		hunt_outcome_scope_effect = yes # TODO: Refactor to not need this base game effect
+		# Set the dragon element type for the encountered dragon
+		hidden_effect = {
+			random_list = {
+				33 = {
+					scope:activity = {
+						set_variable = { name = dragon_element value = flag:fire }
+					}
+				}
+				33 = {
+					scope:activity = {
+						set_variable = { name = dragon_element value = flag:water }
+					}
+				}
+				34 = {
+					scope:activity = {
+						set_variable = { name = dragon_element value = flag:stone }
+					}
+				}
+			}
+		}
+	}
+
+	option = { # Lead the charge to attempt to kill the Dragon!
+		name = dragon_adventure.1011.a
+		add_prestige = massive_prestige_gain
+		dragons_animal_kill_effect = yes
+		if = {
+			limit = { is_alive = yes }
+			stress_impact = {
+				compassionate = medium_stress_impact_gain
+			}
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 40
+				OR = {
+					has_trait = impatient
+					has_trait = brave
+					has_trait = ambitious
+				}
+			}
+		}
+	}
+
+	option = { # Give lead for the charge to attempt to kill the Dragon!
+		name = dragon_adventure.1011.b
+		add_prestige = medium_prestige_gain
+		scope:hunt_participant = {
+			add_prestige = massive_prestige_gain
+			dragons_animal_kill_effect = yes
+		}
+		stress_impact = {
+			brave = minor_stress_impact_gain
+			zealous = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 25
+			modifier = {
+				add = 30
+				OR = {
+					NOT = {
+						has_trait = brave
+						has_trait = zealous
+						has_trait = ambitious
+					}
+				}
+			}
+		}
+	}
+
+	option = { #Run away!
+		name = dragon_adventure.1011.c
+		add_prestige = major_prestige_loss
+		save_scope_as = charge_fled
+		scope:activity = {
+			set_variable = {
+				name = dragons_success
+				value = flag:no
+			}
+		}
+		stress_impact = {
+			brave = minor_stress_impact_gain
+			zealous = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 25
+			ai_value_modifier = {
+				ai_boldness = -1
+				ai_energy = -1
+			}
+		}
+	}
+
+	after = {
+		scope:activity = {
+			every_attending_character = {
+				limit = { is_ai = no }
+				trigger_event = dragon_adventure.2000
+			}
+		}
+		# Outcome of charge if done
+		if = {
+			limit = {
+				exists = scope:charge_success
+			}
+			dragon_slayer_all_attendee_xp_effect = {
+				CHANGE = 5
+				RANDOM = 7
+			}
+		}
+		else_if = {
+			limit = {
+				exists = scope:charge_failure
+			}
+			dragon_slayer_all_attendee_xp_effect = {
+				CHANGE = 3
+				RANDOM = 5
+			}
+		}
+		# If not charged, what does the dragon do?
+		# TODO: Dragon does something
+	}
+}
+
+# Tameable Dragon Encountered
+dragon_adventure.1012 = {
+	type = activity_event
+	title = dragon_adventure.1012.t
+	desc = dragon_adventure.1012.opening
+	theme = hunt_activity
+	left_portrait = {
+		character = scope:host
+		triggered_animation = {
+			trigger = {
+				has_trait = craven
+			}
+			animation = worry
+		}
+		animation = marshal
+	}
+	right_portrait = {
+		character = scope:hunt_participant
+		trigger = {
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+			root = {
+				NOT = {
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+				}
+			}
+		}
+		triggered_animation = {
+			trigger = {
+				has_trait = craven
+			}
+			animation = worry
+		}
+		animation = marshal
+	}
+	cooldown = { weeks = 1 }
+
+	# weight_multiplier = {
+	# 	base = 1
+	# 	modifier = { add = involved_activity.var:hunt_success_chance }
+	# }
+
+	option = { # Attempt to kill the Dragon!
+		name = dragon_adventure.1012.a
+		if = {
+			limit = { is_alive = yes }
+			stress_impact = {
+				compassionate = medium_stress_impact_gain
+			}
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 40
+				OR = {
+					has_trait = impatient
+					has_trait = brave
+					has_trait = ambitious
+				}
+			}
+		}
+		custom_tooltip = dragon_adventure.1012.a.tt
+		trigger_event = dragon_adventure.1011
+	}
+
+	option = { # Attempt to tame the Dragon!
+		name = dragon_adventure.1012.b
+		trigger = {
+			has_dragon_rider_trigger = yes
+		}
+		random_list = {
+			75 = {
+				trigger_event = dragon_world_new_game.0006 # Using pre-existing fleshed out tame dragon event chain
+				# FIXME: Will count as success even if they fail afterwards
+				scope:activity = {
+					set_variable = {
+						name = dragons_success
+						value = flag:yes
+					}
+				}
+				custom_tooltip = dragon_adventure.1012.b.tt.success
+			}
+			25 = {
+				trigger_event = dragon_spawn.0005
+				scope:activity = {
+					set_variable = {
+						name = dragons_success
+						value = flag:no
+					}
+				}
+				custom_tooltip = dragon_adventure.1012.b.tt.failure
+			}
+		}
+		stress_impact = {
+			zealous = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 25
+			modifier = {
+				add = 30
+				OR = {
+					NOT = {
+						has_trait = zealous
+						has_trait = ambitious
+					}
+				}
+			}
+		}
+	}
+
+	option = { # Run away!
+		name = dragon_adventure.1012.c
+		add_prestige = medium_prestige_loss
+		scope:activity = {
+			set_variable = {
+				name = dragons_success
+				value = flag:no
+			}
+		}
+		stress_impact = {
+			brave = minor_stress_impact_gain
+			zealous = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 25
+			ai_value_modifier = {
+				ai_boldness = -1
+				ai_energy = -1
+			}
+		}
+	}
+}
+
+# Dragon Cave Found - With Dragon
+dragon_adventure.1013 = {
+	type = activity_event
+	title = dragon_adventure.1013.t
+	desc = dragon_adventure.1013.opening
+	theme = hunt_activity
+	left_portrait = {
+		character = scope:host
+		triggered_animation = {
+			trigger = {
+				has_trait = craven
+			}
+			animation = worry
+		}
+		animation = marshal
+	}
+	right_portrait = {
+		character = scope:hunt_participant
+		trigger = {
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+			root = {
+				NOT = {
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+				}
+			}
+		}
+		triggered_animation = {
+			trigger = {
+				has_trait = craven
+			}
+			animation = worry
+		}
+		animation = marshal
+	}
+	cooldown = { weeks = 1 }
+
+	# weight_multiplier = {
+	# 	base = 1
+	# 	modifier = { add = involved_activity.var:hunt_success_chance }
+	# }
+
+	option = { # Focus on killing the Dragon!
+		name = dragon_adventure.1013.a
+		if = {
+			limit = { is_alive = yes }
+			stress_impact = {
+				compassionate = medium_stress_impact_gain
+			}
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 40
+				OR = {
+					has_trait = impatient
+					has_trait = brave
+					has_trait = ambitious
+				}
+			}
+		}
+		trigger_event = dragon_adventure.1011
+	}
+
+	option = { # Attempt to steal an egg
+		name = dragon_adventure.1013.b
+		random_list = {
+			90 = {
+				custom_tooltip = dragon_adventure_attain_egg_tt
+				trigger_event = dragon_spawn.0007
+				scope:activity = {
+					set_variable = {
+						name = dragons_success
+						value = flag:yes
+					}
+				}
+			}
+			# Forced to fight Dragon
+			10 = {
+				custom_tooltip = dragon_adventure_forced_fight_tt
+				trigger_event = dragon_adventure.1011
+			}
+		}
+		ai_chance = {
+			base = 50
+		}
+	}
+
+	option = { # Leave
+		name = dragon_adventure.1013.c
+		scope:activity = {
+			set_variable = {
+				name = dragons_success
+				value = flag:no
+			}
+		}
+		add_prestige = medium_prestige_loss
+		stress_impact = {
+			brave = minor_stress_impact_gain
+			zealous = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 25
+			ai_value_modifier = {
+				ai_boldness = -1
+				ai_energy = -1
+			}
+		}
+	}
+}
+
+# Dragon Cave Found - Without Dragon
+dragon_adventure.1014 = {
+	type = activity_event
+	title = dragon_adventure.1014.t
+	desc = dragon_adventure.1014.opening
+	theme = hunt_activity
+	left_portrait = {
+		character = scope:host
+		animation = ecstasy
+	}
+	right_portrait = {
+		character = scope:hunt_participant
+		trigger = {
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+			root = {
+				NOT = {
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+				}
+			}
+		}
+		animation = ecstasy
+	}
+	cooldown = { weeks = 1 }
+
+	# weight_multiplier = {
+	# 	base = 1
+	# 	modifier = { add = involved_activity.var:hunt_success_chance }
+	# }
+
+	option = { # Take the Dragon egg from the cave
+		name = dragon_adventure.1014.a
+		scope:activity = {
+			set_variable = {
+				name = dragons_success
+				value = flag:yes
+			}
+		}
+		if = {
+			limit = { is_alive = yes }
+			stress_impact = {
+				compassionate = minor_stress_impact_gain
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		trigger_event = dragon_spawn.0007
+	}
+}
+
+# Huge Dragon Cave Found - With Dragon
+dragon_adventure.1015 = {
+	type = activity_event
+	title = dragon_adventure.1015.t
+	desc = dragon_adventure.1015.opening
+	theme = hunt_activity
+	left_portrait = {
+		character = scope:host
+		triggered_animation = {
+			trigger = {
+				has_trait = craven
+			}
+			animation = worry
+		}
+		animation = marshal
+	}
+	right_portrait = {
+		character = scope:hunt_participant
+		trigger = {
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+			root = {
+				NOT = {
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+				}
+			}
+		}
+		triggered_animation = {
+			trigger = {
+				has_trait = craven
+			}
+			animation = worry
+		}
+		animation = marshal
+	}
+	cooldown = { weeks = 1 }
+
+	# weight_multiplier = {
+	# 	base = 1
+	# 	modifier = { add = involved_activity.var:hunt_success_chance }
+	# }
+
+	option = { # Focus on killing the Dragon!
+		name = dragon_adventure.1015.a
+		if = {
+			limit = { is_alive = yes }
+			stress_impact = {
+				compassionate = medium_stress_impact_gain
+			}
+		}
+		ai_chance = {
+			base = 50
+			modifier = {
+				add = 40
+				OR = {
+					has_trait = impatient
+					has_trait = brave
+					has_trait = ambitious
+				}
+			}
+		}
+		trigger_event = dragon_adventure.1011
+	}
+
+	option = { # Attempt to steal the eggs
+		name = dragon_adventure.1015.b
+		random_list = {
+			80 = {
+				custom_tooltip = dragon_adventure_party_eggs_tt
+				scope:activity = {
+					every_attending_character = {
+						trigger_event = dragon_spawn.0007
+					}
+					set_variable = {
+						name = dragons_success
+						value = flag:yes
+					}
+				}
+			}
+			# Forced to fight Dragon
+			20 = {
+				custom_tooltip = dragon_adventure_forced_fight_tt
+				trigger_event = dragon_adventure.1011
+			}
+		}
+		ai_chance = {
+			base = 50
+		}
+	}
+
+	option = { # Leave
+		name = dragon_adventure.1015.c
+		add_prestige = medium_prestige_loss
+		stress_impact = {
+			brave = minor_stress_impact_gain
+			zealous = minor_stress_impact_gain
+			arrogant = minor_stress_impact_gain
+			ambitious = minor_stress_impact_gain
+		}
+		ai_chance = {
+			base = 25
+			ai_value_modifier = {
+				ai_boldness = -1
+				ai_energy = -1
+			}
+		}
+	}
+}
+
+
+# Huge Dragon Cave Found - Without Dragon
+dragon_adventure.1016 = {
+	type = activity_event
+	title = dragon_adventure.1016.t
+	desc = dragon_adventure.1016.opening
+	theme = hunt_activity
+	left_portrait = {
+		character = scope:host
+		animation = ecstasy
+	}
+	right_portrait = {
+		character = scope:hunt_participant
+		trigger = {
+			can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+			root = {
+				NOT = {
+					can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+				}
+			}
+		}
+		animation = ecstasy
+	}
+	cooldown = { weeks = 1 }
+
+	# weight_multiplier = {
+	# 	base = 1
+	# 	modifier = { add = involved_activity.var:hunt_success_chance }
+	# }
+
+	option = { # Take the Dragon eggs from the cave
+		name = dragon_adventure.1016.a
+		scope:activity = {
+			set_variable = {
+				name = dragons_success
+				value = flag:yes
+			}
+		}
+		if = {
+			limit = { is_alive = yes }
+			stress_impact = {
+				compassionate = minor_stress_impact_gain
+			}
+		}
+		ai_chance = {
+			base = 100
+		}
+		# 
+		scope:activity = {
+			every_attending_character = {
+				trigger_event = dragon_spawn.0007
+			}
+		}
+	}
+}
+
+# Dragon Charge Result
+dragon_adventure.2000 = {
+	type = activity_event
+	title = dragon_adventure.2000.t
+	desc = {
+		triggered_desc = {
+			trigger = {
+				NOT = { this = scope:host }
+			}
+			# Guest lead up context
+			desc = {
+				first_valid = {
+					desc = hunt.1032.opening
+				}
+				# Guest animal slayer context
+				first_valid = {
+					triggered_desc = {
+						trigger = { exists = scope:charge_fled }
+						desc = dragon_adventure.2000.slayer_fled
+					}
+					triggered_desc = {
+						trigger = {
+							scope:animal_slayer ?= this
+							scope:host = {
+								can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+							}
+						}
+						desc = dragon_adventure.2000.slayer_self
+					}
+					triggered_desc = {
+						trigger = {
+							scope:host = {
+								can_be_combatant_based_on_gender_trigger = { ARMY_OWNER = scope:host }
+							}
+							NOT = { scope:animal_slayer ?= scope:host }
+						}
+						desc = dragon_adventure.2000.slayer
+					}
+				}
+			}
+		}
+		# Outcome
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:charge_success }
+				desc = dragon_adventure.2000.success
+			}
+			triggered_desc = {
+				trigger = { exists = scope:charge_failure }
+				desc = dragon_adventure.2000.failure
+			}
+			desc = dragon_adventure.2000.fled
+		}
+	}
+	theme = hunt_activity
+	left_portrait = {
+		character = scope:host
+		triggered_animation = {
+			trigger = {
+				AND = {
+					exists = scope:charge_success
+					scope:animal_slayer ?= this
+				}
+			}
+			animation = personality_bold
+		}
+		triggered_animation = {
+			trigger = {
+				exists = scope:charge_success
+			}
+			animation = marshal
+		}
+		triggered_animation = {
+			trigger = { exists = scope:charge_fled }
+			animation = fear
+		}
+		animation = stress
+	}
+	artifact = { # To display the artifact in the event-window
+		target = scope:newly_created_artifact
+		position = lower_right_portrait
+	}
+	center_portrait = {
+		character = scope:animal_slayer
+		animation = war_over_win
+		trigger = {
+			NOR = {
+				scope:host ?= this
+				scope:hunt_participant ?= this
+			}
+		}
+	}
+	cooldown = { weeks = 1 }
+
+	immediate = {
+		play_sound_effect = "event:/DLC/EP2/SFX/Events/Grand_Activities/Hunts/ConstructionKits/ep2_event_grand_hunt_ck_arrow_impact_hit"
+		show_as_tooltip = {
+			scope:animal_slayer = {
+				if = {
+					limit = { has_trait = tourney_participant }
+					add_trait_xp = {
+						trait = tourney_participant
+						track = horse
+						value = { 1 3 }
+					}
+					dragonmaster_progress_point_gain_effect = { CHANGE = 1 RANDOM_CHANGE = 3 }
+					hidden_effect = {
+						dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = yes }
+					}
+				}
+				else = {
+					dragonmaster_progress_point_gain_effect = { CHANGE = 1 RANDOM_CHANGE = 3 }
+					hidden_effect = {
+						dragonmaster_lifestyle_rank_up_check_effect = { DRAGON_SCHOLAR = no DRAGON_HUNTER = yes }
+					}
+				}
+			}
+			switch = {
+				trigger = exists
+				scope:charge_success = {
+					scope:animal_slayer = {
+						add_prestige = hunt_prestige_bow_value
+						if = {
+							limit = { has_activity_intent = slay_beast_intent }
+							show_as_tooltip = { complete_activity_intent = yes }
+						}
+						hunt_complete_slay_beast_intent_effect = yes
+					}
+				}
+			}
+		}
+	}
+
+	option = { # Success
+		name = {
+			trigger = { this = scope:animal_slayer }
+			text = dragon_adventure.2000.a.self
+		}
+		name = {
+			trigger = {
+				NOT = { this = scope:animal_slayer }
+			}
+			text = dragon_adventure.2000.a
+		}
+		trigger = { exists = scope:charge_success }
+	}
+
+	option = { # Failure
+		name = {
+			trigger = { this = scope:animal_slayer }
+			text = dragon_adventure.2000.b.self
+		}
+		name = {
+			trigger = {
+				NOT = { this = scope:animal_slayer }
+			}
+			text = dragon_adventure.2000.b
+		}
+		trigger = { exists = scope:charge_failure }
+	}
+
+	option = { # Fled
+		name = dragon_adventure.2000.c
+		trigger = { exists = scope:charge_fled }
+	}
+}

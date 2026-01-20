@@ -1,0 +1,27 @@
+﻿ai_dragon_role = {
+	
+	categories = {
+		dragon ai
+	}
+	
+	default = default_ai_role
+
+	non_existent_ai_role = {}
+	
+	default_ai_role = {}
+	
+	dragon_lords_ai_role = {}
+}
+
+dragon_command_language = {
+	
+	categories = {
+		dragon flavor
+	}
+	
+	default = latin_commands
+
+	latin_commands = {}
+	
+	high_valyrian_commands = {}
+}

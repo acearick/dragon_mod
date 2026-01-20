@@ -1,0 +1,284 @@
+﻿namespace = dragon_aging_events
+
+# Trigger to age Dragons
+dragon_aging_events.0001 = {
+	type = character_event
+	hidden = yes
+
+	trigger = {
+		any_character_artifact = {
+			OR = {
+				artifact_type = type_hatchling_dragon
+				artifact_type = type_adolescent_dragon
+				artifact_type = type_young_dragon
+				artifact_type = type_adult_dragon
+			}
+		}
+	}
+
+	immediate = {
+		random_character_artifact = {
+			limit = {
+				OR = {
+					artifact_type = type_hatchling_dragon
+					artifact_type = type_adolescent_dragon
+					artifact_type = type_young_dragon
+					artifact_type = type_adult_dragon
+				}
+			}
+			save_scope_as = dragon_artifact
+		}
+		trigger_event = dragon_aging_events.0002
+	}
+}
+
+# pre hatching mechanism:
+# hatch egg 3 years
+# baby dragon 5 years
+# adolescent dragon 10 years
+# young dragon 15 years
+# adult dragon 120 years
+# ancient dragon
+
+# Age Dragon
+dragon_aging_events.0002 = {
+	type = character_event
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				# Already old enough to 'evolve'
+				OR = {
+					scope:dragon_artifact.var:hatchling_dragon_age >= 4 # total 5 years old
+					scope:dragon_artifact.var:adolescent_dragon_age >= 9 # total 15 years old
+					scope:dragon_artifact.var:young_dragon_age >= 14 # total 30 years old
+					scope:dragon_artifact.var:adult_dragon_age >= 119 # total 150 years old
+				}
+			}
+			trigger_event = dragon_aging_events.0003
+		} else = {
+			if = {
+				limit = {
+					scope:dragon_artifact = {
+						artifact_type = type_hatchling_dragon
+					}
+				}
+				scope:dragon_artifact = {
+					change_variable = {
+						name = hatchling_dragon_age
+						add = 1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					scope:dragon_artifact = {
+						artifact_type = type_adolescent_dragon
+					}
+				}
+				scope:dragon_artifact = {
+					change_variable = {
+						name = adolescent_dragon_age
+						add = 1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					scope:dragon_artifact = {
+						artifact_type = type_young_dragon
+					}
+				}
+				scope:dragon_artifact = {
+					change_variable = {
+						name = young_dragon_age
+						add = 1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					scope:dragon_artifact = {
+						artifact_type = type_adult_dragon
+					}
+				}
+				scope:dragon_artifact = {
+					change_variable = {
+						name = adult_dragon_age
+						add = 1
+					}
+				}
+			}
+		}
+	}
+}
+
+# Dragon grows to next stage
+dragon_aging_events.0003 = {
+	type = character_event
+	title = dragon_aging_events.0003.t
+	desc = dragon_aging_events.0003.desc
+	theme = pet
+
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	artifact = { # To display the artifact in the event-window
+		target = scope:newly_created_artifact
+		position = lower_center_portrait
+	}
+
+	option = {
+		name = dragon_aging_events.0003.a
+
+		if = {
+			limit = {
+				scope:newly_created_artifact = {
+					artifact_type = type_adolescent_dragon
+				}
+			}
+			add_prestige = 250
+			scope:newly_created_artifact = {
+				add_artifact_modifier = dragon_adolescent_defaults
+			}
+			if = {
+				limit = {
+					has_trait = education_diplomacy
+				}
+				scope:newly_created_artifact = {
+					add_artifact_modifier = dragon_adolescent_diplomacy_defaults
+				}
+			}
+			else_if = {
+				limit = {
+					has_trait = education_martial
+				}
+				scope:newly_created_artifact = {
+					add_artifact_modifier = dragon_adolescent_martial_defaults
+				}
+			}
+			else_if = {
+				limit = {
+					has_trait = education_stewardship
+				}
+				scope:newly_created_artifact = {
+					add_artifact_modifier = dragon_adolescent_stewardship_defaults
+				}
+			}
+			else_if = {
+				limit = {
+					has_trait = education_intrigue
+				}
+				scope:newly_created_artifact = {
+					add_artifact_modifier = dragon_adolescent_intrigue_defaults
+				}
+			}
+			else_if = {
+				limit = {
+					has_trait = education_learning
+				}
+				scope:newly_created_artifact = {
+					add_artifact_modifier = dragon_adolescent_learning_defaults
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				scope:newly_created_artifact = {
+					artifact_type = type_young_dragon
+				}
+			}
+			add_prestige = 500
+		}
+		else_if = {
+			limit = {
+				scope:newly_created_artifact = {
+					artifact_type = type_adult_dragon
+				}
+			}
+			add_prestige = 1000
+		}
+		else_if = {
+			limit = {
+				scope:newly_created_artifact = {
+					artifact_type = type_ancient_dragon
+				}
+			}
+			add_prestige = 2000
+			dynasty = { add_dynasty_prestige = 100 }
+		}
+	}
+
+	immediate = {
+		scope:dragon_artifact = {
+			if = {
+				limit = {
+					has_artifact_feature = dragon_element_fire
+				}
+				root = {
+					set_variable = { name = dragon_type value = flag:fire }
+				}
+			}
+			else_if = {
+				limit = {
+					has_artifact_feature = dragon_element_water
+				}
+				root = {
+					set_variable = { name = dragon_type value = flag:water }
+				}
+			}
+			else_if = {
+				limit = {
+					has_artifact_feature = dragon_element_stone
+				}
+				root = {
+					set_variable = { name = dragon_type value = flag:stone }
+				}
+			}
+		}
+		if = {
+			limit = {
+				scope:dragon_artifact = {
+					artifact_type = type_hatchling_dragon
+				}
+			}
+			create_artifact_adolescent_dragon_effect = { OWNER = this }
+		}
+		else_if = {
+			limit = {
+				scope:dragon_artifact = {
+					artifact_type = type_adolescent_dragon
+				}
+			}
+			create_artifact_young_dragon_effect = { OWNER = this }
+		}
+		else_if = {
+			limit = {
+				scope:dragon_artifact = {
+					artifact_type = type_young_dragon
+				}
+			}
+			create_artifact_adult_dragon_effect = { OWNER = this }
+		}
+		else_if = {
+			limit = {
+				scope:dragon_artifact = {
+					artifact_type = type_adult_dragon
+				}
+			}
+			create_artifact_ancient_dragon_effect = { OWNER = this }
+		}
+		scope:newly_created_artifact = {
+			set_artifact_name = artifact_aged_dragon_name
+			hidden_effect = {
+				copy_artifact_modifiers = scope:dragon_artifact 
+			}
+		}
+		hidden_effect = {
+			destroy_artifact = scope:dragon_artifact
+		}
+	}
+}

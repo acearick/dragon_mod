@@ -6,6 +6,7 @@
 
 dragon_egg_visual = {
 	icon = "dragon_egg_image.dds"
+	asset = ep1_generic_jewelry_01_a_entity
 }
 
 dragon_court = {
@@ -45,6 +46,7 @@ hatchling_dragon_visual = {
 }
 
 adolescent_dragon_visual = {
+	icon = "adolescent_dragon.dds"
 	icon = {
 		trigger = {
 			scope:artifact = {
@@ -73,6 +75,7 @@ adolescent_dragon_visual = {
 }
 
 young_dragon_visual = {
+	icon = "young_dragon.dds"
 	icon = {
 		trigger = {
 			scope:artifact = {
@@ -101,6 +104,7 @@ young_dragon_visual = {
 }
 
 adult_dragon_visual = {
+	icon = "adult_dragon.dds"
 	icon = {
 		trigger = {
 			scope:artifact = {
@@ -129,6 +133,7 @@ adult_dragon_visual = {
 }
 
 ancient_dragon_visual = {
+	icon = "ancient_dragon.dds"
 	icon = {
 		trigger = {
 			scope:artifact = {
@@ -161,6 +166,7 @@ ancient_dragon_visual = {
 # ═══════════════════════════════════════════
 
 elder_dragon_visual = {
+	icon = "elder_dragon.dds"
 	icon = {
 		trigger = {
 			scope:artifact = {
@@ -185,11 +191,6 @@ elder_dragon_visual = {
 		}
 		reference = "elder_stone_dragon.dds"
 	}
-	# Fallback if no element (shouldn't happen)
-	icon = {
-		trigger = { always = yes }
-		reference = "elder_fire_dragon.dds"
-	}
 	asset = ep1_generic_jewelry_01_a_entity
 }
 
@@ -198,6 +199,7 @@ elder_dragon_visual = {
 # ═══════════════════════════════════════════
 
 primordial_dragon_visual = {
+	icon = "primordial_dragon.dds"
 	icon = {
 		trigger = {
 			scope:artifact = {
@@ -222,11 +224,6 @@ primordial_dragon_visual = {
 		}
 		reference = "primordial_stone_dragon.dds"
 	}
-	# Fallback
-	icon = {
-		trigger = { always = yes }
-		reference = "primordial_fire_dragon.dds"
-	}
 	asset = ep1_generic_jewelry_01_a_entity
 }
 
@@ -235,6 +232,7 @@ primordial_dragon_visual = {
 # ═══════════════════════════════════════════
 
 dragon_skull_visual = {
+	icon = "dragon_skull.dds"
 	icon = {
 		trigger = {
 			scope:artifact = {
@@ -259,10 +257,6 @@ dragon_skull_visual = {
 		}
 		reference = "dragon_skull_stone.dds"
 	}
-	icon = {
-		trigger = { always = yes }
-		reference = "dragon_skull_fire.dds"
-	}
 	asset = ep1_generic_jewelry_01_a_entity
 }
 
@@ -272,6 +266,7 @@ dragon_bones_visual = {
 }
 
 dragon_heart_visual = {
+	icon = "dragon_heart.dds"
 	icon = {
 		trigger = {
 			scope:artifact = {
@@ -304,6 +299,7 @@ dragon_heart_visual = {
 }
 
 dragonscale_cloak_visual = {
+	icon = "dragonscale_cloak.dds"
 	icon = {
 		trigger = {
 			scope:artifact = {
@@ -336,6 +332,7 @@ dragonscale_cloak_visual = {
 }
 
 dragon_fang_weapon_visual = {
+	icon = "dragon_fang_weapon.dds"
 	icon = {
 		trigger = {
 			scope:artifact = {
@@ -363,6 +360,114 @@ dragon_fang_weapon_visual = {
 	icon = {
 		trigger = { always = yes }
 		reference = "dragon_fang_fire.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+# ═══════════════════════════════════════════
+# DRAGON HIDE VISUALS (Small - wall_small)
+# ═══════════════════════════════════════════
+
+dragon_hide_visual = {
+	icon = "dragon_hide_visual.dds"
+	icon = {
+		trigger = {
+			scope:artifact = {
+				OR = {
+					has_artifact_feature = dragon_element_fire
+					has_artifact_feature = dragon_element_fire_artifact
+					AND = {
+						has_variable = dragon_element
+						var:dragon_element = flag:fire
+					}
+				}
+			}
+		}
+		reference = "dragon_hide_fire.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				OR = {
+					has_artifact_feature = dragon_element_water
+					has_artifact_feature = dragon_element_water_artifact
+					AND = {
+						has_variable = dragon_element
+						var:dragon_element = flag:water
+					}
+				}
+			}
+		}
+		reference = "dragon_hide_water.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				OR = {
+					has_artifact_feature = dragon_element_stone
+					has_artifact_feature = dragon_element_stone_artifact
+					AND = {
+						has_variable = dragon_element
+						var:dragon_element = flag:stone
+					}
+				}
+			}
+		}
+		reference = "dragon_hide_stone.dds"
+	}
+	asset = ep1_generic_jewelry_01_a_entity
+}
+
+# ═══════════════════════════════════════════
+# DRAGON HIDE BIG VISUALS (Large - wall_big)
+# ═══════════════════════════════════════════
+
+dragon_hide_big_visual = {
+	icon = "dragon_hide_big_visual.dds"
+	icon = {
+		trigger = {
+			scope:artifact = {
+				OR = {
+					has_artifact_feature = dragon_element_fire
+					has_artifact_feature = dragon_element_fire_artifact
+					AND = {
+						has_variable = dragon_element
+						var:dragon_element = flag:fire
+					}
+				}
+			}
+		}
+		reference = "dragon_hide_big_fire.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				OR = {
+					has_artifact_feature = dragon_element_water
+					has_artifact_feature = dragon_element_water_artifact
+					AND = {
+						has_variable = dragon_element
+						var:dragon_element = flag:water
+					}
+				}
+			}
+		}
+		reference = "dragon_hide_big_water.dds"
+	}
+	icon = {
+		trigger = {
+			scope:artifact = {
+				OR = {
+					has_artifact_feature = dragon_element_stone
+					has_artifact_feature = dragon_element_stone_artifact
+					AND = {
+						has_variable = dragon_element
+						var:dragon_element = flag:stone
+					}
+				}
+			}
+		}
+		reference = "dragon_hide_big_stone.dds"
 	}
 	asset = ep1_generic_jewelry_01_a_entity
 }
